@@ -1,0 +1,182 @@
+" theme
+colorscheme onecustom
+
+" markdown
+let g:markdown_fold_override_foldtext = 0
+
+" javascript
+let g:jst_default_subtype = "javascript"
+let g:jsx_ext_required = 0
+
+" tcomment
+let g:tcomment_mapleader_comment_anyway = "\<Nop>"
+let g:tcomment_mapleader_uncomment_anyway = "\<Nop>"
+autocmd VimEnter *
+  \ call tcomment#type#Define('lightscript', tcomment#GetLineC('// %s')) |
+  \ call tcomment#type#Define('lightscript_block', g:tcomment#block_fmt_c ) |
+  \ call tcomment#type#Define('lightscript_inline', g:tcomment#inline_fmt_c)
+
+" splitjoin
+let g:splitjoin_html_attributes_bracket_on_new_line=1
+autocmd FileType lightscript
+  \ let b:splitjoin_split_callbacks = [
+  \ 'sj#js#SplitArgs',
+  \ 'sj#js#SplitArray',
+  \ 'sj#js#SplitObjectLiteral',
+  \ ] |
+  \ let b:splitjoin_join_callbacks = [
+  \ 'sj#js#JoinArray',
+  \ 'sj#js#JoinArgs',
+  \ 'sj#js#JoinObjectLiteral',
+  \ ]
+
+" switch
+let s:apostrophe = "'"
+let g:switch_custom_definitions = [{
+\  '`\([^`]*\)`' : '"\1"',
+\  '"\([^"]*\)"' : s:apostrophe.'\1'.s:apostrophe,
+\  s:apostrophe.'\([^'.s:apostrophe.']*\)'.s:apostrophe : '`\1`',
+\}]
+
+autocmd FileType lightscript let b:switch_custom_definitions = [{
+\  'const ': 'let ',
+\  'let ': '',
+\  '->' : '-/>',
+\  '-/>' : '=>',
+\  '=>' : '->',
+\}]
+
+autocmd FileType javascript,javascript.jsx let b:switch_custom_definitions = [{
+\  'let': 'const',
+\  'const': 'let',
+\  'var': 'const',
+\}]
+
+" targets
+let g:targets_argOpening = '[({[]'
+let g:targets_argClosing = '[]})]'
+let g:targets_argSeparator = '[,;]'
+
+" gv
+autocmd FileType GV setlocal listchars=trail:\ 
+
+" deoplete
+if has('nvim')
+  let g:deoplete#enable_at_startup = 1
+  let g:deoplete#auto_complete_start_length = 1
+  call deoplete#custom#source('_', 'sorters', ['sorter_word'])
+  " deoplete tern
+  let g:deoplete#sources#ternjs#filetypes = [ 'javascript', 'lightscript' ]
+  let g:deoplete#sources#ternjs#include_keywords = 1
+  let g:deoplete#sources#ternjs#case_insensitive = 1
+  " deoplete latex
+  call deoplete#custom#var('omni', 'input_patterns', {
+        \ 'tex': g:vimtex#re#deoplete,
+        \ 'javascript': '\w+',
+        \})
+endif
+
+" neosnippet
+if has('nvim')
+  let g:neosnippet#snippets_directory = '~/.vim/snippets'
+  let g:neosnippet#disable_runtime_snippets = { '_' : 1 }
+  let g:neosnippet#scope_aliases = {
+  \ 'javascript': 'javascript,react,javascript.array',
+  \ 'javascript.jsx': 'javascript,react,javascript.array',
+  \ 'lightscript': 'lightscript,lightscript.array',
+  \ }
+endif
+
+" delimitmate
+let delimitMate_expand_space = 1
+let delimitMate_expand_cr = 1
+au FileType markdown let b:delimitMate_nesting_quotes = ['`']
+
+" ale
+let g:ale_enabled = 0
+let g:ale_set_signs = 1
+let g:ale_sign_error = '»'
+let g:ale_sign_warning = '‼'
+let g:ale_linters = { 'lightscript': ['eslint'] }
+let g:ale_linter_aliases = { 'lightscript': 'javascript' }
+
+" dirvish
+autocmd FileType dirvish
+      \ call fugitive#detect(@%) |
+      \ silent! unmap <buffer> <C-p> |
+      \ silent! unmap <buffer> <c-n>
+let g:dirvish_mode = ':sort r /[^\/]$/'
+
+" ligthline
+function! LightlineBranch()
+  let maxlen = 40
+  if &ft !~? 'vimfiler' && exists('*fugitive#head')
+    let branch = fugitive#head()
+    if len(branch) < winwidth(0) - maxlen - 15
+      return branch
+    endif
+    let branch = pathshorten(fugitive#head())
+    if len(branch) < winwidth(0) - maxlen
+      return branch
+    endif
+    if winwidth(0) - 1 <= maxlen
+      return ''
+    endif
+    return '…' . branch[(1 - (winwidth(0) - maxlen)):]
+  endif
+  return ''
+endfunction
+
+function! LightlineTabs()
+  let [x, y, z] = [[], [], []]
+  let cnt = tabpagenr('$')
+  if cnt == 1
+    return [x, y, z]
+  endif
+  return lightline#tabs()
+endfunction
+
+let g:lightline#bufferline#unnamed = '[No Name]'
+let g:lightline#bufferline#read_only = ''
+let g:lightline#bufferline#more_buffers = '…'
+
+let g:lightline = {
+  \'colorscheme': 'onecustom',
+  \'component_function': {
+    \'branch': 'LightlineBranch',
+  \},
+  \'component': {
+    \'lineinfo': '%l:%v',
+    \'filetype': '%{&ft}',
+    \'path': '%<%{&readonly?" ":""}%f',
+  \},
+  \'inactive': { 'left': [['filename']], 'right': [] },
+  \'active': {
+    \'left': [['mode', 'spell', 'branch'], [''], ['path']],
+    \'right': [['linter_errors', 'linter_warnings', 'lineinfo'], [''], ['filetype']]
+  \},
+  \'tabline': {
+    \'left': [['buffers']],
+    \'right': [['tabs']]
+  \},
+  \'tab': {
+    \ 'active': ['tabnum'],
+    \ 'inactive': ['tabnum']
+  \},
+  \'component_expand': {
+    \'tabs': 'LightlineTabs',
+    \'buffers': 'lightline#bufferline#buffers',
+    \'linter_warnings': 'lightline#ale#warnings',
+    \'linter_errors': 'lightline#ale#errors',
+  \},
+  \'component_type': {
+    \'buffers': 'tabsel',
+    \'tabs': 'tabsel',
+    \'linter_warnings': 'warning',
+    \'linter_errors': 'error',
+  \},
+  \'separator': { 'left': '', 'right': '' },
+  \'subseparator': { 'left': '|', 'right': '|' },
+  \'tabline_separator': { 'left': '', 'right': '' },
+  \'tabline_subseparator': { 'left': '', 'right': '' }
+\}

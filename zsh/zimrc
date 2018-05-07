@@ -1,0 +1,7 @@
+zmodules=(directory environment history input utility archive \
+          syntax-highlighting history-substring-search pacman completion)
+
+zdouble_dot_expand='true'
+zhighlighters=(main brackets)
+zssh_ids=(id_rsa)
+zinput_mode='vi'
