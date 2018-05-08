@@ -57,6 +57,18 @@ bindsym $mod+Shift+g move container to workspace 
 bindsym $mod+Shift+b move container to workspace 
 bindsym $mod+Shift+s move container to workspace 
 
+bindsym $mod+Shift+Ctrl+enfilledcircbullet rename workspace to 
+bindsym $mod+Shift+Ctrl+comma rename workspace to 
+bindsym $mod+Shift+Ctrl+n rename workspace to 
+bindsym $mod+Shift+Ctrl+r rename workspace to 
+bindsym $mod+Shift+Ctrl+a rename workspace to 
+bindsym $mod+Shift+Ctrl+d rename workspace to 
+bindsym $mod+Shift+Ctrl+m rename workspace to 
+bindsym $mod+Shift+Ctrl+c rename workspace to 
+bindsym $mod+Shift+Ctrl+g rename workspace to 
+bindsym $mod+Shift+Ctrl+b rename workspace to 
+bindsym $mod+Shift+Ctrl+s rename workspace to 
+
 bindsym $mod+enfilledcircbullet workspace 
 bindsym $mod+comma workspace 
 bindsym $mod+n workspace 
