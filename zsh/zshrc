@@ -1,5 +1,10 @@
-export EDITOR='nvim'
-export MANPAGER="$EDITOR -c 'set ft=man' -"
+if command -v nvim > /dev/null; then
+  export EDITOR='nvim'
+  export MANPAGER="nvim -c 'set ft=man' -"
+elif command -v vim > /dev/null; then
+  export EDITOR='vim'
+  export MANPAGER="vim -c 'set ft=man' -"
+fi
 
 # Zim
 source $HOME/.zim/init.zsh
@@ -29,7 +34,9 @@ alias yt="youtube-dl"
 
 # vim
 alias vi="vim"
-alias vim="nvim"
+if command -v nvim > /dev/null; then
+  alias vim="nvim"
+fi
 alias status='vim $(git rev-parse --show-toplevel)/.git/index'
 gv() { vim -c "GV $@" }
 
@@ -63,6 +70,7 @@ publish() {
   git diff
   yarn publish
 }
+
 # git
 alias g='git'
 alias ga='git add'
