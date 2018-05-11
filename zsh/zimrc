@@ -1,4 +1,4 @@
-zmodules=(directory environment history input utility archive \
+zmodules=(directory environment history input utility archive custom \
           syntax-highlighting history-substring-search pacman completion)
 
 zdouble_dot_expand='true'
