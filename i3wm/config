@@ -6,23 +6,30 @@ set $up u
 set $down i
 set $left t
 set $right e
+set $helper exec --no-startup-id ~/.config/i3/helper.py
 
 floating_modifier $mod
 
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
+bindsym $mod+$left $helper focus left
+bindsym $mod+$down $helper focus down
+bindsym $mod+$up $helper focus up
+bindsym $mod+$right $helper focus right
 
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+$left $helper move left
+bindsym $mod+Shift+$down $helper move down
+bindsym $mod+Shift+$up $helper move up
+bindsym $mod+Shift+$right $helper move right
 
 bindsym $mod+Ctrl+$left resize shrink width 5 px or 5 ppt
 bindsym $mod+Ctrl+$down resize grow height 5 px or 5 ppt
 bindsym $mod+Ctrl+$up resize shrink height 5 px or 5 ppt
 bindsym $mod+Ctrl+$right resize grow width 5 px or 5 ppt
+
+bindsym $mod+n $helper focus next
+bindsym $mod+p $helper focus prev
+
+bindsym $mod+Shift+n $helper move next
+bindsym $mod+Shift+p $helper move prev
 
 bindsym $mod+Return exec urxvtc
 bindsym $mod+adiaeresis exec urxvtc
@@ -47,7 +54,7 @@ bindsym $mod+z move workspace to output right
 
 bindsym $mod+Shift+enfilledcircbullet move container to workspace 
 bindsym $mod+Shift+comma move container to workspace 
-bindsym $mod+Shift+n move container to workspace 
+bindsym $mod+Shift+k move container to workspace 
 bindsym $mod+Shift+r move container to workspace 
 bindsym $mod+Shift+a move container to workspace 
 bindsym $mod+Shift+d move container to workspace 
@@ -59,7 +66,7 @@ bindsym $mod+Shift+s move container to workspace 
 
 bindsym $mod+Shift+Ctrl+enfilledcircbullet rename workspace to 
 bindsym $mod+Shift+Ctrl+comma rename workspace to 
-bindsym $mod+Shift+Ctrl+n rename workspace to 
+bindsym $mod+Shift+Ctrl+k rename workspace to 
 bindsym $mod+Shift+Ctrl+r rename workspace to 
 bindsym $mod+Shift+Ctrl+a rename workspace to 
 bindsym $mod+Shift+Ctrl+d rename workspace to 
@@ -71,7 +78,7 @@ bindsym $mod+Shift+Ctrl+s rename workspace to 
 
 bindsym $mod+enfilledcircbullet workspace 
 bindsym $mod+comma workspace 
-bindsym $mod+n workspace 
+bindsym $mod+k workspace 
 bindsym $mod+r workspace 
 bindsym $mod+a workspace 
 bindsym $mod+d workspace 

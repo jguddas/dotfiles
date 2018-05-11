@@ -70,9 +70,17 @@ if [[ -z $1 || $1 == "qutebrowser" ]]; then
 fi
 
 if [[ -z $1 || $1 == "i3wm" ]]; then
-  mkdir -p ~/.config/i3 ~/scripts
-  ln_i $base/i3wm/config $base/i3wm/bg.jpg ~/.config/i3
+  mkdir -p ~/.config/i3/i3ipc ~/scripts
+  ln_i $base/i3wm/config $base/i3wm/bg.jpg $base/i3wm/helper.py ~/.config/i3
   ln_i $base/i3wm/status.sh ~/scripts
+  # install i3ipc
+  if [[ ! -a ~/.config/i3/i3ipc/i3ipc.py ]]; then
+    gh=https://raw.githubusercontent.com
+    curl -fLo ~/.config/i3/i3ipc/i3ipc.py \
+      $gh/acrisci/i3ipc-python/master/i3ipc/i3ipc.py
+    curl -fLo ~/.config/i3/i3ipc/__init__.py \
+      $gh/acrisci/i3ipc-python/master/i3ipc/__init__.py
+  fi
   # reload i3
   i3-msg reload > /dev/null
 fi
