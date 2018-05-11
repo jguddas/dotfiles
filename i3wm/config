@@ -109,7 +109,7 @@ client.background       #17181A
 
 bar {
   position top
-  status_command ~/scripts/status.sh
+  status_command ~/.config/i3/status.sh
   colors {
     background #222222
     statusline #ffffff
