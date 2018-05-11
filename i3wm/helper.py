@@ -1,16 +1,10 @@
 #!/usr/bin/python
-import sys
 import i3ipc
 
-i3 = i3ipc.Connection()
-command = sys.argv[1]
-direction = sys.argv[2]
-window = i3.get_tree().find_focused()
-sibblings = window.parent.descendents()
-index = sibblings.index(window)
-layout = window.parent.layout
-
-def getCommand():
+def getCommand(window, command, direction):
+    sibblings = window.parent.descendents()
+    index = sibblings.index(window)
+    layout = window.parent.layout
     if direction == 'prev':
         if index == 0:
             if layout in ['splith', 'tabbed']:
@@ -44,4 +38,12 @@ def getCommand():
             return ('move ' + direction + ', ') * (index + 1)
         return ('move ' + direction + ', ') * (len(sibblings) - index)
 
-i3.command(getCommand())
+def on_event(i3, e):
+    [command, direction] = (e.binding.command + (' ' * 5)).split(' ')[3:5]
+    if not command or not direction: return
+    window = i3.get_tree().find_focused()
+    i3.command(getCommand(window, command, direction))
+
+i3 = i3ipc.Connection()
+i3.on('binding', on_event)
+i3.main()

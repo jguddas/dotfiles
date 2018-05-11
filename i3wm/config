@@ -6,7 +6,7 @@ set $up u
 set $down i
 set $left t
 set $right e
-set $helper exec --no-startup-id ~/.config/i3/helper.py
+set $helper exec --no-startup-id echo
 
 floating_modifier $mod
 
@@ -125,3 +125,4 @@ bar {
 }
 
 exec_always feh --bg-tile ~/.config/i3/bg.jpg
+exec ~/.config/i3/helper.py
