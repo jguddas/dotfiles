@@ -35,6 +35,7 @@ bindsym $mod+Return exec urxvtc
 bindsym $mod+adiaeresis exec urxvtc
 
 bindsym $mod+x kill
+bindsym $mod+Shift+x focus parent, kill
 
 bindsym $mod+space exec dmenu_run -sf "$color" -sb "#222"
 
