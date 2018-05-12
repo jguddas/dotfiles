@@ -61,7 +61,7 @@ if [[ -z $1 || $1 == "zsh" ]]; then
     git clone --recursive https://github.com/zimfw/zimfw.git ~/.zim
   fi
   # make zsh the default shell
-  [[ $SHELL == "/bin/zsh" ]] || chsh -s =zsh
+  [[ $SHELL == "/bin/zsh" ]] || chsh -s /bin/zsh
 fi
 
 if [[ -z $1 || $1 == "qutebrowser" ]]; then
