@@ -115,6 +115,12 @@ if [[ -z $1 || $1 == "urxvt" ]]; then
 fi
 
 if [[ -z $1 || $1 == "mpv" ]]; then
-  mkdir -p ~/.config/mpv
+  mkdir -p ~/.config/mpv/scripts
   ln_i $base/mpv/* ~/.config/mpv
+  # install autoload script
+  if [[ ! -a ~/.config/mpv/scripts/autoload.lua ]]; then
+    gh=https://raw.githubusercontent.com
+    curl -fLo ~/.config/mpv/scripts/autoload.lua \
+      $gh/mpv-player/mpv/master/TOOLS/lua/autoload.lua
+  fi
 fi
