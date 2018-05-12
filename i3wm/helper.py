@@ -38,9 +38,12 @@ def getCommand(window, command, direction):
             return ('move ' + direction + ', ') * (index + 1)
         return ('move ' + direction + ', ') * (len(sibblings) - index)
 
+directions = ['left', 'right', 'up', 'down', 'next', 'prev']
+commands = ['focus', 'move']
+
 def on_event(i3, e):
     [command, direction] = (e.binding.command + (' ' * 5)).split(' ')[3:5]
-    if not command or not direction: return
+    if not command in commands or not direction in directions: return
     window = i3.get_tree().find_focused()
     i3.command(getCommand(window, command, direction))
 
