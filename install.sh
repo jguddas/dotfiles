@@ -115,8 +115,9 @@ if [[ -z $1 || $1 == "urxvt" ]]; then
 fi
 
 if [[ -z $1 || $1 == "mpv" ]]; then
-  mkdir -p ~/.config/mpv/scripts
-  ln_i $base/mpv/* ~/.config/mpv
+  mkdir -p ~/.config/mpv/{scripts,lua-settings}
+  ln_i $base/mpv/{mpv,input}.conf ~/.config/mpv
+  ln_i $base/mpv/osc.conf ~/.config/mpv/lua-settings
   # install autoload script
   if [[ ! -a ~/.config/mpv/scripts/autoload.lua ]]; then
     gh=https://raw.githubusercontent.com
