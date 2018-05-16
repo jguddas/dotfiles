@@ -44,7 +44,7 @@ nnoremap .w    :write!<CR>
 nnoremap .x    :w<CR>:Sayonara!<CR>
 nnoremap <C-r> :checktime<CR>
 
-nnoremap <expr>.- ":bd ".buffer_name('.')
+nnoremap <expr>.- ":bd<Bar>Dirvish ".expand("%:h")."<CR>"
 nnoremap <expr>.ä ":edit ".expand('%:h')."/"
 " }}}
 
