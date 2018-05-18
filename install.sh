@@ -34,14 +34,15 @@ ln_i() {
 base=$(dirname "$0")
 
 if [ -z "$1" ] || [ "$1" = "vim" ]; then
-  mkdir -p ~/.vim/autoload ~/.config/nvim
+  mkdir -p ~/.vim/{autoload,ftplugin} ~/.config/nvim
   ln_i $base/vim/*.vim ~/.vim
   ln_i $base/vim/vimrc ~/.vim/vimrc
   ln_i $base/vim/vimrc ~/.config/nvim/init.vim
+  ln_i $base/vim/ftplugin/* ~/.vim/ftplugin
   # install vim-plug
   [ -e ~/.vim/autoload/plug.vim ] || curl -fLo ~/.vim/autoload/plug.vim \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  install plugins
+  # install plugins
   if command -v nvim > /dev/null; then
     printf "\033[sinstalling vim and neovim plugins..."
     nvim -u ~/.vim/plugins.vim -c PlugInstall\|qa! 1>&2> /dev/null
