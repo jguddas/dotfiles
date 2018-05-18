@@ -8,6 +8,7 @@ endfunction
 command! -range Center <line1>,<line2>call Center()
 
 command! Cd :cd %:h
+command! Save :call mkdir(expand('%:h'), 'p') | save %:p
 
 if executable('curl') && executable('tr') && executable('xclip')
   command! -range=% Ix  <line1>,<line2>w !curl -F 'f:1=<-' ix.io | tr -d '\n' | xclip -i -selection clipboard
