@@ -1,4 +1,4 @@
-if has('nvim') | let &runtimepath.=',~/.vim' | endif
+if has('nvim') | let &runtimepath.=',~/.vim,~/.vim/after' | endif
 call plug#begin('~/.vim/bundle')
 
 " interface
