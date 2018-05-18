@@ -48,3 +48,5 @@ URxvt.matcher.button: 1
 URxvt.keysym.C-Meta-y: font-size:increase
 URxvt.keysym.C-Meta-s: font-size:decrease
 URxvt.keysym.C-Meta-m: font-size:reset
+
+URxvt.keysym.S-space: \033[32;2u
