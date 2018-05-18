@@ -28,6 +28,7 @@ Plug 'tpope/vim-abolish'             " better abbreviations
 Plug 'tpope/vim-endwise'             " wisely add end
 Plug 'tpope/vim-sleuth'              " adjusts shiftwidth and expandtab
 Plug 'vim-scripts/closetag.vim'      " close xml tags
+Plug 'mattn/emmet-vim'               " expand css like abbreviations to html
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
   Plug 'Shougo/neosnippet'           " snippets

@@ -160,6 +160,14 @@ nmap <silent>ss :Switch<CR>
 nmap x cx
 xmap x X
 
+" emmet
+nmap <S-Space> <Plug>(emmet-expand-abbr)
+vmap <S-Space> <Plug>(emmet-expand-abbr)
+imap <S-Space> <Plug>(emmet-expand-abbr)
+nmap <C-y>,    <Plug>(emmet-expand-abbr)
+vmap <C-y>,    <Plug>(emmet-expand-abbr)
+imap <C-y>,    <Plug>(emmet-expand-abbr)
+
 " neosnippet
 if has('nvim')
   imap <C-n> <Plug>(neosnippet_expand_or_jump)
