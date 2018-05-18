@@ -72,7 +72,7 @@ if has('nvim')
   " deoplete latex
   call deoplete#custom#var('omni', 'input_patterns', {
         \ 'tex': g:vimtex#re#deoplete,
-        \ 'javascript': '\w+',
+        \ 'javascript': '\w*',
         \})
 endif
 
