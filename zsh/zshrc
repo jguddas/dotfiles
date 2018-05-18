@@ -75,6 +75,7 @@ publish() {
 alias g='git'
 alias ga='git add'
 alias gaa='git add -A'
+alias gap='git add --patch'
 alias gc='git commit --verbose'
 alias gca='git commit --verbose --all'
 alias gco='git checkout'
