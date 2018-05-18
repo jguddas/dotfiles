@@ -1,5 +1,6 @@
 #!/bin/sh
 
+xset -b
 xrdb -merge ~/.Xresources
 setxkbmap de bone
 
