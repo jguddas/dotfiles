@@ -103,8 +103,8 @@ let g:ale_linter_aliases = { 'lightscript': 'javascript' }
 " dirvish
 autocmd FileType dirvish
       \ call fugitive#detect(@%) |
-      \ silent! unmap <buffer> <C-p> |
-      \ silent! unmap <buffer> <c-n>
+      \ exec "silent! unmap <buffer> <C-p>" |
+      \ exec "silent! unmap <buffer> <C-n>"
 let g:dirvish_mode = ':sort r /[^\/]$/'
 
 " ligthline
