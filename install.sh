@@ -7,7 +7,7 @@
 #                    linking and installation
 #               usage: ./install.sh [folder-name]
 
-# linking helper
+# linking and download helper
 ln_i() {
   if [ $# -gt 2 ]; then
     if [ ! -d "${*: -1}" ]; then
@@ -31,6 +31,16 @@ ln_i() {
     ln -i "$1" "$2"
   fi
 }
+dl_e() {
+  if [ -d "$2" ]; then
+    out="$2/$(basename "$1")"
+  else
+    out="$2"
+  fi
+  if [ ! -e "$out" ]; then
+    curl -fLo "$out" "$1"
+  fi
+}
 base=$(dirname "$0")
 gh=https://raw.githubusercontent.com
 
@@ -42,8 +52,7 @@ if [ -z "$1" ] || [ "$1" = "vim" ]; then
   ln_i $base/vim/ftplugin/* ~/.vim/ftplugin
   ln_i $base/vim/snippets/* ~/.vim/snippets
   # install vim-plug
-  [ -e ~/.vim/autoload/plug.vim ] || curl -fLo ~/.vim/autoload/plug.vim \
-      $gh/junegunn/vim-plug/master/plug.vim
+  dl_e $gh/junegunn/vim-plug/master/plug.vim ~/.vim/autoload
   # install plugins
   if command -v nvim > /dev/null; then
     printf "\033[sinstalling vim and neovim plugins..."
@@ -79,12 +88,8 @@ if [ -z "$1" ] || [ "$1" = "i3wm" ]; then
   mkdir -p ~/.config/i3/i3ipc ~/scripts
   ln_i $base/i3wm/* ~/.config/i3
   # install i3ipc
-  if [ ! -e ~/.config/i3/i3ipc/i3ipc.py ]; then
-    curl -fLo ~/.config/i3/i3ipc/i3ipc.py \
-      $gh/acrisci/i3ipc-python/master/i3ipc/i3ipc.py
-    curl -fLo ~/.config/i3/i3ipc/__init__.py \
-      $gh/acrisci/i3ipc-python/master/i3ipc/__init__.py
-  fi
+  dl_e $gh/acrisci/i3ipc-python/master/i3ipc/i3ipc.py ~/.config/i3/i3ipc
+  dl_e $gh/acrisci/i3ipc-python/master/i3ipc/__init__.py ~/.config/i3/i3ipc
   # reload i3
   i3-msg reload > /dev/null
 fi
@@ -97,22 +102,16 @@ if [ -z "$1" ] || [ "$1" = "ranger" ]; then
   mkdir -p ~/.config/ranger/plugins
   ln_i $base/ranger/* ~/.config/ranger
   # install devicon plugin
-  if [ ! -e ~/.config/ranger/devicons.py ]; then
-    curl -fLo ~/.config/ranger/devicons.py \
-      $gh/alexanderjeurissen/ranger_devicons/master/devicons.py
-    curl -fLo ~/.config/ranger/plugins/devicons_linemode.py \
-      $gh/alexanderjeurissen/ranger_devicons/master/devicons_linemode.py
-  fi
+  repo=$gh/alexanderjeurissen/ranger_devicons
+  dl_e $repo/master/devicons.py ~/.config/ranger
+  dl_e $repo/master/devicons_linemode.py ~/.config/ranger/plugins
 fi
 
 if [ -z "$1" ] || [ "$1" = "urxvt" ]; then
   mkdir -p ~/.urxvt/ext
   ln_i $base/urxvt/Xresources ~/.Xresources
   # install font-size extention
-  if [ ! -e ~/.urxvt/ext/font-size ]; then
-    curl -fLo ~/.urxvt/ext/font-size \
-      $gh/majutsushi/urxvt-font-size/master/font-size
-  fi
+  dl_e $gh/majutsushi/urxvt-font-size/master/font-size ~/.urxvt/ext
   # load xresources
   xrdb ~/.Xresources
 fi
@@ -122,8 +121,5 @@ if [ -z "$1" ] || [ "$1" = "mpv" ]; then
   ln_i $base/mpv/{mpv,input}.conf ~/.config/mpv
   ln_i $base/mpv/osc.conf ~/.config/mpv/lua-settings
   # install autoload script
-  if [ ! -e ~/.config/mpv/scripts/autoload.lua ]; then
-    curl -fLo ~/.config/mpv/scripts/autoload.lua \
-      $gh/mpv-player/mpv/master/TOOLS/lua/autoload.lua
-  fi
+  dl_e $gh/mpv-player/mpv/master/TOOLS/lua/autoload.lua ~/.config/mpv/scripts
 fi
