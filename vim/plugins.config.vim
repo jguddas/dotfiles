@@ -81,9 +81,8 @@ if has('nvim')
   let g:neosnippet#snippets_directory = '~/.vim/snippets'
   let g:neosnippet#disable_runtime_snippets = { '_' : 1 }
   let g:neosnippet#scope_aliases = {
-  \ 'javascript': 'javascript,react,javascript.array',
-  \ 'javascript.jsx': 'javascript,react,javascript.array',
-  \ 'lightscript': 'lightscript,lightscript.array',
+  \ 'javascript': 'javascript,javascript.array,javascript.react',
+  \ 'lightscript': 'javascript,lightscript,lightscript.array,lightscript.react'
   \ }
 endif
 

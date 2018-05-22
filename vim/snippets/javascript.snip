@@ -1,0 +1,49 @@
+snippet mx
+abbr export
+options head
+  module.exports = ${0}
+
+snippet ex
+abbr export
+options head
+  export ${0}
+
+snippet exd
+abbr export default
+options head
+  export default ${0}
+
+snippet exc
+abbr export const
+options head
+  export const ${0}
+
+snippet imp
+abbr export
+options head
+  import from '${0}'
+
+snippet req
+abbr export
+options head
+  require('${0}')
+
+snippet log
+abbr log
+options word
+  console.log(${0:TARGET})
+
+snippet logjson
+abbr log json
+options word
+  console.log(JSON.stringify(${0:TARGET}, null, 2))
+
+snippet jstringify
+abbr stringify json
+options word
+  JSON.stringify(${0}, null, 2)
+
+snippet jparse
+abbr parse json
+options word
+  JSON.parse(${0})

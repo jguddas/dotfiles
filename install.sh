@@ -34,11 +34,12 @@ ln_i() {
 base=$(dirname "$0")
 
 if [ -z "$1" ] || [ "$1" = "vim" ]; then
-  mkdir -p ~/.vim/{autoload,ftplugin} ~/.config/nvim
+  mkdir -p ~/.vim/{autoload,ftplugin,snippets} ~/.config/nvim
   ln_i $base/vim/*.vim ~/.vim
   ln_i $base/vim/vimrc ~/.vim/vimrc
   ln_i $base/vim/vimrc ~/.config/nvim/init.vim
   ln_i $base/vim/ftplugin/* ~/.vim/ftplugin
+  ln_i $base/vim/snippets/* ~/.vim/snippets
   # install vim-plug
   [ -e ~/.vim/autoload/plug.vim ] || curl -fLo ~/.vim/autoload/plug.vim \
       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
