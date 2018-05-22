@@ -32,6 +32,7 @@ ln_i() {
   fi
 }
 base=$(dirname "$0")
+gh=https://raw.githubusercontent.com
 
 if [ -z "$1" ] || [ "$1" = "vim" ]; then
   mkdir -p ~/.vim/{autoload,ftplugin,snippets} ~/.config/nvim
@@ -42,7 +43,7 @@ if [ -z "$1" ] || [ "$1" = "vim" ]; then
   ln_i $base/vim/snippets/* ~/.vim/snippets
   # install vim-plug
   [ -e ~/.vim/autoload/plug.vim ] || curl -fLo ~/.vim/autoload/plug.vim \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      $gh/junegunn/vim-plug/master/plug.vim
   # install plugins
   if command -v nvim > /dev/null; then
     printf "\033[sinstalling vim and neovim plugins..."
@@ -79,7 +80,6 @@ if [ -z "$1" ] || [ "$1" = "i3wm" ]; then
   ln_i $base/i3wm/* ~/.config/i3
   # install i3ipc
   if [ ! -e ~/.config/i3/i3ipc/i3ipc.py ]; then
-    gh=https://raw.githubusercontent.com
     curl -fLo ~/.config/i3/i3ipc/i3ipc.py \
       $gh/acrisci/i3ipc-python/master/i3ipc/i3ipc.py
     curl -fLo ~/.config/i3/i3ipc/__init__.py \
@@ -98,7 +98,6 @@ if [ -z "$1" ] || [ "$1" = "ranger" ]; then
   ln_i $base/ranger/* ~/.config/ranger
   # install devicon plugin
   if [ ! -e ~/.config/ranger/devicons.py ]; then
-    gh=https://raw.githubusercontent.com
     curl -fLo ~/.config/ranger/devicons.py \
       $gh/alexanderjeurissen/ranger_devicons/master/devicons.py
     curl -fLo ~/.config/ranger/plugins/devicons_linemode.py \
@@ -111,7 +110,6 @@ if [ -z "$1" ] || [ "$1" = "urxvt" ]; then
   ln_i $base/urxvt/Xresources ~/.Xresources
   # install font-size extention
   if [ ! -e ~/.urxvt/ext/font-size ]; then
-    gh=https://raw.githubusercontent.com
     curl -fLo ~/.urxvt/ext/font-size \
       $gh/majutsushi/urxvt-font-size/master/font-size
   fi
@@ -125,7 +123,6 @@ if [ -z "$1" ] || [ "$1" = "mpv" ]; then
   ln_i $base/mpv/osc.conf ~/.config/mpv/lua-settings
   # install autoload script
   if [ ! -e ~/.config/mpv/scripts/autoload.lua ]; then
-    gh=https://raw.githubusercontent.com
     curl -fLo ~/.config/mpv/scripts/autoload.lua \
       $gh/mpv-player/mpv/master/TOOLS/lua/autoload.lua
   fi
