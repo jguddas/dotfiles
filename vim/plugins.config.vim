@@ -69,11 +69,13 @@ if has('nvim')
   let g:deoplete#sources#ternjs#filetypes = [ 'javascript', 'lightscript' ]
   let g:deoplete#sources#ternjs#include_keywords = 1
   let g:deoplete#sources#ternjs#case_insensitive = 1
-  " deoplete latex
+  " deoplete omni
   call deoplete#custom#var('omni', 'input_patterns', {
-        \ 'tex': g:vimtex#re#deoplete,
-        \ 'javascript': '\w*',
-        \})
+      \ 'tex': g:vimtex#re#deoplete,
+    \})
+  call deoplete#custom#option('omni_patterns', {
+      \ 'jsx': ['<', '</', '<[^>]*\s[[:alnum:]-]*']
+    \})
 endif
 
 " neosnippet
