@@ -125,4 +125,4 @@ bar {
 }
 
 exec_always feh --bg-tile ~/.config/i3/bg.jpg
-exec ~/.config/i3/helper.py
+exec_always ~/.config/i3/helper.py
