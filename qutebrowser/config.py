@@ -5,7 +5,7 @@ c.url.start_pages = ['https://duckduckgo.com/']
 c.hints.chars = 'uiaeo'
 c.hints.auto_follow = 'full-match'
 c.spellcheck.languages = ['en-US']
-c.completion.delay = 500
+c.completion.delay = 50
 
 c.fonts.completion.entry = '8pt monospace'
 c.fonts.debug_console = '8pt monospace'
