@@ -15,6 +15,7 @@ set history=1000
 set hlsearch
 set incsearch
 set laststatus=2
+set linebreak
 set list
 set listchars=trail:·
 set mouse=a
