@@ -9,6 +9,9 @@ fi
 # Zim
 source $HOME/.zim/init.zsh
 
+# Autopairs
+source $HOME/scripts/autopair.zsh
+
 # Zsh options
 compinit
 set -o vi

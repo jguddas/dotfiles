@@ -71,6 +71,7 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
   ln_i $base/zsh/zshrc ~/.zshrc
   ln_i $base/zsh/zprofile ~/.zprofile
   ln_i $base/zsh/prompt.zsh ~/scripts
+  dl_e $gh/hlissner/zsh-autopair/master/autopair.zsh ~/scripts
   # install zim
   if [ ! -d "$HOME/.zim" ]; then
     git clone --recursive https://github.com/zimfw/zimfw.git ~/.zim
