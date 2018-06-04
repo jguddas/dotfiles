@@ -73,6 +73,10 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
   ln_i $base/zsh/zprofile ~/.zsh/.zprofile
   ln_i $base/zsh/prompt.zsh ~/.zsh
   dl_e $gh/hlissner/zsh-autopair/master/autopair.zsh ~/.zsh
+  # move zhistory to new zsh dotdir
+  if [ -e ~/.zhistory ] && [ ! -e ~/.zsh/.zhistory ]; then
+    mv ~/.zhistory ~/.zsh
+  fi
   # install zim
   if [ ! -d "$HOME/.zsh/zim" ]; then
     git clone --recursive https://github.com/zimfw/zimfw.git ~/.zsh/.zim
