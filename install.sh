@@ -66,15 +66,16 @@ if [ -z "$1" ] || [ "$1" = "vim" ]; then
 fi
 
 if [ -z "$1" ] || [ "$1" = "zsh" ]; then
-  mkdir -p ~/scripts
-  ln_i $base/zsh/zimrc ~/.zimrc
-  ln_i $base/zsh/zshrc ~/.zshrc
-  ln_i $base/zsh/zprofile ~/.zprofile
-  ln_i $base/zsh/prompt.zsh ~/scripts
-  dl_e $gh/hlissner/zsh-autopair/master/autopair.zsh ~/scripts
+  mkdir -p ~/.zsh
+  ln_i $base/zsh/zshenv ~/.zshenv
+  ln_i $base/zsh/zimrc ~/.zsh/.zimrc
+  ln_i $base/zsh/zshrc ~/.zsh/.zshrc
+  ln_i $base/zsh/zprofile ~/.zsh/.zprofile
+  ln_i $base/zsh/prompt.zsh ~/.zsh
+  dl_e $gh/hlissner/zsh-autopair/master/autopair.zsh ~/.zsh
   # install zim
-  if [ ! -d "$HOME/.zim" ]; then
-    git clone --recursive https://github.com/zimfw/zimfw.git ~/.zim
+  if [ ! -d "$HOME/.zsh/zim" ]; then
+    git clone --recursive https://github.com/zimfw/zimfw.git ~/.zsh/.zim
   fi
   # make zsh the default shell
   [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh

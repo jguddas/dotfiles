@@ -7,10 +7,10 @@ elif command -v vim > /dev/null; then
 fi
 
 # Zim
-source $HOME/.zim/init.zsh
+source $HOME/.zsh/.zim/init.zsh
 
 # Autopairs
-source $HOME/scripts/autopair.zsh
+source $HOME/.zsh/autopair.zsh
 
 # Zsh options
 compinit
@@ -19,7 +19,7 @@ export KEYTIMEOUT=1
 setopt CORRECT
 
 # Prompt
-source $HOME/scripts/prompt.zsh
+source $HOME/.zsh/prompt.zsh
 
 # Title
 function __before_title { print -Pn "\e]0;$3\a" }
