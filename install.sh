@@ -78,7 +78,7 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
     mv ~/.zhistory ~/.zsh
   fi
   # install zim
-  if [ ! -d "$HOME/.zsh/zim" ]; then
+  if [ ! -d "$HOME/.zsh/.zim" ]; then
     git clone --recursive https://github.com/zimfw/zimfw.git ~/.zsh/.zim
   fi
   # make zsh the default shell
