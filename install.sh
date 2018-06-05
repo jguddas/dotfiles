@@ -71,7 +71,7 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
   ln_i $base/zsh/zimrc ~/.zsh/.zimrc
   ln_i $base/zsh/zshrc ~/.zsh/.zshrc
   ln_i $base/zsh/zprofile ~/.zsh/.zprofile
-  ln_i $base/zsh/prompt.zsh ~/.zsh
+  ln_i $base/zsh/{prompt,aliases}.zsh ~/.zsh
   dl_e $gh/hlissner/zsh-autopair/master/autopair.zsh ~/.zsh
   # move zhistory to new zsh dotdir
   if [ -e ~/.zhistory ] && [ ! -e ~/.zsh/.zhistory ]; then
