@@ -133,7 +133,7 @@ nnoremap ..ö :call system('urxvtc -cd '.expand('%:p:h').' -e zsh')<CR>
 " plugins {{{
 
 " ale
-nnoremap ..a :ALEToggle<CR>
+nnoremap <expr>..a ":let g:ale_sign_column_always=".(g:ale_enabled?0:1)."<Bar>ALEToggle<CR>"
 
 " splitjoin
 nnoremap .j :SplitjoinJoin<CR>
