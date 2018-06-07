@@ -30,6 +30,9 @@ autocmd FileType lightscript
   \ 'sj#js#JoinObjectLiteral',
   \ ]
 
+" operator sandwitch
+highlight link OperatorSandwichChange IncSearch
+
 " switch
 let s:apostrophe = "'"
 let g:switch_custom_definitions = [{
