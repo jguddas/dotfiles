@@ -90,6 +90,11 @@ if has('nvim')
   \ 'lightscript': 'javascript,lightscript,lightscript.array,lightscript.react'
   \ }
 endif
+function! ArrayHelper(method)
+  let match=matchstr(getline('.')[0:col('.')-1], '\w\+\zes\.'.a:method.'$')
+  echo match
+  return match == '' ? 'val' : match
+endfunction
 
 " delimitmate
 let delimitMate_expand_space = 1
