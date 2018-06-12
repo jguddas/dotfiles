@@ -153,6 +153,9 @@ let g:lightline#bufferline#unnamed = '[No Name]'
 let g:lightline#bufferline#read_only = ''
 let g:lightline#bufferline#more_buffers = '…'
 
+let g:lightline#ale#indicator_warnings = 'W:'
+let g:lightline#ale#indicator_errors = 'E:'
+
 let g:lightline = {
   \'colorscheme': 'onecustom',
   \'component_function': {
