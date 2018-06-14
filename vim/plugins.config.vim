@@ -151,6 +151,7 @@ endfunction
 
 let g:lightline#bufferline#unnamed = '[No Name]'
 let g:lightline#bufferline#read_only = ''
+let g:lightline#bufferline#modified = '+'
 let g:lightline#bufferline#more_buffers = '…'
 let g:lightline#bufferline#filename_modifier = ':t'
 
