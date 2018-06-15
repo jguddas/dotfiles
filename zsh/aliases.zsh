@@ -39,7 +39,7 @@ publish() {
     ignored=$(git ls-files --ignored --exclude-from=.npmignore)
     files=($(comm --nocheck-order -3 <(echo "$ignored") <(echo "$files")))
   fi
-  jq ".files=[${$(printf '"%s",' $files): :(-1)}]" package.json | sponge package.json
+  jq ".files=[${$(printf '"%s",' ${(f)files}): :(-1)}]" package.json | sponge package.json
   git diff
   yarn publish
 }
