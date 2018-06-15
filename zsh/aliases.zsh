@@ -13,7 +13,7 @@ alias add="touch"
 alias rmf="rm -rf"
 alias rmr="rm -r"
 alias cpr="cp -r"
-alias his='cat ~/.zhistory | sed "s/[^;]\+;//" | awk'
+alias his='cat ~/.zsh/.zhistory | sed "s/[^;]\+;//" | awk'
 al() { alias | awk "/$@/" }
 
 # yarn
