@@ -87,7 +87,7 @@ if has('nvim')
   let g:neosnippet#disable_runtime_snippets = { '_' : 1 }
   let g:neosnippet#scope_aliases = {
   \ 'javascript': 'javascript,javascript.array,javascript.react',
-  \ 'lightscript': 'javascript,lightscript,lightscript.array,lightscript.react'
+  \ 'lightscript': 'javascript,lightscript,lightscript.array,lightscript.lodash,lightscript.react'
   \ }
 endif
 function! ArrayHelper(method)
