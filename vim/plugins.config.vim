@@ -91,9 +91,13 @@ if has('nvim')
   \ }
 endif
 function! ArrayHelper(method)
-  let match=matchstr(getline('.')[0:col('.')-1], '\w\+\zes\.'.a:method.'$')
-  echo match
-  return match == '' ? 'val' : match
+  let line=getline('.')[0:col('.')-1]
+  let match1=matchstr(line, '\w\+\zes'.a:method.'$')
+  if match1 != ''
+    return match1
+  endif
+  let match2=match(line, 'keys(\w*)'.a:method.'$')
+  return match2 > -1 ? 'key' : 'val'
 endfunction
 
 " delimitmate
