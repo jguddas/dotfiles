@@ -1,5 +1,6 @@
 zmodules=(directory environment history input utility archive custom \
-          syntax-highlighting history-substring-search pacman completion)
+          syntax-highlighting history-substring-search pacman completion \
+          hlissner/zsh-autopair)
 
 zdouble_dot_expand='true'
 zhighlighters=(main brackets)

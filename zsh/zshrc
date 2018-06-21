@@ -8,9 +8,6 @@ setopt CORRECT
 # Zim
 source $HOME/.zsh/.zim/init.zsh
 
-# Autopairs
-source $HOME/.zsh/autopair.zsh
-
 # Prompt
 source $HOME/.zsh/prompt.zsh
 
