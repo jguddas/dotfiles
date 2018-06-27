@@ -9,6 +9,7 @@ Plug 'maximbaz/lightline-ale'        " lightline ale integration
 Plug 'mgee/lightline-bufferline'     " lightline bufferline
 Plug 'mhinz/vim-sayonara'            " better buffer closing
 Plug 'nelstrom/vim-markdown-folding' " better markdown folding
+Plug 'mbbill/undotree', { 'on': 'UndotreeShow' }
 
 " syntax
 Plug 'cakebaker/scss-syntax.vim'     " sass
