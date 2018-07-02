@@ -36,10 +36,10 @@ alias yy="yarn run"
 publish() {
   files=$(git ls-files)
   if [ -e .npmignore ]; then
-    ignored=$(git ls-files --ignored --exclude-from=.npmignore)
-    files=($(comm --nocheck-order -3 <(echo "$ignored") <(echo "$files")))
+    ignored="$(git ls-files --ignored --exclude-from=.npmignore)\n.npmignore"
+    files=($(comm -3 <(echo "$ignored" | sort) <(echo "$files" | sort)))
   fi
-  jq ".files=[${$(printf '"%s",' ${(f)files}): :(-1)}]" package.json | sponge package.json
+  jq ".files=[${$(printf '"%s",' $files): :(-1)}]" package.json | sponge package.json
   git diff
   yarn publish
 }
