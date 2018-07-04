@@ -359,32 +359,32 @@ abbr ~takeWhile array
 options word
   ~takeWhile((`ArrayHelper('\~takeWhilea')`, idx, arr) -> ${0})
 
-snippet .reduce
-abbr .reduce
+snippet ~reduce
+abbr ~reduce
 options word
-  .reduce((acc, `ArrayHelper('\~reduce')`) -> ${0})
+  ~reduce((acc, `ArrayHelper('\~reduce')`) -> ${0})
 
-snippet .reducei
-abbr .reduce index
+snippet ~reducei
+abbr ~reduce index
 options word
-  .reduce((acc, `ArrayHelper('\~reducei')`, idx) -> ${0})
+  ~reduce((acc, `ArrayHelper('\~reducei')`, idx) -> ${0})
 
-snippet .reducea
-abbr .reduce array
+snippet ~reducea
+abbr ~reduce array
 options word
-  .reduce((acc, `ArrayHelper('\~reducea')`, idx, arr) -> ${0})
+  ~reduce((acc, `ArrayHelper('\~reducea')`, idx, arr) -> ${0})
 
-snippet .reduceRight
-abbr .reduceRight 
+snippet ~reduceRight
+abbr ~reduceRight
 options word
-  .reduceRight((acc, `ArrayHelper('\~reduceRight')`) -> ${0})
+  ~reduceRight((acc, `ArrayHelper('\~reduceRight')`) -> ${0})
 
-snippet .reduceRighti
-abbr .reduceRight index
+snippet ~reduceRighti
+abbr ~reduceRight index
 options word
-  .reduceRight((acc, `ArrayHelper('\~reduceRighti')`, idx) -> ${0})
+  ~reduceRight((acc, `ArrayHelper('\~reduceRighti')`, idx) -> ${0})
 
-snippet .reduceRighta
-abbr .reduceRight array
+snippet ~reduceRighta
+abbr ~reduceRight array
 options word
-  .reduceRight((acc, `ArrayHelper('\~reduceRighta')`, idx, arr) -> ${0})
+  ~reduceRight((acc, `ArrayHelper('\~reduceRighta')`, idx, arr) -> ${0})
