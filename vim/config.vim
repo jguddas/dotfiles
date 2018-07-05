@@ -52,9 +52,9 @@ let g:markdown_fenced_languages = [
 
 augroup interface
   autocmd!
-  autocmd BufEnter * call clearmatches()
+  autocmd BufEnter,FileType * call clearmatches()
     \| if &ft == 'markdown' | call matchadd('markdownRule', '\s\+$') | endif
-    \| call matchadd('ErrorMsg', &ft == 'markdown' ? '\s\s\zs\s\+$' : '\s\+$')
+    \| call matchadd('ErrorMsg', &ft == 'markdown' ? '\(\S\s\s\)\?\zs\s*$' : '\s\+$')
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
   autocmd VimResized,WinNew * wincmd =
   autocmd WinEnter * setlocal winwidth=80 | wincmd =
