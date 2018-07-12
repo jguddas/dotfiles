@@ -13,5 +13,5 @@ fi
 
 redshift -l 52.373920:9.735603 -b 1:.48 -t 6500:3000 &
 urxvtd -q -o -f &
-unclutter &
+unclutter -grab &
 exec i3
