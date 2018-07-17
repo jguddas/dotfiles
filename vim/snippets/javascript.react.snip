@@ -1,3 +1,49 @@
+snippet imph
+abbr import preact
+options head
+  import { h${0} } from 'preact'
+
+snippet imphr
+abbr import preact render
+options head
+  import { h, render${0} } from 'preact'
+
+snippet imphc
+abbr import preact component class
+options head
+  import { h, Component${0} } from 'preact'
+
+snippet imphrc
+abbr import preact component class and render
+alias imphcr
+options head
+  import { h, render, Component${0} } from 'preact'
+
+
+snippet impr
+abbr import react
+options head
+  import React${0} from 'react'
+
+snippet imprr
+abbr import react and react-dom render
+options head
+  import React${0} from 'react'
+  import { render } from 'react-dom'
+
+snippet imprc
+abbr import react and react componet class
+options head
+  import React, { Component${0} } from 'react'
+
+snippet imprrc
+alias imprcr
+abbr import react, react componet class and react-dom render
+options head
+  import React, { Component${0} } from 'react'
+  import { render } from 'react-dom'
+
+
 snippet component
 options word
   class ${1} extends Component {
