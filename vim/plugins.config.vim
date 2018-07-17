@@ -82,7 +82,7 @@ if has('nvim')
       \ 'sass': ['\w{2}', '\w+[):;]?\s*\w*', '[@!]'],
     \})
   call deoplete#custom#option('omni_patterns', {
-      \ 'jsx': ['<', '</', '<[^>]*\s[[:alnum:]-]*']
+      \ 'jsx': ['<', '</', '<[^>]*\s[[:alnum:]-]*', 'style="']
     \})
 endif
 
