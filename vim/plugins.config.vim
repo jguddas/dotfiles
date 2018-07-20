@@ -8,6 +8,12 @@ let g:markdown_fold_override_foldtext = 0
 let g:jst_default_subtype = "javascript"
 let g:jsx_ext_required = 0
 
+" emmet
+let g:user_emmet_settings = {
+\  'javascript.jsx' : { 'extends' : 'jsx' },
+\  'lightscript.jsx' : { 'extends' : 'jsx' },
+\}
+
 " tcomment
 let g:tcomment_mapleader_comment_anyway = "\<Nop>"
 let g:tcomment_mapleader_uncomment_anyway = "\<Nop>"
