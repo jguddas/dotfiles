@@ -6,11 +6,11 @@ zmodules=( \
   utility \
   archive \
   custom \
-  syntax-highlighting \
   history-substring-search \
   pacman \
   completion \
   hlissner/zsh-autopair \
+  zdharma/fast-syntax-highlighting \
 )
 
 zdouble_dot_expand='true'
