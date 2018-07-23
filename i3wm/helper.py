@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 import i3ipc
 
 def getCommand(window, command, direction):
