@@ -4,6 +4,7 @@ compinit
 set -o vi
 export KEYTIMEOUT=1
 setopt CORRECT
+fpath=($ZDOTDIR/functions $fpath)
 
 # Zim
 source $HOME/.zsh/.zim/init.zsh

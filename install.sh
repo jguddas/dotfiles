@@ -67,12 +67,13 @@ if [ -z "$1" ] || [ "$1" = "vim" ]; then
 fi
 
 if [ -z "$1" ] || [ "$1" = "zsh" ]; then
-  mkdir -p ~/.zsh
+  mkdir -p ~/.zsh/functions
   ln_i $base/zsh/zshenv ~/.zshenv
   ln_i $base/zsh/zimrc ~/.zsh/.zimrc
   ln_i $base/zsh/zshrc ~/.zsh/.zshrc
   ln_i $base/zsh/zprofile ~/.zsh/.zprofile
   ln_i $base/zsh/{prompt,aliases}.zsh ~/.zsh
+  ln_i $base/zsh/functions/* ~/.zsh/functions
   ln_i $base/zsh/theme.ini \
     ~/.zsh/.zim/modules/fast-syntax-highlighting/themes/custom.ini
   # move zhistory to new zsh dotdir
