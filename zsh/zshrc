@@ -15,6 +15,10 @@ source $HOME/.zsh/prompt.zsh
 # Aliases
 source $HOME/.zsh/aliases.zsh
 
+
+# Autopairs
+AUTOPAIR_PAIRS=('`' '`' "'" "'" '"' '"' '{' '}' '[' ']' '(' ')')
+
 # Highlighting
 autoload -Uz spell.ch
 FAST_HIGHLIGHT+=(chroma-git spell.ch)
