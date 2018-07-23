@@ -33,8 +33,8 @@ Plug 'mattn/emmet-vim'               " expand css like abbreviations to html
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
   Plug 'Shougo/neosnippet'           " snippets
+  Plug 'Shougo/deoplete-zsh'          " autocomplete zsh
   Plug 'carlitux/deoplete-ternjs'    " autocomplete javascript with ternjs
-  Plug 'zchee/deoplete-zsh'          " autocomplete zsh
 endif
 
 " actions
