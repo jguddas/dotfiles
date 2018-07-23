@@ -28,10 +28,4 @@ if [[ "$2" = \"* || "$2" = \'* ]]; then
     _start_pos=$4
     return 0
 fi
-if [[ $3 < 0 ]]; then
-    (( this_word = next_word ))
-    _start_pos=$4
-    return 0
-else
-    return 1
-fi
+return 1
