@@ -135,6 +135,10 @@ nnoremap ..ö :call system('urxvtc -cd '.expand('%:p:h').' -e zsh')<CR>
 " ale
 nnoremap <expr>..a ":let g:ale_sign_column_always=".(g:ale_enabled?0:1)."<Bar>ALEToggle<CR>"
 
+" deoplte
+nnoremap <expr>..e deoplete#init#_is_handler_enabled() ?
+      \ ":call deoplete#disable()<cr>" : ":call deoplete#enable()<cr>"
+
 " splitjoin
 nnoremap .j :SplitjoinJoin<CR>
 nnoremap .k :SplitjoinSplit<CR>
