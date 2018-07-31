@@ -71,7 +71,6 @@ autocmd FileType GV setlocal listchars=trail:\
 
 " deoplete
 if has('nvim')
-  let g:deoplete#enable_at_startup = 1
   let g:deoplete#auto_complete_start_length = 1
   call deoplete#custom#source('_', 'sorters', ['sorter_word'])
   " deoplete tern
