@@ -72,6 +72,7 @@ autocmd FileType GV setlocal listchars=trail:\
 " deoplete
 if has('nvim')
   let g:deoplete#auto_complete_start_length = 1
+  let g:deoplete#file#enable_buffer_path = 1
   call deoplete#custom#source('_', 'sorters', ['sorter_word'])
   " deoplete tern
   let g:deoplete#sources#ternjs#filetypes = [ 'javascript', 'lightscript' ]
