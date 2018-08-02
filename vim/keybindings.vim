@@ -19,7 +19,7 @@ nnoremap U      <C-r>
 nnoremap Y      y$
 xnoremap Y      y$
 nnoremap k      Do<esc>p>>k$
-nnoremap j      Jx
+nnoremap j      gJ
 nnoremap <down> gj
 nnoremap <up>   gk
 
