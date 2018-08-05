@@ -6,6 +6,8 @@ settings:
   bindings.commands:
     global:
       normal:
+        <Ctrl+Shift+n>: :tab-move +
+        <Ctrl+Shift+p>: :tab-move -
         <Ctrl+n>: tab-next
         <Ctrl+p>: tab-prev
         <Down>: scroll down
