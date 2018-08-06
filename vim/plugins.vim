@@ -53,6 +53,7 @@ Plug 'editorconfig/editorconfig-vim' " load .editorconfig
 Plug 'junegunn/gv.vim', { 'on': 'GV' } " git repo viwer
 Plug 'justinmk/vim-dirvish'          " filebrowser
 Plug 'mileszs/ack.vim'               " ack wrapper
+Plug 'tpope/vim-rhubarb'             " github fugitive extantion
 Plug 'tpope/vim-eunuch'              " UNIX shell commands
 Plug 'tpope/vim-fugitive'            " git wrapper
 Plug 'w0rp/ale', { 'on': ['ALEEnable', 'ALEToggle'] } " linting engine
