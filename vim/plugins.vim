@@ -20,6 +20,7 @@ Plug 'pangloss/vim-javascript'       " javascript
 Plug 'lervag/vimtex'                 " latex
 Plug 'mxw/vim-jsx'                   " jsx
 Plug 'wavded/vim-stylus'             " stylus
+Plug 'HerringtonDarkholme/yats.vim'  " typescript
 
 " completion
 Plug 'Raimondi/delimitMate'          " auto-completion for quotes, parens, etc.
