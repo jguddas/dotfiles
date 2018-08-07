@@ -72,6 +72,9 @@ nnoremap .ss :setlocal spell!<CR>
 
 " interface {{{
 
+" jumplist
+nnoremap <S-Tab> <C-o>
+
 " buffers
 nnoremap ..d :Sayonara!<CR><C-w>c
 nnoremap .d  :Sayonara!<CR>
