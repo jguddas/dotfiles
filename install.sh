@@ -119,10 +119,22 @@ if [ -z "$1" ] || [ "$1" = "ranger" ]; then
 fi
 
 if [ -z "$1" ] || [ "$1" = "urxvt" ]; then
-  mkdir -p ~/.urxvt/ext
+  mkdir -p ~/.urxvt/ext ~/.local/share/fonts
   ln_i $base/urxvt/Xresources ~/.Xresources
   # install font-size extention
   dl_e $gh/majutsushi/urxvt-font-size/master/font-size ~/.urxvt/ext
+  repo="$gh/ryanoasis/nerd-fonts/master/patched-fonts/Hack"
+  # install fonts
+  dl_e $repo/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf \
+    ~/.local/share/fonts
+  dl_e $repo/Italic/complete/Hack%20Italic%20Nerd%20Font%20Complete%20Mono.ttf \
+    ~/.local/share/fonts
+  dl_e $repo/Bold/complete/Hack%20Bold%20Nerd%20Font%20Complete%20Mono.ttf \
+    ~/.local/share/fonts
+  dl_e $repo/BoldItalic/complete/Hack%20Bold%20Italic%20Nerd%20Font%20Complete%20Mono.ttf \
+    ~/.local/share/fonts
+  # update font cache
+  fc-cache
   # load xresources
   xrdb ~/.Xresources
 fi
