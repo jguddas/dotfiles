@@ -49,12 +49,13 @@ nnoremap <expr>.ä ":edit ".expand('%:h')."/"
 " }}}
 
 " search {{{
-nnoremap ./ /\v\c
-nnoremap .? ?\v\c
-nnoremap .m :s///g<Left><Left>
-nnoremap .l :nohlsearch<CR>
-nnoremap \  :Ack ""<Left>
-xnoremap .m :s///g<Left><Left>
+nnoremap ./  /\v\c
+nnoremap .?  ?\v\c
+nnoremap .m  :s///g<Left><Left>
+nnoremap ..m :%s///g<Left><Left>
+nnoremap .l  :nohlsearch<CR>
+nnoremap \   :Ack ""<Left>
+xnoremap .m  :s///g<Left><Left>
 " }}}
 
 " paste {{{
