@@ -1,0 +1,22 @@
+[global]
+    frame_color = "#98c379"
+    frame_width = 2
+    padding = 2
+    horizontal_padding = 5
+    separator_height = 0
+    geometry = "0x0+5+5"
+    font = Monospace 10
+    browser = /usr/bin/xdg-open
+    format = "<b>%s</b>\n%b"
+
+[urgency_low]
+    background = "#222222"
+    foreground = "#abb2bf"
+
+[urgency_normal]
+    background = "#222222"
+    foreground = "#98c379"
+
+[urgency_critical]
+    background = "#222222"
+    foreground = "#c73c3c"

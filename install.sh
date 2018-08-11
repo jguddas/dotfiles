@@ -146,3 +146,8 @@ if [ -z "$1" ] || [ "$1" = "mpv" ]; then
   # install autoload script
   dl_e $gh/mpv-player/mpv/master/TOOLS/lua/autoload.lua ~/.config/mpv/scripts
 fi
+
+if [ -z "$1" ] || [ "$1" = "dunst" ]; then
+  mkdir -p ~/.config/dunst
+  ln_i dunst/* ~/.config/dunst
+fi
