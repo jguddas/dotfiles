@@ -117,9 +117,9 @@ function zle-line-finish {
   local finish=true
   __promptline
   zle reset-prompt
-  printf "\033[6 q"
 }
 function zle-line-init {
+  printf "\033[6 q"
   TRAPWINCH () {
     __promptline
     zle reset-prompt
