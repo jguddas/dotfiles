@@ -81,10 +81,10 @@ if has('nvim')
   call deoplete#custom#var('omni', 'input_patterns', {
       \ 'tex': g:vimtex#re#deoplete,
       \ 'lua': ['\w+[.:]\w*', 'require\s*\(?["'']\w*'],
-      \ 'css': ['\w{2}', '\w+[):;]?\s*\w*', '[@!]'],
-      \ 'less': ['\w{2}', '\w+[):;]?\s*\w*', '[@!]'],
-      \ 'scss': ['\w{2}', '\w+[):;]?\s*\w*', '[@!]'],
-      \ 'sass': ['\w{2}', '\w+[):;]?\s*\w*', '[@!]'],
+      \ 'css': ['\w{2}', '\w+[):;-]?\s*\w*', '[@!]'],
+      \ 'less': ['\w{2}', '\w+[):;-]?\s*\w*', '[@!]'],
+      \ 'scss': ['\w{2}', '\w+[):;-]?\s*\w*', '[@!]'],
+      \ 'sass': ['\w{2}', '\w+[):;-]?\s*\w*', '[@!]'],
     \})
   call deoplete#custom#option('omni_patterns', {
       \ 'jsx': ['<', '</', '<[^>]*\s[[:alnum:]-]*', 'style="']
