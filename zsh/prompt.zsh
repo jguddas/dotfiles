@@ -80,6 +80,7 @@ function __promptline_prompt {
     __promptline_wrapper "$name" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
     __promptline_wrapper "$(__promptline_vcs_branch)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
   fi
+  __promptline_wrapper "$(__promptline_jobs)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
   slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
@@ -103,6 +104,12 @@ function __promptline_vcs_branch {
     fi
   fi
   return 1
+}
+function __promptline_jobs() {
+  local job_count=$( jobs -d | awk '!/pwd/' | wc -l | tr -d " ")
+  [[ $job_count -gt 0 ]] || return 1
+  printf "%s" "${job_count}"
+  return
 }
 function zle-keymap-select {
   __promptline
