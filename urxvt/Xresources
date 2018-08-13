@@ -39,6 +39,7 @@ URxvt.scrollBar: false
 
 ! font
 URxvt.font: xft:Hack Nerd Font Mono:pixelsize=12
+URxvt.italicFont: xft:Fira Code iScript:Italic
 URxvt.letterSpace: -1
 
 ! extentions
