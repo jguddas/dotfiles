@@ -4,4 +4,3 @@ source ~/.vim/keybindings.vim
 source ~/.vim/plugins.vim
 source ~/.vim/plugins.config.vim
 autocmd VimEnter * source ~/.vim/keybindings.vim
-autocmd VimEnter * source ~/.vim/abbrev.vim

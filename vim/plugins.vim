@@ -26,7 +26,6 @@ Plug 'HerringtonDarkholme/yats.vim'  " typescript
 Plug 'Raimondi/delimitMate'          " auto-completion for quotes, parens, etc.
 Plug 'sedm0784/vim-you-autocorrect', { 'do': ':EnableAutocorrect' }
 Plug 'sickill/vim-pasta'             " pasting with indentation
-Plug 'tpope/vim-abolish'             " better abbreviations
 Plug 'tpope/vim-endwise'             " wisely add end
 Plug 'tpope/vim-sleuth'              " adjusts shiftwidth and expandtab
 Plug 'vim-scripts/closetag.vim'      " close xml tags
