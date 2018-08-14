@@ -123,8 +123,10 @@ xnoremap l <C-]>
 "}}}
 
 " terminal {{{
-nnoremap .ö  :call system('urxvtc')<CR>
-nnoremap ..ö :call system('urxvtc -cd '.expand('%:p:h').' -e zsh')<CR>
+if executable('urxvtc')
+  nnoremap .ö  :call system('urxvtc')<CR>
+  nnoremap ..ö :call system('urxvtc -cd '.expand('%:p:h').' -e zsh')<CR>
+endif
 " }}}
 
 " plugins {{{
