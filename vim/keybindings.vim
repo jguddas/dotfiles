@@ -30,13 +30,6 @@ xnoremap a% GoggV
 onoremap a% :<C-u>normal va%<CR>
 " }}}
 
-" move lines {{{
-nnoremap <C-h> dd<Up>P
-nnoremap <C-l> ddp
-xnoremap <C-h> d<Up>PV`[`]
-xnoremap <C-l> dpV`[`]
-" }}}
-
 " write/edit/quit/read {{{
 nnoremap ..q   :qa!<CR>
 nnoremap ..x   :wqa!<CR>
