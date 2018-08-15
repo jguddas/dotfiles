@@ -135,6 +135,10 @@ function zle-line-init {
 
 if [[ ! ${precmd_functions[(r)__promptline]} == __promptline ]]; then
   precmd_functions+=(__promptline)
+  TRAPCHLD () {
+    __promptline
+    zle reset-prompt
+  }
 fi
 printf "\033[6 q"
 zle -N zle-keymap-select
