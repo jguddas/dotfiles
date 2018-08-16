@@ -76,10 +76,7 @@ function __promptline_prompt {
   slice_prefix="${bold}${a_bg}${sep}${a_fg}${a_bg}${space}" slice_suffix="$space${reset_bold}${a_sep_fg}" slice_joiner="${a_fg}${a_bg}${bold}${alt_sep}${space}" slice_empty_prefix="${bold}${a_fg}${a_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "a" slices
-  if [[ $COLUMNS -gt 100 ]]; then
-    __promptline_wrapper "$name" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
-    __promptline_wrapper "$(__promptline_vcs_branch)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
-  fi
+  __promptline_wrapper "$(__promptline_vcs_branch)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
   __promptline_wrapper "$(__promptline_jobs)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
