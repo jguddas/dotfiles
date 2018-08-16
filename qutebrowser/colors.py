@@ -1,32 +1,19 @@
-import subprocess
-
-def read_xresources(prefix):
-    props = {}
-    x = subprocess.run(['xrdb', '-query'], stdout=subprocess.PIPE)
-    lines = x.stdout.decode().split('\n')
-    for line in filter(lambda l : l.startswith(prefix), lines):
-        prop, _, value = line.partition(':\t')
-        props[prop] = value
-    return props
-
-xresources = read_xresources('*')
-
-black       = xresources.get('*.color0', 'black')
-darkred     = xresources.get('*.color1', 'darkred')
-darkgreen   = xresources.get('*.color2', 'darkgreen')
-darkorange  = xresources.get('*.color3', 'darkorange')
-darkblue    = xresources.get('*.color4', 'darkblue')
-darkmagenta = xresources.get('*.color5', 'darkmagenta')
-darkcyan    = xresources.get('*.color6', 'darkcyan')
-grey        = xresources.get('*.color7', 'grey')
-darkgrey    = xresources.get('*.color8', 'darkgrey')
-red         = xresources.get('*.color9', 'red')
-green       = xresources.get('*.color10', 'green')
-orange      = xresources.get('*.color11', 'orange')
-blue        = xresources.get('*.color12', 'blue')
-magenta     = xresources.get('*.color13', 'magenta')
-cyan        = xresources.get('*.color14', 'cyan')
-white       = xresources.get('*.color15', 'white')
+black       = '#17181a'
+darkgrey    = '#222222'
+darkred     = '#c73c3c'
+red         = '#e06c75'
+darkgreen   = '#6fa847'
+green       = '#98c379'
+darkorange  = '#d19a66'
+orange      = '#e5c07b'
+darkblue    = '#4090d6'
+blue        = '#61afef'
+darkmagenta = '#ad58c4'
+magenta     = '#c678dd'
+darkcyan    = '#48adc2'
+cyan        = '#66c2cc'
+grey        = '#abb2bf'
+white       = '#ffffff'
 
 ## Background color of the completion widget category headers.
 ## Type: QssColor
