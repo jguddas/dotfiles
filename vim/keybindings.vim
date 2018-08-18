@@ -135,7 +135,7 @@ endif
 nnoremap <expr>..a ":let g:ale_sign_column_always=".(g:ale_enabled?0:1)."<Bar>ALEToggle<CR>"
 
 " deoplte
-nnoremap <expr>..e deoplete#init#_is_handler_enabled() ?
+nnoremap <expr>..e deoplete#is_enabled() ?
       \ ":call deoplete#disable()<cr>" : ":call deoplete#enable()<cr>"
 
 " splitjoin
