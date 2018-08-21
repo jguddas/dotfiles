@@ -13,6 +13,7 @@ set foldnestmax=2
 set hidden
 set history=1000
 set hlsearch
+set ignorecase
 set incsearch
 set laststatus=2
 set linebreak
@@ -27,6 +28,7 @@ set path=.,**
 set scrolloff=5
 set shiftwidth=2
 set showtabline=2
+set smartcase
 set splitbelow
 set splitright
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,
