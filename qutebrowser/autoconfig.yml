@@ -14,8 +14,6 @@ settings:
         <Enter>: follow-selected
         <Left>: scroll left
         <Right>: scroll right
-        <Shift+Tab>: tab-prev
-        <Tab>: tab-next
         <Up>: scroll up
         X: spawn --detach mpv --force-window=immediate --ytdl-format="best[height<=720][ext=mp4]best[height<=720]worst[height>720][ext=mp4]worst[height>720]best"
           --ytdl {url}
