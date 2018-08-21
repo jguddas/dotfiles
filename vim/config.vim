@@ -61,6 +61,8 @@ augroup interface
   autocmd VimResized,WinNew * wincmd =
   autocmd WinEnter * setlocal winwidth=80 | wincmd =
   autocmd WinLeave * setlocal winwidth=20
+  autocmd CmdlineEnter / setlocal nofoldenable
+  autocmd CmdlineLeave / setlocal foldenable | normal zv
 augroup END
 
 augroup clipboard
