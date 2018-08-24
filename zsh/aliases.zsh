@@ -34,12 +34,13 @@ alias yu="yarn upgrade"
 alias yui="yarn upgrade-interactive"
 alias yy="yarn run"
 publish() {
-  files=$(git ls-files)
   if [ -e .npmignore ]; then
-    ignored="$(git ls-files --ignored --exclude-from=.npmignore)\n.npmignore"
-    files=($(comm -3 <(echo "$ignored" | sort) <(echo "$files" | sort)))
+    ignored="$(git ls-files --ignored --exclude-from=.npmignore)"
+    files="$(git ls-files | grep -vFx "$ignored" | grep -vx ".npmignore")"
+  else
+    files=$(git ls-files)
   fi
-  jq ".files=[${$(printf '"%s",' $files): :(-1)}]" package.json | sponge package.json
+  jq ".files=[${$(printf '"%s",' ${(f)files}): :(-1)}]" package.json | sponge package.json
   git diff
   yarn publish
 }
