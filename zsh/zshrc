@@ -23,7 +23,10 @@ AUTOPAIR_PAIRS=('`' '`' "'" "'" '"' '"' '{' '}' '[' ']' '(' ')')
 
 # Highlighting
 autoload -Uz spell.ch
-FAST_HIGHLIGHT+=(chroma-git spell.ch)
+FAST_HIGHLIGHT+=(
+  chroma-git spell.ch
+  chroma-jumpstart chroma/-subcommand.ch
+)
 
 # Keybindings
 bindkey -M vicmd $terminfo[khome] beginning-of-line
