@@ -36,6 +36,7 @@
 
 ! urxvt
 URxvt.scrollBar: false
+URxvt.urgentOnBell: true
 
 ! font
 URxvt.font: xft:Hack Nerd Font Mono:pixelsize=12
