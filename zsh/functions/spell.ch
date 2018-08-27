@@ -28,4 +28,5 @@ if [[ "$2" = \"* || "$2" = \'* ]]; then
     _start_pos=$4
     return 0
 fi
+chroma/-git.ch $* && return 0
 return 1
