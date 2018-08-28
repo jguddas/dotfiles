@@ -100,10 +100,10 @@ font pango:Hack Nerd Font 8
 default_orientation vertical
 new_window pixel 2
 
-client.focused          #222222 #17181A #98c379 #222222 #98c379 #222222
+client.focused          #222222 #17181A #98C379 #222222 #98C379 #222222
 client.focused_inactive #222222 #17181A #EEEEEE #222222 #222222 #222222
 client.unfocused        #222222 #17181A #BBBBBB #222222 #222222 #222222
-client.urgent           #222222 #17181A #BBBBBB #222222 #b02020 #222222
+client.urgent           #222222 #17181A #BBBBBB #222222 #C73C3C #222222
 client.placeholder      #222222 #17181A #BBBBBB #222222 #222222 #222222
 client.background       #17181A
 
@@ -119,8 +119,8 @@ bar {
     active_workspace   #222222 #222222 #EEEEEE
     inactive_workspace #222222 #222222 #BBBBBB
 
-    urgent_workspace   #222222 #222222 #b02020
-    binding_mode       #222222 #222222 #b02020
+    urgent_workspace   #222222 #222222 #C73C3C
+    binding_mode       #222222 #222222 #C73C3C
   }
 }
 
