@@ -49,6 +49,8 @@ publish() {
 alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
+alias gam='git commit --amend --no-edit'
+alias gamm='git commit --amend -m'
 alias gap='git add --patch'
 alias gau='git add --update'
 alias gb='git branch'
