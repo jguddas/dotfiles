@@ -41,23 +41,23 @@ dl_e() {
     curl -fLo "$out" "$1"
   fi
 }
-base=$(dirname "$0")
-config=${XDG_CONFIG_HOME:-$HOME/.config}
-gh=https://raw.githubusercontent.com
+base="$(dirname "$0")"
+config="${XDG_CONFIG_HOME:-$HOME/.config}"
+gh="https://raw.githubusercontent.com"
 
-if [ -z "$1" ] || [ "$1" = "vim" ]; then
-  mkdir -p ~/.vim/{autoload,ftplugin,snippets} $config/nvim
-  ln_i $base/vim/*.vim ~/.vim
-  ln_i $base/vim/vimrc ~/.vim/vimrc
-  ln_i $base/vim/vimrc $config/nvim/init.vim
-  ln_i $base/vim/ftplugin/* ~/.vim/ftplugin
-  ln_i $base/vim/snippets/* ~/.vim/snippets
-  ln_i $base/vim/tern.conf ~/.tern-project
+if [ -z "$1" ] || [ "$1" = "vim"u ]; then
+  mkdir -p ~/.vim/{autoload,ftplugin,snippets} "$config"/nvim
+  ln_i "$base"/vim/*.vim ~/.vim
+  ln_i "$base"/vim/vimrc ~/.vim/vimrc
+  ln_i "$base"/vim/vimrc "$config"/nvim/init.vim
+  ln_i "$base"/vim/ftplugin/* ~/.vim/ftplugin
+  ln_i "$base"/vim/snippets/* ~/.vim/snippets
+  ln_i "$base"/vim/tern.conf ~/.tern-project
   # install vim-plug
   dl_e $gh/junegunn/vim-plug/master/plug.vim ~/.vim/autoload
   # install plugins
   if command -v nvim > /dev/null; then
-    printf "\033[sinstalling vim and neovim plugins..."
+    printf u"\033[sinstalling vim and neovim plugins..."
     nvim -u ~/.vim/plugins.vim -c PlugInstall\|qa! 1>&2> /dev/null
     printf "\033[2K\033[u"
   elif command -v vim > /dev/null; then
@@ -69,13 +69,13 @@ fi
 
 if [ -z "$1" ] || [ "$1" = "zsh" ]; then
   mkdir -p ~/.zsh/functions
-  ln_i $base/zsh/zshenv ~/.zshenv
-  ln_i $base/zsh/zimrc ~/.zsh/.zimrc
-  ln_i $base/zsh/zshrc ~/.zsh/.zshrc
-  ln_i $base/zsh/zprofile ~/.zsh/.zprofile
-  ln_i $base/zsh/{prompt,aliases}.zsh ~/.zsh
-  ln_i $base/zsh/functions/* ~/.zsh/functions
-  ln_i $base/zsh/theme.ini \
+  ln_i "$base"/zsh/zshenv ~/.zshenv
+  ln_i "$base"/zsh/zimrc ~/.zsh/.zimrc
+  ln_i "$base"/zsh/zshrc ~/.zsh/.zshrc
+  ln_i "$base"/zsh/zprofile ~/.zsh/.zprofile
+  ln_i "$base"/zsh/{prompt,aliases}.zsh ~/.zsh
+  ln_i "$base"/zsh/functions/* ~/.zsh/functions
+  ln_i "$base"/zsh/theme.ini \
     ~/.zsh/.zim/modules/fast-syntax-highlighting/themes/custom.ini
   # move zhistory to new zsh dotdir
   if [ -e ~/.zhistory ] && [ ! -e ~/.zsh/.zhistory ]; then
@@ -92,36 +92,36 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
 fi
 
 if [ -z "$1" ] || [ "$1" = "qutebrowser" ]; then
-  mkdir -p $config/qutebrowser
-  ln_i $base/qutebrowser/* $config/qutebrowser
+  mkdir -p "$config"/qutebrowser
+  ln_i "$base"/qutebrowser/* "$config"/qutebrowser
 fi
 
 if [ -z "$1" ] || [ "$1" = "i3wm" ]; then
-  mkdir -p $config/i3/i3ipc
-  ln_i $base/i3wm/* $config/i3
+  mkdir -p "$config"/i3/i3ipc
+  ln_i "$base"/i3wm/* "$config"/i3
   # install i3ipc
-  dl_e $gh/acrisci/i3ipc-python/master/i3ipc/i3ipc.py $config/i3/i3ipc
-  dl_e $gh/acrisci/i3ipc-python/master/i3ipc/__init__.py $config/i3/i3ipc
+  dl_e $gh/acrisci/i3ipc-python/master/i3ipc/i3ipc.py "$config"/i3/i3ipc
+  dl_e $gh/acrisci/i3ipc-python/master/i3ipc/__init__.py "$config"/i3/i3ipc
   # reload i3
   i3-msg reload > /dev/null
 fi
 
 if [ -z "$1" ] || [ "$1" = "x11" ]; then
-  ln_i $base/x11/xinitrc ~/.xinitrc
+  ln_i "$base"/x11/xinitrc ~/.xinitrc
 fi
 
 if [ -z "$1" ] || [ "$1" = "ranger" ]; then
-  mkdir -p $config/ranger/plugins
-  ln_i $base/ranger/* $config/ranger
+  mkdir -p "$config"/ranger/plugins
+  ln_i "$base"/ranger/* "$config"/ranger
   # install devicon plugin
   repo=$gh/alexanderjeurissen/ranger_devicons
-  dl_e $repo/master/devicons.py $config/ranger
-  dl_e $repo/master/devicons_linemode.py $config/ranger/plugins
+  dl_e $repo/master/devicons.py "$config"/ranger
+  dl_e $repo/master/devicons_linemode.py "$config"/ranger/plugins
 fi
 
 if [ -z "$1" ] || [ "$1" = "urxvt" ]; then
   mkdir -p ~/.urxvt/ext ~/.local/share/fonts
-  ln_i $base/urxvt/Xresources ~/.Xresources
+  ln_i "$base"/urxvt/Xresources ~/.Xresources
   # install font-size extention
   dl_e $gh/majutsushi/urxvt-font-size/master/font-size ~/.urxvt/ext
   repo="$gh/ryanoasis/nerd-fonts/master/patched-fonts/Hack"
@@ -143,14 +143,14 @@ if [ -z "$1" ] || [ "$1" = "urxvt" ]; then
 fi
 
 if [ -z "$1" ] || [ "$1" = "mpv" ]; then
-  mkdir -p $config/mpv/{scripts,lua-settings}
-  ln_i $base/mpv/{mpv,input}.conf $config/mpv
-  ln_i $base/mpv/osc.conf $config/mpv/lua-settings
+  mkdir -p "$config"/mpv/{scripts,lua-settings}
+  ln_i "$base"/mpv/{mpv,input}.conf "$config"/mpv
+  ln_i "$base"/mpv/osc.conf "$config"/mpv/lua-settings
   # install autoload script
-  dl_e $gh/mpv-player/mpv/master/TOOLS/lua/autoload.lua $config/mpv/scripts
+  dl_e $gh/mpv-player/mpv/master/TOOLS/lua/autoload.lua "$config"/mpv/scripts
 fi
 
 if [ -z "$1" ] || [ "$1" = "dunst" ]; then
-  mkdir -p $config/dunst
-  ln_i dunst/* $config/dunst
+  mkdir -p "$config"/dunst
+  ln_i dunst/* "$config"/dunst
 fi
