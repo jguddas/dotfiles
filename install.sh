@@ -97,7 +97,7 @@ if [ -z "$1" ] || [ "$1" = "qutebrowser" ]; then
 fi
 
 if [ -z "$1" ] || [ "$1" = "i3wm" ]; then
-  mkdir -p $config/i3/i3ipc ~/scripts
+  mkdir -p $config/i3/i3ipc
   ln_i $base/i3wm/* $config/i3
   # install i3ipc
   dl_e $gh/acrisci/i3ipc-python/master/i3ipc/i3ipc.py $config/i3/i3ipc
