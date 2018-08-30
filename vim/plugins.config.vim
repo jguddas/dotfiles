@@ -1,6 +1,14 @@
 " theme
 colorscheme onecustom
 
+" language server
+let g:LanguageClient_diagnosticsEnable = 0
+let g:LanguageClient_serverCommands = {
+  \ 'typescriptreact': ['typescript-language-server', '--stdio'],
+  \ 'typescript': ['typescript-language-server', '--stdio'],
+  \ 'ruby': ['solargraph', 'stdio']
+\ }
+
 " markdown
 let g:markdown_fold_override_foldtext = 0
 
@@ -73,6 +81,8 @@ autocmd FileType GV setlocal listchars=trail:\
 if has('nvim')
   let g:deoplete#auto_complete_start_length = 1
   let g:deoplete#file#enable_buffer_path = 1
+  call deoplete#custom#source('_', 'matchers', ['matcher_head'])
+  call deoplete#custom#source('_', 'sorters', [])
   " deoplete tern
   let g:deoplete#sources#ternjs#filetypes = [ 'javascript', 'lightscript' ]
   let g:deoplete#sources#ternjs#include_keywords = 1
@@ -85,6 +95,9 @@ if has('nvim')
       \ 'less': ['\w{2}', '\w+[):;-]?\s*\w*', '[@!]'],
       \ 'scss': ['\w{2}', '\w+[):;-]?\s*\w*', '[@!]'],
       \ 'sass': ['\w{2}', '\w+[):;-]?\s*\w*', '[@!]'],
+      \ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],
+      \ 'typescript': ['[^. *\t]\.\w*'],
+      \ 'typescriptreact': ['[^. *\t]\.\w*'],
     \})
   call deoplete#custom#option('omni_patterns', {
       \ 'jsx': ['<', '</', '<[^>]*\s[[:alnum:]-]*', 'style="']

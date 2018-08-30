@@ -137,7 +137,8 @@ nnoremap <expr>..a ":let g:ale_sign_column_always=".(g:ale_enabled?0:1)
 
 " deoplte
 nnoremap <expr>..e deoplete#is_enabled() ?
-      \ ":call deoplete#disable()<cr>" : ":call deoplete#enable()<cr>"
+      \ ":LanguageClientStop<cr>:call deoplete#disable()<cr>" :
+      \ ":LanguageClientStart<cr>:call deoplete#enable()<cr>"
 
 " splitjoin
 nnoremap .j :SplitjoinJoin<CR>
