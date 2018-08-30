@@ -45,7 +45,7 @@ base="$(dirname "$0")"
 config="${XDG_CONFIG_HOME:-$HOME/.config}"
 gh="https://raw.githubusercontent.com"
 
-if [ -z "$1" ] || [ "$1" = "vim"u ]; then
+if [ -z "$1" ] || [ "$1" = "vim" ]; then
   mkdir -p ~/.vim/{autoload,ftplugin,snippets} "$config"/nvim
   ln_i "$base"/vim/*.vim ~/.vim
   ln_i "$base"/vim/vimrc ~/.vim/vimrc
@@ -57,13 +57,9 @@ if [ -z "$1" ] || [ "$1" = "vim"u ]; then
   dl_e $gh/junegunn/vim-plug/master/plug.vim ~/.vim/autoload
   # install plugins
   if command -v nvim > /dev/null; then
-    printf u"\033[sinstalling vim and neovim plugins..."
-    nvim -u ~/.vim/plugins.vim -c PlugInstall\|qa! 1>&2> /dev/null
-    printf "\033[2K\033[u"
+    nvim -u ~/.vim/plugins.vim -c "let g:plug_threads = 3|PlugInstall|qa!"
   elif command -v vim > /dev/null; then
-    printf "\033[sinstalling vim plugins..."
-    vim -u ~/.vim/plugins.vim -c PlugInstall\|qa! 1>&2> /dev/null
-    printf "\033[2K\033[u"
+    vim -u ~/.vim/plugins.vim -c "let g:plug_threads = 3|PlugInstall|qa!"
   fi
 fi
 
@@ -92,8 +88,13 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
 fi
 
 if [ -z "$1" ] || [ "$1" = "qutebrowser" ]; then
-  mkdir -p "$config"/qutebrowser
-  ln_i "$base"/qutebrowser/* "$config"/qutebrowser
+  if [[ "$(uname)" = "Darwin" ]]; then
+    mkdir -p ~/.qutebrowser
+    ln_i "$base"/qutebrowser/* ~/.qutebrowser
+  else
+    mkdir -p "$config"/qutebrowser
+    ln_i "$base"/qutebrowser/* "$config"/qutebrowser
+  fi
 fi
 
 if [ -z "$1" ] || [ "$1" = "i3wm" ]; then
