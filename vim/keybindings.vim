@@ -132,7 +132,7 @@ endif
 " plugins {{{
 
 " ale
-nnoremap <expr>..a ":let g:ale_sign_column_always=".(g:ale_enabled?0:1)
+nnoremap <expr>..a ":set signcolumn=".(g:ale_enabled?"auto":"yes")
   \ ."<CR>:".(g:ale_enabled?"ALEDisable":"ALEEnable")."<CR>"
 
 " deoplte
