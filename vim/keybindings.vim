@@ -137,7 +137,7 @@ nnoremap <expr>..a ":let g:ale_sign_column_always=".(g:ale_enabled?0:1)
 
 " deoplte
 nnoremap <expr>..e deoplete#is_enabled() ?
-      \ ":LanguageClientStop<cr>:call deoplete#disable()<cr>" :
+      \ ":silent! LanguageClientStop<cr>:call deoplete#disable()<cr>" :
       \ has_key(g:LanguageClient_serverCommands, &ft) ?
       \ ":LanguageClientStart<cr>:call deoplete#enable()<cr>" :
       \ ":call deoplete#enable()<cr>"
