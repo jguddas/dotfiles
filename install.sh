@@ -127,7 +127,7 @@ if [ -z "$1" ] || [ "$1" = "urxvt" ]; then
   dl_e $gh/majutsushi/urxvt-font-size/master/font-size ~/.urxvt/ext
   repo="$gh/ryanoasis/nerd-fonts/master/patched-fonts/Hack"
   # install fonts
-  dl_e $gh/kencrocken/FiraCodeiScript/raw/master/FiraCodeiScript-Italic.ttf \
+  dl_e $gh/kencrocken/FiraCodeiScript/master/FiraCodeiScript-Italic.ttf \
     ~/.local/share/fonts
   dl_e $repo/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf \
     ~/.local/share/fonts
