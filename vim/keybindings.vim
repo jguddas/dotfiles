@@ -14,14 +14,14 @@ nnoremap . <Nop>
 nnoremap ._ :Cd<CR>
 
 " other
-nnoremap <BS>    X
-nnoremap U       <C-r>
-nnoremap Y       y$
-xnoremap Y       y$
-nnoremap k       Do<esc>p>>k$
-nnoremap <expr>j line('$') == line('.') ? '' : 'Jx'
-nnoremap <down>  gj
-nnoremap <up>    gk
+nnoremap <BS>   X
+nnoremap U      <C-r>
+nnoremap Y      y$
+xnoremap Y      y$
+nnoremap k      Do<esc>p>>k$
+nnoremap j      :keeppatterns s/\n\s*/<cr>
+nnoremap <down> gj
+nnoremap <up>   gk
 
 " buffer text-object {{{
 xnoremap i% :<C-u>let z = @/\|1;/^./kz<CR>G??<CR>:let @/ = z<CR>V'z
