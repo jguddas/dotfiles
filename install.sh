@@ -155,3 +155,8 @@ if [ -z "$1" ] || [ "$1" = "dunst" ]; then
   mkdir -p "$config"/dunst
   ln_i "$base"/dunst/* "$config"/dunst
 fi
+
+if [ -z "$1" ] || [ "$1" = "weechat" ]; then
+  mkdir -p ~/.weechat
+  ln_i "$base"/weechat/* ~/.weechat
+fi
