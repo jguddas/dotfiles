@@ -153,5 +153,5 @@ fi
 
 if [ -z "$1" ] || [ "$1" = "dunst" ]; then
   mkdir -p "$config"/dunst
-  ln_i dunst/* "$config"/dunst
+  ln_i "$base"/dunst/* "$config"/dunst
 fi
