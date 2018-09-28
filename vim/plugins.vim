@@ -21,6 +21,7 @@ Plug 'lervag/vimtex'                 " latex
 Plug 'mxw/vim-jsx'                   " jsx
 Plug 'wavded/vim-stylus'             " stylus
 Plug 'HerringtonDarkholme/yats.vim'  " typescript
+Plug 'digitaltoad/vim-jade'          " pug
 
 " completion
 Plug 'Raimondi/delimitMate'          " auto-completion for quotes, parens, etc.
