@@ -9,6 +9,8 @@ alias status='vim $(git rev-parse --show-toplevel)/.git/index'
 gv() { vim -c "GV $@" }
 
 # simple helpers
+alias xin="xclip -selection c"
+alias xout="xclip -out -selection c"
 alias add="touch"
 alias rmf="rm -rf"
 alias rmr="rm -r"
