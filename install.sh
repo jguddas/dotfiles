@@ -71,13 +71,12 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
   ln_i "$base"/zsh/zprofile ~/.zsh/.zprofile
   ln_i "$base"/zsh/{prompt,aliases}.zsh ~/.zsh
   ln_i "$base"/zsh/functions/* ~/.zsh/functions
-  ln_i "$base"/zsh/theme.ini \
-    ~/.zsh/.zim/modules/fast-syntax-highlighting/themes/custom.ini
+  ln_i "$base"/zsh/theme.ini ~/.zsh
   # move zhistory to new zsh dotdir
   if [ -e ~/.zhistory ] && [ ! -e ~/.zsh/.zhistory ]; then
     mv ~/.zhistory ~/.zsh
   fi
-  zsh -i -c "fast-theme custom" 1>&2> /dev/null
+  zsh -i -c "fast-theme ~/.zsh/theme" 1>&2> /dev/null
   # install zim
   if [ ! -d "$HOME/.zsh/.zim" ]; then
     git clone --recursive https://github.com/jguddas/zimfw.git ~/.zsh/.zim
