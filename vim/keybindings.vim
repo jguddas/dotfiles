@@ -210,7 +210,7 @@ endfunction
 " }}}
 
 " custom del behavior {{{
-nmap <Del> i<Del><esc>
+nmap <Del> i<Del><Esc><Right>
 imap <expr><Del> Del()
 function! Del()
   " <a>|</a> to <a/>|
