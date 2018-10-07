@@ -71,6 +71,10 @@ nnoremap .ss :setlocal spell!<CR>
 " jumplist
 nnoremap <S-Tab> <C-o>
 
+" wildmenu
+cnoremap <Left>  <Space><BS><Left>
+cnoremap <Right> <Space><BS><Right>
+
 " buffers
 nnoremap ..d :Sayonara!<CR><C-w>c
 nnoremap .d  :Sayonara!<CR>
