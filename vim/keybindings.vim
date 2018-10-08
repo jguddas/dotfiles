@@ -20,6 +20,7 @@ nnoremap Y      y$
 xnoremap Y      y$
 nnoremap k      Do<esc>p>>k$
 nnoremap j      :keeppatterns s/\n\s*/<cr>
+xnoremap j      <esc>:keeppatterns '<,'>-s/\n\s*/<cr>
 nnoremap <home> g<home>
 nnoremap <end>  g<end>
 nnoremap <down> gj
