@@ -13,7 +13,6 @@ zmodules=( \
   zdharma/fast-syntax-highlighting \
 )
 
-zdouble_dot_expand='true'
-zhighlighters=(main brackets)
+zstyle ':zim:input' double-dot-expand yes
 zssh_ids=(id_rsa)
 zinput_mode='vi'
