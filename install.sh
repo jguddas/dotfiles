@@ -147,6 +147,7 @@ if [ -z "$1" ] || [ "$1" = "mpv" ]; then
   ln_i "$base"/mpv/{mpv,input}.conf "$config"/mpv
   ln_i "$base"/mpv/osc.conf "$config"/mpv/lua-settings
   # install autoload script
+  dl_e $gh/4e6/mpv-reload/master/reload.lua "$config"/mpv/scripts
   dl_e $gh/mpv-player/mpv/master/TOOLS/lua/autoload.lua "$config"/mpv/scripts
 fi
 
