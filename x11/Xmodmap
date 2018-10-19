@@ -1,0 +1,11 @@
+! bone layer 4 kp to normal numbers
+keycode  30 = h H h H less Greek_psi 7 KP_7 Greek_PSI
+keycode  31 = l L l L greater Greek_lamda 8 KP_8 Greek_LAMDA
+keycode  32 = m M m M equal Greek_mu 9 KP_9 ifonlyif
+keycode  44 = n N n N parenleft Greek_nu 4 KP_4 U2115
+keycode  45 = r R r R parenright Greek_rho 5 KP_5 U211D
+keycode  46 = s S s S minus Greek_sigma 6 KP_6 Greek_SIGMA
+keycode  58 = z Z z Z percent Greek_zeta 1 KP_1 U2124
+keycode  59 = comma endash comma endash quotedbl U03F1 2 KP_2 U21D2
+keycode  60 = period enfilledcircbullet period enfilledcircbullet apostrophe U03D1 3 KP_3 U21A6
+keycode  65 = space space space space space nobreakspace 0 KP_0 U202F

@@ -108,6 +108,7 @@ fi
 
 if [ -z "$1" ] || [ "$1" = "x11" ]; then
   ln_i "$base"/x11/xinitrc ~/.xinitrc
+  ln_i "$base"/x11/Xmodmap ~/.Xmodmap
 fi
 
 if [ -z "$1" ] || [ "$1" = "ranger" ]; then
