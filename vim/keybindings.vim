@@ -76,8 +76,6 @@ nnoremap <S-Tab> <C-o>
 cnoremap <Left>  <Space><BS><Left>
 cnoremap <Right> <Space><BS><Right>
 
-cnoremap <expr><CR> wildmenumode() ? "<C-e>" : "<CR>"
-
 " buffers
 nnoremap ..d :Sayonara!<CR><C-w>c
 nnoremap .d  :Sayonara!<CR>
