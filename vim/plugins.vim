@@ -32,6 +32,7 @@ Plug 'tpope/vim-sleuth'              " adjusts shiftwidth and expandtab
 Plug 'vim-scripts/closetag.vim'      " close xml tags
 Plug 'mattn/emmet-vim'               " expand css like abbreviations to html
 if has('nvim')
+  Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}} " completion
   Plug 'Shougo/neosnippet'           " snippets
 endif
 
