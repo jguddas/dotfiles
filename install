@@ -52,7 +52,6 @@ if [ -z "$1" ] || [ "$1" = "vim" ]; then
   ln_i "$base"/vim/vimrc "$config"/nvim/init.vim
   ln_i "$base"/vim/ftplugin/* ~/.vim/ftplugin
   ln_i "$base"/vim/snippets/* ~/.vim/snippets
-  ln_i "$base"/vim/tern.conf ~/.tern-project
   # install vim-plug
   dl_e $gh/junegunn/vim-plug/master/plug.vim ~/.vim/autoload
   # install plugins
