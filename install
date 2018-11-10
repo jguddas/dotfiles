@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 #  __  __  _  _    ____  _____  ____  ____  ____  __    ____  ___
 # (  \/  )( \/ )  (  _ \(  _  )(_  _)( ___)(_  _)(  )  ( ___)/ __)
 #  )    (  \  /    )(_) ))(_)(   )(   )__)  _)(_  )(__  )__) \__ \
 # (_/\/\_) (__)   (____/(_____) (__) (__)  (____)(____)(____)(___/
 #                    linking and installation
-#               usage: ./install.sh [folder-name]
+#                 usage: ./install [folder-name]
 
 # linking and download helper
 ln_i() {
