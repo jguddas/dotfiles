@@ -76,7 +76,7 @@ if has('nvim')
   let g:neosnippet#scope_aliases = {
   \ 'javascript': 'javascript,javascript.array,javascript.react',
   \ 'lightscript': 'javascript,lightscript,lightscript.array,lightscript.lodash,lightscript.react',
-  \ 'typescript': 'javascript,javascript.array,typescript',
+  \ 'typescript': 'javascript,javascript.array,javascript.react,typescript',
   \ 'typescriptreact': 'javascript,javascript.array,javascript.react,typescript,typescriptreact',
   \ }
 endif
