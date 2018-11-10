@@ -142,13 +142,6 @@ endif
 nnoremap <expr>..a ":set signcolumn=".(g:ale_enabled?"auto":"yes")
   \ ."<CR>:".(g:ale_enabled?"ALEDisable":"ALEEnable")."<CR>"
 
-" deoplte
-nnoremap <expr>..e deoplete#is_enabled() ?
-      \ ":silent! LanguageClientStop<cr>:call deoplete#disable()<cr>" :
-      \ has_key(g:LanguageClient_serverCommands, &ft) ?
-      \ ":LanguageClientStart<cr>:call deoplete#enable()<cr>" :
-      \ ":call deoplete#enable()<cr>"
-
 " splitjoin
 nnoremap .j :SplitjoinJoin<CR>
 nnoremap .k :SplitjoinSplit<CR>

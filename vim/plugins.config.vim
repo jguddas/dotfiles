@@ -1,14 +1,6 @@
 " theme
 colorscheme onecustom
 
-" language server
-let g:LanguageClient_diagnosticsEnable = 0
-let g:LanguageClient_serverCommands = {
-  \ 'typescriptreact': ['typescript-language-server', '--stdio'],
-  \ 'typescript': ['typescript-language-server', '--stdio'],
-  \ 'ruby': ['solargraph', 'stdio']
-\ }
-
 " markdown
 let g:markdown_fold_override_foldtext = 0
 
@@ -76,34 +68,6 @@ let g:targets_argSeparator = '[,;]'
 
 " gv
 autocmd FileType GV setlocal listchars=trail:\ 
-
-" deoplete
-if has('nvim')
-  let g:deoplete#auto_complete_start_length = 1
-  let g:deoplete#file#enable_buffer_path = 1
-  call deoplete#custom#source('_', 'matchers', ['matcher_head'])
-  call deoplete#custom#source('_', 'sorters', [])
-  " deoplete tern
-  let g:deoplete#sources#ternjs#filetypes = [ 'javascript', 'lightscript' ]
-  let g:deoplete#sources#ternjs#include_keywords = 1
-  let g:deoplete#sources#ternjs#case_insensitive = 1
-  " deoplete omni
-  call deoplete#custom#var('omni', 'input_patterns', {
-      \ 'tex': g:vimtex#re#deoplete,
-      \ 'lua': ['\w+[.:]\w*', 'require\s*\(?["'']\w*'],
-      \ 'css': ['\w{2}', '\w+[):;-]?\s*\w*', '[@!]'],
-      \ 'less': ['\w{2}', '\w+[):;-]?\s*\w*', '[@!]'],
-      \ 'scss': ['\w{2}', '\w+[):;-]?\s*\w*', '[@!]'],
-      \ 'sass': ['\w{2}', '\w+[):;-]?\s*\w*', '[@!]'],
-      \ 'ruby': ['[^. *\t]\.\w*', '[a-zA-Z_]\w*::'],
-      \ 'lightscript': ['[^. *\t]\.\w*'],
-      \ 'typescript': ['[^. *\t]\.\w*'],
-      \ 'typescriptreact': ['[^. *\t]\.\w*'],
-    \})
-  call deoplete#custom#option('omni_patterns', {
-      \ 'jsx': ['<', '</', '<[^>]*\s[[:alnum:]-]*', 'style="']
-    \})
-endif
 
 " neosnippet
 if has('nvim')

@@ -32,15 +32,7 @@ Plug 'tpope/vim-sleuth'              " adjusts shiftwidth and expandtab
 Plug 'vim-scripts/closetag.vim'      " close xml tags
 Plug 'mattn/emmet-vim'               " expand css like abbreviations to html
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " autocomplete
   Plug 'Shougo/neosnippet'           " snippets
-  Plug 'Shougo/deoplete-zsh'         " autocomplete zsh
-  Plug 'carlitux/deoplete-ternjs'    " autocomplete javascript with ternjs
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ 'on': 'LanguageClientStart'
-  \ }
 endif
 
 " actions
