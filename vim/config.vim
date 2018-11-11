@@ -4,7 +4,6 @@ syntax enable
 set autoread
 set backspace=indent,eol,start
 set colorcolumn=80
-set dictionary=/usr/share/dict/american-english
 set diffopt=foldcolumn:0,filler
 set equalalways
 set fillchars=vert:┃,fold:·,diff:\ 
