@@ -1,3 +1,17 @@
+tmux(){
+  if [ -n "$1" ] || [ -n "$TMUX" ]; then
+    command tmux "$@"
+  else
+    command tmux new-session \; new-window "\
+      tmux set-option -ga terminal-overrides \",$TERM:Tc\"; \
+      tmux detach; \
+    "
+    command tmux attach
+  fi
+}
+alias t="tmux"
+alias ta="tmux attach"
+
 alias yt="youtube-dl"
 
 # vim

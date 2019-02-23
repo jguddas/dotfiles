@@ -1,13 +1,16 @@
 emulate sh -c 'source /etc/profile'
 
-PATH="$PATH:$HOME/.local/bin"
-if command -v ruby > /dev/null; then
-  PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+if [ -z '$TMUX' ]; then
+  PATH="$PATH:$HOME/.local/bin"
+  PATH="$PATH:${GOPATH:-$HOME/go}/bin"
+  if command -v ruby > /dev/null; then
+    PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+  fi
+  if command -v yarn > /dev/null; then
+    PATH="$PATH:$(yarn global bin)"
+  fi
+  if command -v npm > /dev/null; then
+    PATH="$PATH:$(npm config get prefix)/bin"
+  fi
+  export PATH="$PATH"
 fi
-if command -v yarn > /dev/null; then
-  PATH="$PATH:$(yarn global bin)"
-fi
-if command -v npm > /dev/null; then
-  PATH="$PATH:$(npm config get prefix)/bin"
-fi
-export PATH="$PATH"

@@ -161,3 +161,8 @@ if [ -z "$1" ] || [ "$1" = "weechat" ]; then
   mkdir -p ~/.weechat
   ln_i "$base"/weechat/* ~/.weechat
 fi
+
+if [ -z "$1" ] || [ "$1" = "tmux" ]; then
+  mkdir -p ~/
+  ln_i "$base"/tmux/tmux.conf ~/.tmux.conf
+fi
