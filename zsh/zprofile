@@ -1,6 +1,6 @@
 emulate sh -c 'source /etc/profile'
 
-if [ -z '$TMUX' ]; then
+if [ -z "$TMUX" ]; then
   PATH="$PATH:$HOME/.local/bin"
   PATH="$PATH:${GOPATH:-$HOME/go}/bin"
   if command -v ruby > /dev/null; then
