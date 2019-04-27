@@ -1,12 +1,18 @@
 # i3 config file (v4)
 
 set $mod Mod1
-set $color #6fa847
 set $up u
 set $down i
 set $left t
 set $right e
 set $helper exec --no-startup-id echo
+set_from_resource $c0 i3wm.color0 #17181A
+set_from_resource $c2 i3wm.color2 #6fa847
+set_from_resource $c1 i3wm.color1 #C73C3C
+set_from_resource $c7 i3wm.color7 #BBBBBB
+set_from_resource $c8 i3wm.color8 #222222
+set_from_resource $c10 i3wm.color10 #98C379
+set_from_resource $c15 i3wm.color15 #EEEEEE
 
 floating_modifier $mod
 
@@ -37,7 +43,7 @@ bindsym $mod+adiaeresis exec urxvtc
 bindsym $mod+x kill
 bindsym $mod+Shift+x exec xdotool getwindowfocus windowkill
 
-bindsym $mod+space exec dmenu_run -sf "$color" -sb "#222"
+bindsym $mod+space exec dmenu_run -sf "$c10" -sb "$c8" -nf "$c7" -nb "$c8"
 
 bindsym $mod+h split h
 bindsym $mod+v split v
@@ -96,31 +102,32 @@ assign [class="(?i)libreoffice"] 
 assign [title="(?i)libreoffice"] 
 assign [class="(?i)gitk"] 
 
+for_window [title="__floating"] floating enable
+
 font pango:Hack Nerd Font 8
 default_orientation vertical
 new_window pixel 2
 
-client.focused          #222222 #17181A #98C379 #222222 #98C379 #222222
-client.focused_inactive #222222 #17181A #EEEEEE #222222 #222222 #222222
-client.unfocused        #222222 #17181A #BBBBBB #222222 #222222 #222222
-client.urgent           #222222 #17181A #BBBBBB #222222 #C73C3C #222222
-client.placeholder      #222222 #17181A #BBBBBB #222222 #222222 #222222
-client.background       #17181A
+client.focused          $c8 $c0 $c10 $c8 $c10 $c8
+client.focused_inactive $c8 $c0 $c15 $c8 $c8 $c8
+client.unfocused        $c8 $c0 $c7 $c8 $c8 $c8
+client.urgent           $c8 $c0 $c7 $c8 $c1 $c8
+client.placeholder      $c8 $c0 $c7 $c8 $c8 $c8
+client.background       $c0
 
 bar {
   position top
   status_command ~/.config/i3/status.sh
   colors {
-    background #222222
-    statusline #ffffff
-    separator  #666666
+    background $c8
+    statusline $c7
 
-    focused_workspace  #222222 #222222 $color
-    active_workspace   #222222 #222222 #EEEEEE
-    inactive_workspace #222222 #222222 #BBBBBB
+    focused_workspace  $c8 $c8 $c2
+    active_workspace   $c8 $c8 $c15
+    inactive_workspace $c8 $c8 $c7
 
-    urgent_workspace   #222222 #222222 #C73C3C
-    binding_mode       #222222 #222222 #C73C3C
+    urgent_workspace   $c8 $c8 $c1
+    binding_mode       $c8 $c8 $c1
   }
 }
 
