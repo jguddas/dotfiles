@@ -43,7 +43,7 @@ bindsym $mod+adiaeresis exec urxvtc
 bindsym $mod+x kill
 bindsym $mod+Shift+x exec xdotool getwindowfocus windowkill
 
-bindsym $mod+space exec dmenu_run -sf "$c10" -sb "$c8" -nf "$c7" -nb "$c8"
+bindsym $mod+space exec dmenu_run -sf "$c8" -sb "$c10" -nf "$c7" -nb "$c8"
 
 bindsym $mod+h split h
 bindsym $mod+v split v
