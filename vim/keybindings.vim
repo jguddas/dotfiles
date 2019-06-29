@@ -50,7 +50,7 @@ nnoremap .?  ?\v\c
 nnoremap .m  :s///g<Left><Left>
 nnoremap ..m :%s///g<Left><Left>
 nnoremap .l  :nohlsearch<CR>
-nnoremap \   :Ack ""<Left>
+nnoremap \   :grep ""<Left>
 xnoremap .m  :s///g<Left><Left>
 " }}}
 

@@ -37,6 +37,16 @@ set wildmenu
 if has('nvim')
   set inccommand=split
 endif
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+  set grepformat=%f:%l:%c:%m
+elseif executable('ag')
+  set grepprg=ag\ --vimgrep\ --ignore=\"**.min.js\"
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+elseif executable('ack')
+  set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 let mapleader = "\<Nop>"
 let g:vimsyn_folding='af'
 let g:markdown_folding = 1
