@@ -54,6 +54,13 @@ let g:switch_custom_definitions = [{
 \  '`\([^`]*\)`' : '"\1"',
 \  '"\([^"]*\)"' : s:apostrophe.'\1'.s:apostrophe,
 \  s:apostrophe.'\([^'.s:apostrophe.']*\)'.s:apostrophe : '`\1`',
+\}, {
+\  '\<[a-z0-9]\+_\k\+\>': {
+\    '_\(.\)': '\U\1'
+\  },
+\  '\<[a-z0-9]\+[A-Z]\k\+\>': {
+\    '\([A-Z]\)': '_\l\1'
+\  },
 \}]
 
 autocmd FileType lightscript let b:switch_custom_definitions = [{
