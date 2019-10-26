@@ -188,6 +188,10 @@ nmap hs <Plug>GitGutterStageHunk
 nmap hd <Plug>GitGutterUndoHunk
 nmap hv <Plug>GitGutterPreviewHunk
 
+" quickfix
+nmap gn <Plug>(qf_qf_next)
+nmap gp <Plug>(qf_qf_previous)
+
 " }}}
 
 " custom bs behavior {{{

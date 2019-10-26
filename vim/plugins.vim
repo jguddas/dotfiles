@@ -11,6 +11,7 @@ Plug 'mhinz/vim-sayonara'            " better buffer closing
 Plug 'nelstrom/vim-markdown-folding' " better markdown folding
 Plug 'airblade/vim-gitgutter'        " git diff column
 Plug 'mbbill/undotree', { 'on': 'UndotreeShow' }
+Plug 'romainl/vim-qf'                " better quickfix mappings
 
 " syntax
 Plug 'cakebaker/scss-syntax.vim'     " sass
