@@ -181,6 +181,13 @@ if has('nvim')
   xmap <C-n> <Plug>(neosnippet_expand_target)
 endif
 
+" gitgutter
+nmap hn <Plug>GitGutterNextHunk
+nmap hp <Plug>GitGutterPrevHunk
+nmap hs <Plug>GitGutterStageHunk
+nmap hd <Plug>GitGutterUndoHunk
+nmap hv <Plug>GitGutterPreviewHunk
+
 " }}}
 
 " custom bs behavior {{{
