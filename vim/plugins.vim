@@ -17,12 +17,11 @@ Plug 'romainl/vim-qf'                " better quickfix mappings
 Plug 'cakebaker/scss-syntax.vim'     " sass
 Plug 'cespare/vim-toml'              " toml
 Plug 'hail2u/vim-css3-syntax'        " css
-Plug 'jguddas/vim-lightscript'       " lightscript
 Plug 'pangloss/vim-javascript'       " javascript
-Plug 'lervag/vimtex'                 " latex
-Plug 'mxw/vim-jsx'                   " jsx
-Plug 'wavded/vim-stylus'             " stylus
 Plug 'HerringtonDarkholme/yats.vim'  " typescript
+Plug 'lervag/vimtex'                 " latex
+Plug 'MaxMEllon/vim-jsx-pretty'      " jsx
+Plug 'wavded/vim-stylus'             " stylus
 Plug 'digitaltoad/vim-jade'          " pug
 
 " completion

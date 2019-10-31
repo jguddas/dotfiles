@@ -13,14 +13,9 @@ autocmd TextChanged,InsertEnter,InsertLeave * GitGutter
 " markdown
 let g:markdown_fold_override_foldtext = 0
 
-" javascript
-let g:jst_default_subtype = "javascript"
-let g:jsx_ext_required = 0
-
 " emmet
 let g:user_emmet_settings = {
-\  'javascript.jsx' : { 'extends' : 'jsx' },
-\  'lightscript.jsx' : { 'extends' : 'jsx' },
+\  'javascript' : { 'extends' : 'jsx' }
 \}
 
 " tcomment
@@ -71,7 +66,7 @@ autocmd FileType lightscript let b:switch_custom_definitions = [{
 \  '=>' : '->',
 \}]
 
-autocmd FileType javascript,javascript.jsx let b:switch_custom_definitions = [{
+autocmd FileType javascript let b:switch_custom_definitions = [{
 \  'let': 'const',
 \  'const': 'let',
 \  'var': 'const',
