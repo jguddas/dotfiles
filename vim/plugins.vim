@@ -49,6 +49,7 @@ Plug 'wellle/targets.vim'            " additional text objects
 
 " integration
 Plug 'editorconfig/editorconfig-vim' " load .editorconfig
+Plug 'tpope/vim-projectionist'       " load .projections.json
 Plug 'junegunn/gv.vim', { 'on': 'GV' } " git repo viwer
 Plug 'justinmk/vim-dirvish'          " filebrowser
 Plug 'tpope/vim-rhubarb'             " github fugitive extantion
