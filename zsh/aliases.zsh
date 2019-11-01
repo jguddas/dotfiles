@@ -30,6 +30,7 @@ alias rmf="rm -rf"
 alias rmr="rm -r"
 alias cpr="cp -r"
 alias his='cat ~/.zsh/.zhistory | sed "s/[^;]\+;//" | awk'
+alias pn='printf "%s\\n"'
 al() { alias | awk "/$@/" }
 
 # yarn
