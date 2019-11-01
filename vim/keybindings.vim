@@ -182,11 +182,11 @@ if has('nvim')
 endif
 
 " gitgutter
-nmap hn <Plug>GitGutterNextHunk
-nmap hp <Plug>GitGutterPrevHunk
-nmap hs <Plug>GitGutterStageHunk
-nmap hd <Plug>GitGutterUndoHunk
-nmap hv <Plug>GitGutterPreviewHunk
+nmap hn <Plug>(GitGutterNextHunk)
+nmap hp <Plug>(GitGutterPrevHunk)
+nmap hs <Plug>(GitGutterStageHunk)
+nmap hd <Plug>(GitGutterUndoHunk)
+nmap hv <Plug>(GitGutterPreviewHunk)
 
 " quickfix
 nmap gn <Plug>(qf_qf_next)
