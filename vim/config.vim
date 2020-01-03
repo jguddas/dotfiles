@@ -27,6 +27,7 @@ set path=.,**
 set scrolloff=5
 set shiftwidth=2
 set showtabline=2
+set signcolumn=yes
 set smartcase
 set splitbelow
 set splitright

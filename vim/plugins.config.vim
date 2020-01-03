@@ -26,6 +26,9 @@ autocmd VimEnter *
   \ call tcomment#type#Define('lightscript_block', g:tcomment#block_fmt_c ) |
   \ call tcomment#type#Define('lightscript_inline', g:tcomment#inline_fmt_c)
 
+" coc
+autocmd FileType javascript setlocal filetype=javascript.jsx
+
 " splitjoin
 let g:splitjoin_html_attributes_bracket_on_new_line=1
 autocmd FileType lightscript
@@ -154,6 +157,19 @@ function! LightlineTabs()
   return lightline#tabs()
 endfunction
 
+function! LighlineDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, 'E:' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, 'W:' . info['warning'])
+  endif
+  return join(msgs, ' | ')
+endfunction
+
 let g:lightline#bufferline#unnamed = '[No Name]'
 let g:lightline#bufferline#read_only = ''
 let g:lightline#bufferline#modified = '+'
@@ -167,6 +183,7 @@ let g:lightline = {
   \'colorscheme': 'onecustom',
   \'component_function': {
     \'branch': 'LightlineBranch',
+    \'cocstatus': 'LighlineDiagnostic',
   \},
   \'component': {
     \'lineinfo': '%l:%v',
@@ -176,7 +193,7 @@ let g:lightline = {
   \'inactive': { 'left': [['filename']], 'right': [] },
   \'active': {
     \'left': [['mode', 'spell', 'branch'], [''], ['path']],
-    \'right': [['linter_errors', 'linter_warnings', 'lineinfo'], [''], ['filetype']]
+    \'right': [['cocstatus', 'lineinfo'], [''], ['filetype']]
   \},
   \'tabline': {
     \'left': [['buffers']],
@@ -184,22 +201,20 @@ let g:lightline = {
   \},
   \'tab': {
     \ 'active': ['tabnum'],
-    \ 'inactive': ['tabnum']
+    \ 'inactive': ['tabnum'],
   \},
   \'component_expand': {
     \'tabs': 'LightlineTabs',
     \'buffers': 'lightline#bufferline#buffers',
-    \'linter_warnings': 'lightline#ale#warnings',
-    \'linter_errors': 'lightline#ale#errors',
   \},
   \'component_type': {
     \'buffers': 'tabsel',
     \'tabs': 'tabsel',
-    \'linter_warnings': 'warning',
-    \'linter_errors': 'error',
   \},
   \'separator': { 'left': '', 'right': '' },
   \'subseparator': { 'left': '|', 'right': '|' },
   \'tabline_separator': { 'left': '', 'right': '' },
   \'tabline_subseparator': { 'left': '', 'right': '' }
 \}
+
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
