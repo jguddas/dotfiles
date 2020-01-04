@@ -193,6 +193,9 @@ nmap gp <Plug>(qf_qf_previous)
 nmap gN <Plug>(qf_loc_next)
 nmap gP <Plug>(qf_loc_previous)
 
+" projectionist
+nnoremap SS :A<cr>
+
 " }}}
 
 " custom bs behavior {{{
