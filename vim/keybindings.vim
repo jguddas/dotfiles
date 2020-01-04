@@ -114,6 +114,14 @@ nnoremap <expr>.c foldlevel(line('.')) - (foldclosed(line('.')) > 0) > 1 ? "zXzc
 nnoremap <expr><Space> foldclosed(line('.')) == -1 ? "<Space>" : "zv"
 xnoremap <expr><Space> foldclosed(line('.')) == -1 ? "di<Space><Space><Left><Esc>p" : "<esc>zvgv"
 
+" quickfix
+nmap gn <Plug>(qf_qf_next)
+nmap gp <Plug>(qf_qf_previous)
+
+" loclist
+nmap gN <Plug>(qf_loc_next)
+nmap gP <Plug>(qf_loc_previous)
+
 " popup
 inoremap <expr><S-Tab> pumvisible()? "<C-p>"       : "<S-Tab>"
 inoremap <expr><Tab>   pumvisible()? "<C-n>"       : "<Tab>"
@@ -181,14 +189,6 @@ nmap hv <Plug>(GitGutterPreviewHunk)
 
 " coc
 nmap <expr>l CocActionAsync('jumpDefinition') ? 'zo' : ':silent!tag '.expand('<cword>').'<CR>'
-
-" quickfix
-nmap gn <Plug>(qf_qf_next)
-nmap gp <Plug>(qf_qf_previous)
-
-" loclist
-nmap gN <Plug>(qf_loc_next)
-nmap gP <Plug>(qf_loc_previous)
 
 " projectionist
 nnoremap SS :A<cr>
