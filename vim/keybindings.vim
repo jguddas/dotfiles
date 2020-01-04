@@ -120,12 +120,6 @@ inoremap <expr><Tab>   pumvisible()? "<C-n>"       : "<Tab>"
 inoremap <expr><Up>    pumvisible()? "<C-y><Up>"   : "<Up>"
 inoremap <expr><Down>  pumvisible()? "<C-y><Down>" : "<Down>"
 
-" tags
-nnoremap l <C-]>
-xnoremap l <C-]>
-
-"}}}
-
 " terminal {{{
 if executable('urxvtc')
   nnoremap .ö  :call system('urxvtc')<CR>
@@ -184,6 +178,9 @@ nmap hp <Plug>(GitGutterPrevHunk)
 nmap hs <Plug>(GitGutterStageHunk)
 nmap hd <Plug>(GitGutterUndoHunk)
 nmap hv <Plug>(GitGutterPreviewHunk)
+
+" coc
+nmap <expr>l CocActionAsync('jumpDefinition') ? 'zo' : ':silent!tag '.expand('<cword>').'<CR>'
 
 " quickfix
 nmap gn <Plug>(qf_qf_next)
