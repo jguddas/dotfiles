@@ -46,11 +46,10 @@ config="${XDG_CONFIG_HOME:-$HOME/.config}"
 gh="https://raw.githubusercontent.com"
 
 if [ -z "$1" ] || [ "$1" = "vim" ]; then
-  mkdir -p ~/.vim/{autoload,ftplugin,snippets} "$config"/nvim
+  mkdir -p ~/.vim/{autoload,snippets} "$config"/nvim
   ln_i "$base"/vim/*.vim ~/.vim
   ln_i "$base"/vim/vimrc ~/.vim/vimrc
   ln_i "$base"/vim/vimrc "$config"/nvim/init.vim
-  ln_i "$base"/vim/ftplugin/* ~/.vim/ftplugin
   ln_i "$base"/vim/snippets/* ~/.vim/snippets
   ln_i "$base"/vim/coc-settings.json "$config"/nvim
   # install vim-plug
