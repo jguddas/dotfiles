@@ -89,9 +89,6 @@ nnoremap <C-p>  :bprev<CR>
 nnoremap .<C-n> :tabnext<CR>
 nnoremap .<C-p> :tabprev<CR>
 
-" tabs
-nnoremap .f :tab sp<CR>
-
 " window
 nnoremap .q <C-w>c
 nnoremap .o :only<CR>
