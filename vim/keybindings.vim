@@ -192,6 +192,10 @@ nmap hv <Plug>(GitGutterPreviewHunk)
 nmap gn <Plug>(qf_qf_next)
 nmap gp <Plug>(qf_qf_previous)
 
+" loclist
+nmap gN <Plug>(qf_loc_next)
+nmap gP <Plug>(qf_loc_previous)
+
 " }}}
 
 " custom bs behavior {{{
