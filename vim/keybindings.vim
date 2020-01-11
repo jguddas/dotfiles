@@ -25,6 +25,8 @@ nnoremap <home> g<home>
 nnoremap <end>  g<end>
 nnoremap <down> gj
 nnoremap <up>   gk
+vnoremap <c-a>  :s/\%V\d\+\%V/\=(submatch(0)+1)/g<cr>
+vnoremap <c-x>  :s/\%V\d\+\%V/\=(submatch(0)-1)/g<cr>
 
 " buffer text-object {{{
 xnoremap i% :<C-u>let z = @/\|1;/^./kz<CR>G??<CR>:let @/ = z<CR>V'z
