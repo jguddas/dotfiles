@@ -75,12 +75,12 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
   if [ -e ~/.zhistory ] && [ ! -e ~/.zsh/.zhistory ]; then
     mv ~/.zhistory ~/.zsh
   fi
-  zsh -i -c "fast-theme ~/.zsh/theme" 1>&2> /dev/null
   # install zim
   if [ ! -d "$HOME/.zsh/.zim" ]; then
     git clone --recursive https://github.com/jguddas/zimfw.git ~/.zsh/.zim
     zsh -i -c "zmanage install" 2> /dev/null
   fi
+  zsh -i -c "fast-theme ~/.zsh/theme" 1>&2> /dev/null
   # make zsh the default shell
   [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
 fi
