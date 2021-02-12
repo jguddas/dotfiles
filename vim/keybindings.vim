@@ -191,6 +191,19 @@ nmap hv <Plug>(GitGutterPreviewHunk)
 
 " coc
 nmap <expr>l CocActionAsync('jumpDefinition') ? 'zo' : ':silent!tag '.expand('<cword>').'<CR>'
+nmap gc <Plug>(coc-actions)
+nnoremap <silent>k :call g:ShowDocumentation()<CR>
+
+function! g:ShowDocumentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('highlight')
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
 " projectionist
 nnoremap SS :A<cr>
