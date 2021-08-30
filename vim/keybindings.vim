@@ -10,9 +10,6 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 nnoremap , .
 nnoremap . <Nop>
 
-" custom comands
-nnoremap ._ :Cd<CR>
-
 " other
 nnoremap <BS>   X
 nnoremap U      <C-r>
@@ -41,18 +38,15 @@ nnoremap ..x   :wqa!<CR>
 nnoremap .w    :write!<CR>
 nnoremap .x    :w<CR>:Sayonara!<CR>
 nnoremap <C-r> :checktime<CR>
-
-nnoremap <expr>.- ":bd<Bar>Dirvish ".expand("%:h")."<CR>"
 nnoremap <expr>.ä ":edit ".expand('%:h')."/"
 " }}}
 
 " search {{{
-nnoremap ./  /\v\c
-nnoremap .?  ?\v\c
 nnoremap .m  :s///g<Left><Left>
 nnoremap ..m :%s///g<Left><Left>
 nnoremap .l  :nohlsearch<CR>
 nnoremap \   :grep ""<Left>
+vnoremap \   "aygv:grep "<c-r>""<Left>
 xnoremap .m  :s///g<Left><Left>
 " }}}
 
@@ -71,12 +65,11 @@ nnoremap .ss :setlocal spell!<CR>
 
 " interface {{{
 
-" jumplist
-nnoremap <S-Tab> <C-o>
-
 " wildmenu
 cnoremap <Left>  <Space><BS><Left>
 cnoremap <Right> <Space><BS><Right>
+cnoremap <expr><Up>   pumvisible() ? "<C-p>" : "<Up>"
+cnoremap <expr><Down> pumvisible() ? "<C-n>" : "<Down>"
 
 " buffers
 nnoremap ..d :Sayonara!<CR><C-w>c
@@ -84,16 +77,15 @@ nnoremap .d  :Sayonara!<CR>
 nnoremap .n  :enew<CR>
 
 " buffers
-" nnoremap <expr><Tab>   tabpagenr("$") == 1 ? ":bnext<CR>" : ":tabnext<CR>"
-" nnoremap <expr><S-Tab> tabpagenr("$") == 1 ? ":bprev<CR>" : ":tabprev<CR>"
 nnoremap <C-n>  :bnext<CR>
 nnoremap <C-p>  :bprev<CR>
 nnoremap .<C-n> :tabnext<CR>
 nnoremap .<C-p> :tabprev<CR>
 
 " window
-nnoremap .q <C-w>c
-nnoremap .o :only<CR>
+nnoremap .q  <C-w>c
+nnoremap .o  :only<CR>
+nnoremap ..o :BufOnly<CR>
 
 " focus
 nnoremap .u <C-w><Up>
@@ -120,10 +112,6 @@ xnoremap <expr><Space> foldclosed(line('.')) == -1 ? "di<Space><Space><Left><Esc
 nmap gn <Plug>(qf_qf_next)
 nmap gp <Plug>(qf_qf_previous)
 
-" loclist
-nmap gN <Plug>(qf_loc_next)
-nmap gP <Plug>(qf_loc_previous)
-
 " popup
 inoremap <expr><S-Tab> pumvisible()? "<C-p>"       : "<S-Tab>"
 inoremap <expr><Tab>   pumvisible()? "<C-n>"       : "<Tab>"
@@ -131,17 +119,16 @@ inoremap <expr><Up>    pumvisible()? "<C-y><Up>"   : "<Up>"
 inoremap <expr><Down>  pumvisible()? "<C-y><Down>" : "<Down>"
 
 " terminal {{{
-if executable('urxvtc')
+if expand('$TMUX') != ""
+  nnoremap .ö  :call system('tmux new-window')<CR>
+  nnoremap ..ö :call system('tmux new-window -c '.expand('%:p:h'))<CR>
+elseif executable('urxvtc')
   nnoremap .ö  :call system('urxvtc')<CR>
   nnoremap ..ö :call system('urxvtc -cd '.expand('%:p:h').' -e zsh')<CR>
 endif
 " }}}
 
 " plugins {{{
-
-" ale
-nnoremap <expr>..a ":set signcolumn=".(g:ale_enabled?"auto":"yes")
-  \ ."<CR>:".(g:ale_enabled?"ALEDisable":"ALEEnable")."<CR>"
 
 " splitjoin
 nnoremap .j :SplitjoinJoin<CR>
@@ -152,29 +139,12 @@ nmap s <Nop>
 xmap s <Nop>
 nmap , <Plug>(operator-sandwich-dot)
 
-nmap .{ vi{<BS><Right>vi{<Space>
-xmap .$ sa{hi$<Esc><Right>vi{
-xmap .{ sa{<Left>vi{
-xmap .( sa(<Left>vi(
-xmap .[ sa[<Left>vi[
-xmap ." sa"<Left>vi"
-xmap .' sa'<Left>vi'
-xmap .` sa`<Left>vi`
-
 " switch
 nmap <silent>ss :Switch<CR>
 
 " exchange
 nmap x cx
 xmap x X
-
-" emmet
-nmap <S-Space> <Plug>(emmet-expand-abbr)
-vmap <S-Space> <Plug>(emmet-expand-abbr)
-imap <S-Space> <Plug>(emmet-expand-abbr)
-nmap <C-y>,    <Plug>(emmet-expand-abbr)
-vmap <C-y>,    <Plug>(emmet-expand-abbr)
-imap <C-y>,    <Plug>(emmet-expand-abbr)
 
 " neosnippet
 if has('nvim')
@@ -183,6 +153,8 @@ if has('nvim')
 endif
 
 " gitgutter
+nnoremap ha :G add %:p<cr>
+nnoremap hr :G reset %:p<cr>
 nmap hn <Plug>(GitGutterNextHunk)
 nmap hp <Plug>(GitGutterPrevHunk)
 nmap hs <Plug>(GitGutterStageHunk)
@@ -191,6 +163,8 @@ nmap hv <Plug>(GitGutterPreviewHunk)
 
 " coc
 nmap <expr>l CocActionAsync('jumpDefinition') ? 'zo' : ':silent!tag '.expand('<cword>').'<CR>'
+nmap <silent> gN <Plug>(coc-diagnostic-next)
+nmap <silent> gP <Plug>(coc-diagnostic-prev)
 nmap gc <Plug>(coc-actions)
 nnoremap <silent>k :call g:ShowDocumentation()<CR>
 
@@ -205,7 +179,7 @@ function! g:ShowDocumentation()
   endif
 endfunction
 
-" projectionist
+  " projectionist
 nnoremap SS :A<cr>
 
 " }}}
