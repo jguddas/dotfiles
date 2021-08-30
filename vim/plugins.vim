@@ -54,6 +54,5 @@ Plug 'justinmk/vim-dirvish'          " filebrowser
 Plug 'tpope/vim-rhubarb'             " github fugitive extantion
 Plug 'tpope/vim-eunuch'              " UNIX shell commands
 Plug 'tpope/vim-fugitive'            " git wrapper
-Plug 'w0rp/ale'                      " linting engine
 
 call plug#end()

@@ -109,18 +109,6 @@ let delimitMate_expand_space = 1
 let delimitMate_expand_cr = 1
 au FileType markdown let b:delimitMate_nesting_quotes = ['`']
 
-" ale
-let g:ale_enabled = 0
-let g:ale_set_signs = 1
-let g:ale_sign_error = ' »'
-let g:ale_sign_warning = ' ‼'
-let g:ale_sign_info = ' •'
-let g:ale_linters = {
-  \  'lightscript': ['eslint'],
-  \  'zsh': ['shellcheck'],
-  \}
-let g:ale_linter_aliases = { 'lightscript': 'javascript' }
-
 " dirvish
 autocmd FileType dirvish
       \ call fugitive#detect(@%) |
@@ -176,9 +164,6 @@ let g:lightline#bufferline#read_only = ''
 let g:lightline#bufferline#modified = '+'
 let g:lightline#bufferline#more_buffers = '…'
 let g:lightline#bufferline#filename_modifier = ':t'
-
-let g:lightline#ale#indicator_warnings = 'W:'
-let g:lightline#ale#indicator_errors = 'E:'
 
 let g:lightline = {
   \'colorscheme': 'onecustom',
