@@ -5,6 +5,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'ap/vim-css-color'              " preview colors inline
 Plug 'itchyny/lightline.vim'         " statusline plugin
 Plug 'jguddas/onecustom.vim'         " my colortheme
+Plug 'jguddas/papercolor-theme'      " paper color thmee
 Plug 'mgee/lightline-bufferline'     " lightline bufferline
 Plug 'mhinz/vim-sayonara'            " better buffer closing
 Plug 'nelstrom/vim-markdown-folding' " better markdown folding

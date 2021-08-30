@@ -2,6 +2,7 @@ filetype plugin indent on
 syntax enable
 
 set autoread
+set background=dark " CHANGE ME
 set backspace=indent,eol,start
 set colorcolumn=80
 set diffopt=foldcolumn:0,filler

@@ -1,5 +1,9 @@
 " theme
-colorscheme onecustom
+if &background ==# 'light'
+  colorscheme PaperColor
+else
+  colorscheme onecustom
+endif
 
 " gitgutter
 let g:gitgutter_sign_added = '┃'
@@ -166,7 +170,7 @@ let g:lightline#bufferline#more_buffers = '…'
 let g:lightline#bufferline#filename_modifier = ':t'
 
 let g:lightline = {
-  \'colorscheme': 'onecustom',
+  \'colorscheme': &background ==# 'light' ? 'PaperColor' : 'onecustom',
   \'component_function': {
     \'branch': 'LightlineBranch',
     \'cocstatus': 'LighlineDiagnostic',
