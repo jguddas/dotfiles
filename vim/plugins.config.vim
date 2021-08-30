@@ -109,7 +109,8 @@ function! ArrayHelper(method)
     return substitute(match1, 'ie$', 'y', '')
   endif
   let match2=match(line, 'keys(\w*)'.a:method.'$')
-  return match2 > -1 ? 'key' : 'val'
+  let match3=match(line, 'entries(\w*)'.a:method.'$')
+  return match2 > -1 ? 'key' : match3 > -1 ? '([ key, val ])' : 'val'
 endfunction
 
 " delimitmate
