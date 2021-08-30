@@ -105,7 +105,7 @@ function! ArrayHelper(method)
   let line=getline('.')[0:col('.')-1]
   let match1=matchstr(line, '\w\+\zes'.a:method.'$')
   if match1 != ''
-    return match1
+    return substitute(match1, 'ie$', 'y', '')
   endif
   let match2=match(line, 'keys(\w*)'.a:method.'$')
   return match2 > -1 ? 'key' : 'val'
