@@ -118,7 +118,6 @@ au FileType markdown let b:delimitMate_nesting_quotes = ['`']
 
 " dirvish
 autocmd FileType dirvish
-      \ call fugitive#detect(@%) |
       \ exec "silent! unmap <buffer> <C-p>" |
       \ exec "silent! unmap <buffer> <C-n>" |
       \ exec "silent! unmap <buffer> ."
