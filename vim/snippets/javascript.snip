@@ -1,3 +1,7 @@
+snippet eslintdisablenextline
+options word
+  // eslint-disable-next-line ${0}
+
 snippet mx
 abbr module.export
 options head
@@ -13,10 +17,25 @@ abbr export default
 options head
   export default ${0}
 
+snippet exdc
+abbr export default const
+options head
+  export default const ${0}
+
+snippet exdf
+abbr export default function
+options head
+  export default function ${0}
+
 snippet exc
 abbr export const
 options head
   export const ${0}
+
+snippet exf
+abbr export function
+options head
+  export function ${0}
 
 snippet imp
 abbr import
@@ -35,6 +54,7 @@ options word
 
 snippet logjson
 abbr log json
+alias logj
 options word
   console.log(JSON.stringify(${0:TARGET}, null, 2))
 
