@@ -7,9 +7,11 @@ set backspace=indent,eol,start
 set colorcolumn=80
 set diffopt=foldcolumn:0,filler
 set equalalways
+set expandtab
 set fillchars=vert:┃,fold:·,diff:\ 
 set foldmethod=syntax
 set foldnestmax=2
+set formatoptions-=t
 set hidden
 set history=1000
 set hlsearch
@@ -35,6 +37,7 @@ set splitright
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,
   \.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg
 set termguicolors
+set updatetime=500
 set wildmenu
 if has('nvim')
   set inccommand=split
@@ -43,7 +46,7 @@ if executable('rg')
   set grepprg=rg\ --vimgrep
   set grepformat=%f:%l:%c:%m
 elseif executable('ag')
-  set grepprg=ag\ --vimgrep\ --ignore=\"**.min.js\"
+set grepprg=ag\ --vimgrep\ --ignore=\"**.min.js\"\ --ignore-case
   set grepformat=%f:%l:%c:%m,%f:%l:%m
 elseif executable('ack')
   set grepprg=ack\ --nogroup\ --nocolor\ --ignore-case\ --column
@@ -78,7 +81,8 @@ augroup interface
 augroup END
 
 augroup clipboard
-  au TextYankPost *
+  autocmd!
+  autocmd TextYankPost *
     \  if v:event.regname==''&&v:event.operator=='y'
     \|   let @+=join(v:event.regcontents, "\n")
     \| endif
