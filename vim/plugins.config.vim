@@ -32,6 +32,9 @@ autocmd VimEnter *
 
 " coc
 autocmd FileType javascript setlocal filetype=javascript.jsx
+autocmd User CocOpenFloat
+  \ call setwinvar(g:coc_last_float_win, "&foldenable", 0) |
+  \ call setwinvar(g:coc_last_float_win, "&foldcolumn", 0)
 
 " splitjoin
 let g:splitjoin_html_attributes_bracket_on_new_line=1
