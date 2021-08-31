@@ -79,7 +79,7 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
   # install zim
   dl_e https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh ~/.zsh/.zim
   zsh ~/.zsh/.zim/zimfw.zsh install
-  zsh -i -c "fast-theme ~/.zsh/dark-theme" 1>&2> /dev/null
+  zsh -i -c "fast-theme ~/.zsh/theme-dark"
   # make zsh the default shell
   [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
 fi
