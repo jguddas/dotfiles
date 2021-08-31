@@ -1,6 +1,4 @@
-zmodule directory
 zmodule environment
-zmodule history
 zmodule input
 zmodule utility
 zmodule archive
