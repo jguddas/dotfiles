@@ -70,7 +70,7 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
   ln_i "$base"/zsh/zprofile ~/.zsh/.zprofile
   ln_i "$base"/zsh/{prompt,aliases}.zsh ~/.zsh
   ln_i "$base"/zsh/functions/* ~/.zsh/functions
-  ln_i "$base"/zsh/theme.ini ~/.zsh
+  ln_i "$base"/zsh/theme-{dark,light}.ini ~/.zsh
   # move zhistory to new zsh dotdir
   if [ -e ~/.zhistory ] && [ ! -e ~/.zsh/.zhistory ]; then
     mv ~/.zhistory ~/.zsh
@@ -80,7 +80,7 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
     git clone --recursive https://github.com/jguddas/zimfw.git ~/.zsh/.zim
     zsh -i -c "zmanage install" 2> /dev/null
   fi
-  zsh -i -c "fast-theme ~/.zsh/theme" 1>&2> /dev/null
+  zsh -i -c "fast-theme ~/.zsh/dark-theme" 1>&2> /dev/null
   # make zsh the default shell
   [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
 fi
