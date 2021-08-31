@@ -63,7 +63,8 @@ if [ -z "$1" ] || [ "$1" = "vim" ]; then
 fi
 
 if [ -z "$1" ] || [ "$1" = "zsh" ]; then
-  mkdir -p ~/.zsh/functions
+  mkdir -p ~/.zsh/{functions,.zim}
+  ln_i "$base"/zsh/zlogin ~/.zlogin
   ln_i "$base"/zsh/zshenv ~/.zshenv
   ln_i "$base"/zsh/zimrc ~/.zsh/.zimrc
   ln_i "$base"/zsh/zshrc ~/.zsh/.zshrc
@@ -76,10 +77,8 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
     mv ~/.zhistory ~/.zsh
   fi
   # install zim
-  if [ ! -d "$HOME/.zsh/.zim" ]; then
-    git clone --recursive https://github.com/jguddas/zimfw.git ~/.zsh/.zim
-    zsh -i -c "zmanage install" 2> /dev/null
-  fi
+  dl_e https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh ~/.zsh/.zim
+  zsh ~/.zsh/.zim/zimfw.zsh install
   zsh -i -c "fast-theme ~/.zsh/dark-theme" 1>&2> /dev/null
   # make zsh the default shell
   [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh

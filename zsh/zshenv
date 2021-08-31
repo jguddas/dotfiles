@@ -1,1 +1,2 @@
 ZDOTDIR=$HOME/.zsh
+ZIM_HOME=$HOME/.zsh/.zim

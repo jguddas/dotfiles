@@ -1,17 +1,15 @@
-zmodules=( \
-  directory \
-  environment \
-  history \
-  input \
-  utility \
-  archive \
-  custom \
-  history-substring-search \
-  pacman \
-  completion \
-  hlissner/zsh-autopair \
-  zdharma/fast-syntax-highlighting \
-)
+zmodule directory
+zmodule environment
+zmodule history
+zmodule input
+zmodule utility
+zmodule archive
+zmodule custom
+zmodule history-substring-search
+zmodule pacman
+zmodule completion
+zmodule hlissner/zsh-autopair
+zmodule zdharma/fast-syntax-highlighting
 
 zstyle ':zim:input' double-dot-expand yes
 zssh_ids=(id_rsa)
