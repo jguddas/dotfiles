@@ -5,9 +5,9 @@ zmodule input
 zmodule utility
 zmodule archive
 zmodule custom
-zmodule history-substring-search
 zmodule pacman
 zmodule completion
+zmodule zsh-users/zsh-history-substring-search
 zmodule hlissner/zsh-autopair
 zmodule zdharma/fast-syntax-highlighting
 
