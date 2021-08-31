@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+if [ "$1" != "light" ] && [ "$1" != "dark" ]; then
+  echo "ERROR: only theme <light|dark> is supported"
+  exit 1
+fi
+
+
+if [ "$1" = "light" ]; then
+  prev="dark"
+  next="light"
+else
+  prev="light"
+  next="dark"
+fi
+
+sed -i "s/background=$prev/background=$next/" ~/.vim/config.vim
+zsh -i -c "fast-theme ~/.zsh/theme-$next"
