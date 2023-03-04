@@ -1,9 +1,6 @@
-" theme
-if &background ==# 'light'
-  colorscheme PaperColor
-else
-  colorscheme onecustom
-endif
+" editorconfig
+let g:sleuth_lua_defaults = 'tabstop=2'
+let g:EditorConfig_preserve_formatoptions = 1
 
 " gitgutter
 let g:gitgutter_sign_added = '┃'
@@ -17,24 +14,18 @@ autocmd TextChanged,InsertEnter,InsertLeave * GitGutter
 " markdown
 let g:markdown_fold_override_foldtext = 0
 
-" emmet
-let g:user_emmet_settings = {
-\  'javascript' : { 'extends' : 'jsx' }
-\}
+" eunuch
+let g:eunuch_no_maps = 1
 
 " tcomment
 let g:tcomment_mapleader_comment_anyway = "\<Nop>"
 let g:tcomment_mapleader_uncomment_anyway = "\<Nop>"
-autocmd VimEnter *
-  \ call tcomment#type#Define('lightscript', tcomment#GetLineC('// %s')) |
-  \ call tcomment#type#Define('lightscript_block', g:tcomment#block_fmt_c ) |
-  \ call tcomment#type#Define('lightscript_inline', g:tcomment#inline_fmt_c)
 
 " coc
-autocmd FileType javascript setlocal filetype=javascript.jsx
-autocmd User CocOpenFloat
-  \ call setwinvar(g:coc_last_float_win, "&foldenable", 0) |
-  \ call setwinvar(g:coc_last_float_win, "&foldcolumn", 0)
+" autocmd FileType javascript setlocal filetype=javascript.jsx
+" autocmd User CocOpenFloat
+"   \ call setwinvar(g:coc_last_float_win, "&foldenable", 0) |
+"   \ call setwinvar(g:coc_last_float_win, "&foldcolumn", 0)
 
 " splitjoin
 let g:splitjoin_html_attributes_bracket_on_new_line=1
@@ -80,6 +71,12 @@ autocmd FileType javascript let b:switch_custom_definitions = [{
 \  'let': 'const',
 \  'const': 'let',
 \  'var': 'const',
+\}]
+
+autocmd FileType gitrebase let b:switch_custom_definitions = [{
+\  'pick': 'edit',
+\  'edit': 'fixup',
+\  'fixup': 'pick',
 \}]
 
 " targets
@@ -128,12 +125,12 @@ let g:dirvish_mode = ':sort r /[^\/]$/'
 " ligthline
 function! LightlineBranch()
   let maxlen = 40
-  if &ft !~? 'vimfiler' && exists('*fugitive#head')
-    let branch = fugitive#head()
+  if &ft !~? 'vimfiler' && exists('*FugitiveHead')
+    let branch = FugitiveHead()
     if len(branch) < winwidth(0) - maxlen - 15
       return branch
     endif
-    let branch = pathshorten(fugitive#head())
+    let branch = pathshorten(FugitiveHead())
     if len(branch) < winwidth(0) - maxlen
       return branch
     endif
@@ -205,7 +202,7 @@ let g:lightline#colorscheme#PaperColor_light_light#palette = {
 \ }}
 
 let g:lightline = {
-  \'colorscheme': &background ==# 'light' ? 'PaperColor_light_light' : 'onecustom',
+  \'colorscheme': 'PaperColor_light_light',
   \'component_function': {
     \'branch': 'LightlineBranch',
     \'cocstatus': 'LighlineDiagnostic',
@@ -242,4 +239,4 @@ let g:lightline = {
   \'tabline_subseparator': { 'left': '', 'right': '' }
 \}
 
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+" autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()

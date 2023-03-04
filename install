@@ -45,20 +45,14 @@ base="$(dirname "$0")"
 config="${XDG_CONFIG_HOME:-$HOME/.config}"
 gh="https://raw.githubusercontent.com"
 
-if [ -z "$1" ] || [ "$1" = "vim" ]; then
-  mkdir -p ~/.vim/{autoload,snippets} "$config"/nvim
-  ln_i "$base"/vim/*.vim ~/.vim
-  ln_i "$base"/vim/vimrc ~/.vim/vimrc
-  ln_i "$base"/vim/vimrc "$config"/nvim/init.vim
-  ln_i "$base"/vim/snippets/* ~/.vim/snippets
-  ln_i "$base"/vim/coc-settings.json "$config"/nvim
+if [ -z "$1" ] || [ "$1" = "neovim" ]; then
+  mkdir -p "$config"/nvim
+  ln_i "$base"/neovim/* "$config"/nvim
   # install vim-plug
   dl_e $gh/junegunn/vim-plug/master/plug.vim ~/.vim/autoload
   # install plugins
   if command -v nvim > /dev/null; then
     nvim -u ~/.vim/plugins.vim -c "let g:plug_threads = 3|PlugInstall|qa!"
-  elif command -v vim > /dev/null; then
-    vim -u ~/.vim/plugins.vim -c "let g:plug_threads = 3|PlugInstall|qa!"
   fi
 fi
 
