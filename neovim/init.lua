@@ -563,9 +563,10 @@ local func = luasnip.function_node
 local choice = luasnip.choice_node
 local dynamicn = luasnip.dynamic_node
 local fmt = require("luasnip.extras.fmt").fmt
+local util = require("luasnip.util.util")
 
 local function array_helper()
-	local line = vim.api.nvim_get_current_line()
+	local line = util.get_current_line_to_cursor()
 	local match = string.match(line, "(%w+)s([^)]*])$")
 	if match ~= nil then
 		return match.gsub(match, "ie$", "y")
