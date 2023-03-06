@@ -1,0 +1,56 @@
+! vim:ft=xdefaults
+! special
+*.foreground:   #444444
+*.background:   #eeeeee
+*.borderColor:  #eeeeee
+*.cursorColor:  #878787
+
+! black
+*.color0:       #eeeeee
+*.color8:       #bcbcbc
+
+! red
+*.color1:       #af0000
+*.color9:       #d70000
+
+! green
+*.color2:       #008700
+*.color10:      #d70087
+
+! yellow
+*.color3:       #5f8700
+*.color11:      #8700af
+
+! blue
+*.color4:       #0087af
+*.color12:      #00af5f
+
+! magenta
+*.color5:       #878787
+*.color13:      #d75f00
+
+! cyan
+*.color6:       #005f87
+*.color14:      #005faf
+
+! white
+*.color7:       #444444
+*.color15:      #005f87
+
+! urxvt
+URxvt.scrollBar: false
+URxvt.urgentOnBell: true
+
+! font
+URxvt.font: xft:Hack Nerd Font Mono:pixelsize=12
+! URxvt.italicFont: xft:Fira Code iScript:Italic
+
+! extentions
+URxvt.perl-ext-common: default,matcher,font-size
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt.keysym.C-Meta-y: font-size:increase
+URxvt.keysym.C-Meta-s: font-size:decrease
+URxvt.keysym.C-Meta-m: font-size:reset
+
+URxvt.keysym.S-space: \033[32;2u

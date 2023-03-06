@@ -9,10 +9,17 @@ fi
 if [ "$1" = "light" ]; then
   prev="dark"
   next="light"
+  ln -i ./urxvt/lightresources ~/.Xresources
+  ln -i ./i3wm/lg.jpg ~/.config/i3/bg.jpg
 else
   prev="light"
   next="dark"
+  ln -i ./urxvt/Xresources ~/.Xresources
+  ln -i ./i3wm/bg.jpg ~/.config/i3/bg.jpg
 fi
 
+xrdb ~/.Xresources
+i3-msg reload
 sed -i "s/background=$prev/background=$next/" ~/.vim/config.vim
 zsh -i -c "fast-theme ~/.zsh/theme-$next"
+feh --bg-tile ~/.config/i3/bg.jpg
