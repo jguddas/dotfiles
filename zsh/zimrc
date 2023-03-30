@@ -7,7 +7,7 @@ zmodule pacman
 zmodule completion
 zmodule zsh-users/zsh-history-substring-search
 zmodule hlissner/zsh-autopair
-zmodule zdharma/fast-syntax-highlighting
+zmodule z-shell/F-Sy-H
 
 zstyle ':zim:input' double-dot-expand yes
 zssh_ids=(id_rsa)
