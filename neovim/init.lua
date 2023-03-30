@@ -101,7 +101,7 @@ vim.opt.inccommand = "split"
 
 ---- Plugins ---- {{{
 local Plug = vim.fn["plug#"]
-vim.call("plug#begin", "~/.vim/bundle")
+vim.call("plug#begin", vim.fn.stdpath("config") .. '/plugged')
 Plug("lewis6991/impatient.nvim", { ["branch"] = "main" })
 Plug("nvim-lua/plenary.nvim")
 
@@ -167,9 +167,7 @@ require("impatient")
 -- }}}
 
 ---- Plugin Settings ---- {{{
-vim.cmd([[
-source ~/.config/nvim/plugins.config.vim
-]])
+vim.cmd("source" .. vim.fn.stdpath("config") .. "/plugins.config.vim")
 
 -- Colorscheme {{{
 vim.cmd("colorscheme PaperColorSlim")

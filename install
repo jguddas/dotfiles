@@ -43,17 +43,16 @@ dl_e() {
 }
 base="$(dirname "$0")"
 config="${XDG_CONFIG_HOME:-$HOME/.config}"
+data="${XDG_DATA_HOME:-$HOME/.local/share}"
 gh="https://raw.githubusercontent.com"
 
 if [ -z "$1" ] || [ "$1" = "neovim" ]; then
-  mkdir -p "$config"/nvim
+  mkdir -p "$config"/nvim "$data"/nvim/site/autoload
   ln_i "$base"/neovim/* "$config"/nvim
   # install vim-plug
-  dl_e $gh/junegunn/vim-plug/master/plug.vim ~/.vim/autoload
+  dl_e $gh/junegunn/vim-plug/master/plug.vim "$data"/nvim/site/autoload
   # install plugins
-  if command -v nvim > /dev/null; then
-    nvim -u ~/.vim/plugins.vim -c "let g:plug_threads = 3|PlugInstall|qa!"
-  fi
+  nvim -c "let g:plug_threads = 3|PlugInstall|qa!"
 fi
 
 if [ -z "$1" ] || [ "$1" = "zsh" ]; then
