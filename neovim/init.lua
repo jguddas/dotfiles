@@ -519,6 +519,7 @@ cmp.setup({
 		{ name = "luasnip", priority = 1000 },
 		{ name = "nvim_lsp" },
 	}, {
+		{ name = "path" },
 		{ name = "buffer" },
 	}),
 })
