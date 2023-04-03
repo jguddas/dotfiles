@@ -137,6 +137,7 @@ Plug("hrsh7th/cmp-buffer", { ["branch"] = "main" })
 Plug("hrsh7th/cmp-path", { ["branch"] = "main" })
 Plug("hrsh7th/cmp-cmdline", { ["branch"] = "main" })
 Plug("hrsh7th/nvim-cmp", { ["branch"] = "main" }) -- completion
+Plug("zbirenbaum/copilot.lua") -- copilot
 
 Plug("windwp/nvim-autopairs", { commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347" })
 Plug("jguddas/nvim-ts-autotag", { ["branch"] = "main" })
@@ -522,6 +523,20 @@ cmp.setup({
 	}),
 })
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+require("copilot").setup({
+	suggestion = {
+		enabled = true,
+		auto_trigger = true,
+		keymap = { accept = "<tab>" },
+	},
+	panel = { enabled = false },
+})
+cmp.event:on("menu_opened", function()
+	vim.b.copilot_suggestion_hidden = true
+end)
+cmp.event:on("menu_closed", function()
+	vim.b.copilot_suggestion_hidden = false
+end)
 -- }}}
 
 -- LSP {{{
