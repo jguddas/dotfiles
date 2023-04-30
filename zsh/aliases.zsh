@@ -78,7 +78,6 @@ alias gca='git commit --verbose --all'
 alias gcu='git add --update && git commit --verbose'
 alias gcam='git commit --verbose --all --message'
 alias gcum='git add --update && git commit --verbose --message'
-alias gco='git checkout'
 alias gcoh='git checkout HEAD -- '
 alias gcm='git commit --message'
 alias gd='git diff'
@@ -127,25 +126,9 @@ gcd() {
   fi
   cd "$dir"
 }
-
-# git flow
-alias gf='git flow'
-alias gfi='git flow init'
-alias gfI='git flow init -d'
-alias gfid='git flow init -d'
-alias gff='git flow feature'
-alias gffs='git flow feature start'
-alias gfff='git flow feature finish'
-alias gffd='git flow feature delete'
-alias gffp='git flow feature publish'
-alias gfft='git flow feature track'
-alias gfr='git flow release'
-alias gfrs='git flow release start'
-alias gfrf='git flow release finish'
-alias gfrd='git flow release delete'
-alias gfh='git flow hotfix'
-alias gfhs='git flow hotfix start'
-alias gfhf='git flow hotfix finish'
-alias gfhd='git flow hotfix delete'
-alias gfs='git flow support'
-alias gfss='git flow support start'
+gbcm() {
+  gbc "$(sed 's|[^[:alnum:]]\{1,\}|-|g;s|-|\/|' <<< "$1")"
+}
+gco() {
+  git checkout "$@" || gco "$(sed 's|[^[:alnum:]]\{1,\}|-|g;s|-|\/|' <<< "$1")"
+}
