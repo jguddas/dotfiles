@@ -130,5 +130,5 @@ gbcm() {
   gbc "$(sed 's|[^[:alnum:]]\{1,\}|-|g;s|-|\/|' <<< "$1")"
 }
 gco() {
-  git checkout "$@" || gco "$(sed 's|[^[:alnum:]]\{1,\}|-|g;s|-|\/|' <<< "$1")"
+  git checkout "$@" || git checkout "$(sed 's|[^[:alnum:]]\{1,\}|-|g;s|-|\/|' <<< "$1")"
 }
