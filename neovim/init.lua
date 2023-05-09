@@ -162,6 +162,7 @@ Plug("justinmk/vim-dirvish") -- filebrowser
 Plug("tpope/vim-eunuch") -- UNIX shell commands
 Plug("tpope/vim-fugitive") -- git wrapper
 Plug("tpope/vim-rhubarb") -- fugitive github support
+Plug("bogado/file-line")
 
 vim.call("plug#end")
 require("impatient")
