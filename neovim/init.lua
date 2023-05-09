@@ -307,7 +307,7 @@ vim.keymap.set("n", "<C-p>", ":bprev<CR>")
 -- window
 vim.keymap.set("n", "<leader>q", "<C-w>c")
 vim.keymap.set("n", "<leader>o", ":only<CR>")
-vim.keymap.set("n", "<leade><leader>o", ":BufOnly<CR>")
+vim.keymap.set("n", "<leader><leader>o", ":BufOnly<CR>")
 
 -- focus
 vim.keymap.set("n", "<leader>u", "<C-w><Up>")
