@@ -101,7 +101,7 @@ vim.opt.inccommand = "split"
 
 ---- Plugins ---- {{{
 local Plug = vim.fn["plug#"]
-vim.call("plug#begin", vim.fn.stdpath("config") .. '/plugged')
+vim.call("plug#begin", vim.fn.stdpath("config") .. "/plugged")
 Plug("lewis6991/impatient.nvim", { ["branch"] = "main" })
 Plug("nvim-lua/plenary.nvim")
 
@@ -138,6 +138,8 @@ Plug("hrsh7th/cmp-path", { ["branch"] = "main" })
 Plug("hrsh7th/cmp-cmdline", { ["branch"] = "main" })
 Plug("hrsh7th/nvim-cmp", { ["branch"] = "main" }) -- completion
 Plug("zbirenbaum/copilot.lua") -- copilot
+Plug("zbirenbaum/copilot-cmp")
+-- Plug("github/copilot.vim", { ["branch"] = "release" })
 
 Plug("windwp/nvim-autopairs", { commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347" })
 Plug("jguddas/nvim-ts-autotag", { ["branch"] = "main" })
@@ -207,31 +209,31 @@ sign define DiagnosticSignHint  text= • texthl=DiagnosticSignHint  linehl= n
 -- }}}
 
 -- Treesitter {{{
--- require("nvim-treesitter.configs").setup({
--- 	ensure_installed = {
--- 		"bash",
--- 		"c",
--- 		"css",
--- 		"html",
--- 		"java",
--- 		"javascript",
--- 		"json",
--- 		"lua",
--- 		"markdown",
--- 		"markdown_inline",
--- 		"python",
--- 		"rust",
--- 		"tsx",
--- 		"typescript",
--- 		"yaml",
--- 	},
--- 	ignore_install = { "phpdoc" },
--- 	highlight = { enable = true },
--- 	autopairs = { enable = true },
--- 	autotag = { enable = true, enable_close = false },
--- 	endwise = { enable = true },
--- 	indent = { enable = true, disable = { "python", "css" } },
--- })
+require("nvim-treesitter.configs").setup({
+	ensure_installed = {
+		"bash",
+		"c",
+		"css",
+		"html",
+		"java",
+		"javascript",
+		"json",
+		"lua",
+		"markdown",
+		"markdown_inline",
+		"python",
+		"rust",
+		"tsx",
+		"typescript",
+		"yaml",
+	},
+	ignore_install = { "phpdoc" },
+	highlight = { enable = true },
+	autopairs = { enable = true },
+	autotag = { enable = true, enable_close = false },
+	endwise = { enable = true },
+	indent = { enable = true, disable = { "python", "css" } },
+})
 --- }}}
 
 -- Smartpairs {{{
@@ -505,7 +507,12 @@ cmp.setup({
 		end),
 		["<tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
-				cmp.confirm()
+				local entry = cmp.get_selected_entry()
+				if entry and entry.source.name == "copilot" then
+					cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+				else
+					cmp.confirm()
+				end
 			else
 				fallback()
 			end
@@ -517,28 +524,64 @@ cmp.setup({
 		end,
 	},
 	sources = cmp.config.sources({
+		{ name = "copilot", priority = 1002 },
+		{ name = "nvim_lsp", priority = 1001 },
 		{ name = "luasnip", priority = 1000 },
-		{ name = "nvim_lsp" },
 	}, {
 		{ name = "path" },
 		{ name = "buffer" },
 	}),
+	-- method = "getCompletionsCycling",
+	-- remove_indent = false,
+	-- formatters = {
+	-- 	label = require("copilot_cmp.format").format_label_text,
+	-- 	insert_text = require("copilot_cmp.format").remove_existing,
+	-- 	preview = require("copilot_cmp.format").deindent,
+	-- },
+	sorting = {
+		priority_weight = 2,
+		comparators = {
+			require("copilot_cmp.comparators").prioritize,
+
+			-- Below is the default comparitor list and order for nvim-cmp
+			cmp.config.compare.offset,
+			-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+			cmp.config.compare.exact,
+			cmp.config.compare.score,
+			cmp.config.compare.recently_used,
+			cmp.config.compare.locality,
+			cmp.config.compare.kind,
+			cmp.config.compare.sort_text,
+			cmp.config.compare.length,
+			cmp.config.compare.order,
+		},
+	},
 })
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 require("copilot").setup({
+	server_opts_overrides = {
+		settings = {
+			advanced = {
+				listCount = 10, -- #completions for panel
+				inlineSuggestCount = 3, -- #completions for getCompletions
+			},
+		},
+	},
 	suggestion = {
-		enabled = true,
-		auto_trigger = true,
-		keymap = { accept = "<tab>" },
+		enabled = false,
+		-- enabled = true,
+		-- auto_trigger = true,
+		-- keymap = { accept = "<tab>" },
 	},
 	panel = { enabled = false },
 })
-cmp.event:on("menu_opened", function()
-	vim.b.copilot_suggestion_hidden = true
-end)
-cmp.event:on("menu_closed", function()
-	vim.b.copilot_suggestion_hidden = false
-end)
+require("copilot_cmp").setup()
+-- cmp.event:on("menu_opened", function()
+-- 	vim.b.copilot_suggestion_hidden = true
+-- end)
+-- cmp.event:on("menu_closed", function()
+-- 	vim.b.copilot_suggestion_hidden = false
+-- end)
 -- }}}
 
 -- LSP {{{
@@ -690,6 +733,8 @@ luasnip.filetype_extend("typescriptreact", { "javascript/typescript", "typescrip
 -- }}}
 
 -- Linting {{{
+require("lsp-format").setup({})
+local null_ls = require("null-ls")
 require("mason-null-ls").setup({
 	automatic_setup = true,
 	-- ensure_installed = {
@@ -699,22 +744,20 @@ require("mason-null-ls").setup({
 	-- 	"shellcheck",
 	-- 	"cspell",
 	-- },
-})
-require("lsp-format").setup({})
-local null_ls = require("null-ls")
-require("mason-null-ls").setup_handlers({
-	function(source_name, methods)
-		require("mason-null-ls.automatic_setup")(source_name, methods)
-	end,
-	cspell = function(source_name, methods)
-		for i = 1, #methods do
-			null_ls.register(null_ls.builtins[methods[i]][source_name].with({
-				diagnostics_postprocess = function(diagnostic)
-					diagnostic.severity = vim.diagnostic.severity["WARN"]
-				end,
-			}))
-		end
-	end,
+	handlers = {
+		function(source_name, methods)
+			require("mason-null-ls.automatic_setup")(source_name, methods)
+		end,
+		cspell = function(source_name, methods)
+			for i = 1, #methods do
+				null_ls.register(null_ls.builtins[methods[i]][source_name].with({
+					diagnostics_postprocess = function(diagnostic)
+						diagnostic.severity = vim.diagnostic.severity["WARN"]
+					end,
+				}))
+			end
+		end,
+	},
 })
 null_ls.setup({
 	on_attach = function(client, bufnr)
