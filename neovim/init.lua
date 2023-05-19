@@ -209,31 +209,31 @@ sign define DiagnosticSignHint  text= • texthl=DiagnosticSignHint  linehl= n
 -- }}}
 
 -- Treesitter {{{
-require("nvim-treesitter.configs").setup({
-	ensure_installed = {
-		"bash",
-		"c",
-		"css",
-		"html",
-		"java",
-		"javascript",
-		"json",
-		"lua",
-		"markdown",
-		"markdown_inline",
-		"python",
-		"rust",
-		"tsx",
-		"typescript",
-		"yaml",
-	},
-	ignore_install = { "phpdoc" },
-	highlight = { enable = true },
-	autopairs = { enable = true },
-	autotag = { enable = true, enable_close = false },
-	endwise = { enable = true },
-	indent = { enable = true, disable = { "python", "css" } },
-})
+-- require("nvim-treesitter.configs").setup({
+-- 	ensure_installed = {
+-- 		"bash",
+-- 		"c",
+-- 		"css",
+-- 		"html",
+-- 		"java",
+-- 		"javascript",
+-- 		"json",
+-- 		"lua",
+-- 		"markdown",
+-- 		"markdown_inline",
+-- 		"python",
+-- 		"rust",
+-- 		"tsx",
+-- 		"typescript",
+-- 		"yaml",
+-- 	},
+-- 	ignore_install = { "phpdoc" },
+-- 	highlight = { enable = true },
+-- 	autopairs = { enable = true },
+-- 	autotag = { enable = true, enable_close = false },
+-- 	endwise = { enable = true },
+-- 	indent = { enable = true, disable = { "python", "css" } },
+-- })
 --- }}}
 
 -- Smartpairs {{{
