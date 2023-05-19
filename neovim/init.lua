@@ -107,7 +107,7 @@ Plug("nvim-lua/plenary.nvim")
 
 -- interface
 Plug("itchyny/lightline.vim") -- statusline plugin
-Plug("pappasam/papercolor-theme-slim") -- paper color thmee
+Plug("pappasam/papercolor-theme-slim", { ["branch"] = "main" }) -- paper color thmee
 Plug("mgee/lightline-bufferline") -- lightline bufferline
 Plug("mhinz/vim-sayonara") -- better buffer closing
 Plug("nelstrom/vim-markdown-folding") -- better markdown folding
@@ -124,8 +124,8 @@ Plug("L3MON4D3/LuaSnip") -- snippets
 Plug("saadparwaiz1/cmp_luasnip")
 
 Plug("neovim/nvim-lspconfig") -- lsp
-Plug("hrsh7th/cmp-nvim-lsp")
-Plug("williamboman/mason.nvim")
+Plug("hrsh7th/cmp-nvim-lsp", { ["branch"] = "main" })
+Plug("williamboman/mason.nvim", { ["branch"] = "main" })
 Plug("williamboman/mason-lspconfig.nvim", { ["branch"] = "main" })
 Plug("neovim/nvim-lspconfig")
 
