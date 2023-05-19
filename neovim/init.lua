@@ -128,6 +128,7 @@ Plug("hrsh7th/cmp-nvim-lsp", { ["branch"] = "main" })
 Plug("williamboman/mason.nvim", { ["branch"] = "main" })
 Plug("williamboman/mason-lspconfig.nvim", { ["branch"] = "main" })
 Plug("neovim/nvim-lspconfig")
+Plug("b0o/SchemaStore.nvim", { ["branch"] = "main" })
 
 Plug("jose-elias-alvarez/null-ls.nvim", { ["branch"] = "main" }) -- linting
 Plug("jay-babu/mason-null-ls.nvim", { ["branch"] = "main" })
@@ -597,13 +598,37 @@ require("mason-lspconfig").setup({
 	},
 	automatic_installation = true,
 })
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 require("mason-lspconfig").setup_handlers({
-	function(server_name) -- default handler (optional)
-		require("lspconfig")[server_name].setup({})
+	function(server_name)
+		require("lspconfig")[server_name].setup({
+			capabilities = capabilities,
+		})
+	end,
+	["yamlls"] = function()
+		require("lspconfig").yamlls.setup({
+			capabilities = capabilities,
+			settings = {
+				yaml = {
+					schemas = require("schemastore").yaml.schemas({}),
+					validate = { enable = true },
+				},
+			},
+		})
+	end,
+	["jsonls"] = function()
+		require("lspconfig").jsonls.setup({
+			capabilities = capabilities,
+			settings = {
+				json = {
+					schemas = require("schemastore").json.schemas({}),
+					validate = { enable = true },
+				},
+			},
+		})
 	end,
 })
 vim.diagnostic.config({ virtual_text = false })
-require("cmp_nvim_lsp").default_capabilities()
 vim.diagnostic.config({
 	float = { border = "single" },
 })
