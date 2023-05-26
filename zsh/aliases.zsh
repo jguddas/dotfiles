@@ -115,7 +115,7 @@ alias gwa='git worktree add --force'
 alias gwl='git worktree list'
 alias gwp='git worktree prune'
 gcd() {
-  git clone "$@"
+  gh repo clone "$@"
   local dir
   if [[ $2 ]]; then
     dir=$2
