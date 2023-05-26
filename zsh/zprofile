@@ -10,9 +10,13 @@ if [ -z "$TMUX" ]; then
   fi
   if command -v yarn > /dev/null; then
     PATH="$PATH:$(yarn global bin)"
+  else
+    PATH="$PATH:~/.yarn/bin"
   fi
   if command -v npm > /dev/null; then
     PATH="$PATH:$(npm config get prefix)/bin"
   fi
   export PATH="$PATH"
 fi
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
