@@ -9,6 +9,5 @@ zmodule zsh-users/zsh-history-substring-search
 zmodule hlissner/zsh-autopair
 zmodule z-shell/F-Sy-H
 
-zstyle ':zim:input' double-dot-expand yes
 zssh_ids=(id_rsa)
 zinput_mode='vi'
