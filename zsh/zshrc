@@ -33,6 +33,7 @@ AUTOPAIR_PAIRS=('`' '`' "'" "'" '"' '"' '{' '}' '[' ']' '(' ')')
 autoload -Uz spell.ch
 FAST_HIGHLIGHT+=(
   chroma-git spell.ch
+  chroma-gbcm spell.ch
   chroma-jumpstart chroma/-subcommand.ch
 )
 
