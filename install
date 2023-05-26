@@ -157,3 +157,7 @@ if [ -z "$1" ] || [ "$1" = "tmux" ]; then
   mkdir -p ~/
   ln_i "$base"/tmux/tmux.conf ~/.tmux.conf
 fi
+
+if [ -z "$1" ] || [ "$1" = "git" ]; then
+  git config --global core.hooksPath "$PWD/$base"/git/hooks
+fi

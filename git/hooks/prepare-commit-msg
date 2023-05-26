@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if command -v devmoji &> /dev/null; then
+    devmoji --edit --lint
+fi
