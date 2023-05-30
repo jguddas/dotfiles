@@ -160,4 +160,5 @@ fi
 
 if [ -z "$1" ] || [ "$1" = "git" ]; then
   git config --global core.hooksPath "$PWD/$base"/git/hooks
+  ln_i "$base"/git/devmoji.config.js ~/devmoji.config.js
 fi
