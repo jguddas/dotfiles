@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
 if command -v devmoji &> /dev/null; then
+    sed -i .bak '1 s/[[:<:]]WIP[[:>:]]/:construction: WIP :construction:/gi' "$1"
     devmoji --edit &>/dev/null
 fi
