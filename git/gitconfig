@@ -1,0 +1,8 @@
+[user]
+	name = Jakob Guddas
+[commit]
+	gpgsign = true
+[core]
+	ignorecase = false
+[merge]
+	tool = meld
