@@ -33,34 +33,32 @@ alias his='cat ~/.zsh/.zhistory | sed "s/[^;]\+;//" | awk'
 alias pn='printf "%s\\n"'
 al() { alias | awk "/$@/" }
 
-# yarn
-alias y="yarn"
-alias ya="yarn add"
-alias yd="yarn add -D"
-alias yg="yarn global"
-alias yga="yarn global add"
-alias ygb="yarn global bin"
-alias ygr="yarn global remove"
-alias ygu="yarn global upgrade"
-alias ygui="yarn global upgrade-interactive"
-alias yi="yarn init"
-alias yiy="yarn init --yes"
-alias yr="yarn remove"
-alias ys="yarn install"
-alias yu="yarn upgrade"
-alias yui="yarn upgrade-interactive"
-alias yy="yarn run"
-publish() {
-  if [ -e .npmignore ]; then
-    ignored="$(git ls-files --ignored --exclude-from=.npmignore)"
-    files="$(git ls-files | grep -vFx "$ignored" | grep -vx ".npmignore")"
-  else
-    files=$(git ls-files)
-  fi
-  jq ".files=[${$(printf '"%s",' ${(f)files}): :(-1)}]" package.json | sponge package.json
-  git diff
-  yarn publish
+# yarn aliases and smart switching to different package managers
+load-yarn() {
+  DIR="$PWD"
+  while
+    if [[ -f "$DIR/yarn.lock" ]]; then
+      PACKAGE_MANAGER="yarn"
+    elif [[ -f "$DIR/pnpm-lock.yaml" ]]; then
+      PACKAGE_MANAGER="pnpm"
+    elif [[ -f "$DIR/package-lock.json" ]]; then
+      PACKAGE_MANAGER="npm"
+    fi
+    [[ -z $PACKAGE_MANAGER ]] && [[ "$DIR" != "/" ]]
+  do DIR=$(dirname "$DIR"); done
+  PACKAGE_MANAGER="${PACKAGE_MANAGER:-yarn}"
+
+  alias y="$PACKAGE_MANAGER"
+  alias ya="$PACKAGE_MANAGER add"
+  alias yd="$PACKAGE_MANAGER add -D"
+  alias yg="$PACKAGE_MANAGER global"
+  alias yga="$PACKAGE_MANAGER global add"
+  alias yi="$PACKAGE_MANAGER init"
+  alias yiy="$PACKAGE_MANAGER init --yes"
+  alias ys="$PACKAGE_MANAGER install"
 }
+add-zsh-hook chpwd load-yarn
+load-yarn
 
 # git
 alias g='git'
