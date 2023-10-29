@@ -1,2 +1,5 @@
 [tools]
 node = "lts"
+bun = "latest"
+yarn = "1"
+pnpm = "latest"
