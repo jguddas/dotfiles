@@ -2,22 +2,3 @@
 emulate sh -c 'source /etc/profile'
 
 export LS_COLORS='di=01;34:ln=01;36:*.bmp=33:*.tiff=33:*.tif=33:*.TIFF=33:*.cdr=33:*.flif=33:*.gif=33:*.ico=33:*.jpeg=33:*.JPG=33:*.jpg=33:*.nth=33:*.png=33:*.psd=33:*.xpm=33:*.webp=33:*.ai=33:*.eps=33:*.epsf=33:*.drw=33:*.ps=33:*.svg=33:*.avi=35:*.divx=35:*.IFO=35:*.m2v=35:*.m4v=35:*.mkv=35:*.MOV=35:*.mov=35:*.mp4=35:*.mpeg=35:*.mpg=35:*.ogm=35:*.rmvb=35:*.sample=35:*.wmv=35:*.3g2=35:*.3gp=35:*.gp3=35:*.webm=35:*.gp4=35:*.asf=35:*.flv=35:*.ogv=35:*.f4v=35:*.VOB=35:*.vob=35:*.3ga=35:*.S3M=35:*.aac=35:*.au=35:*.dat=35:*.dts=35:*.fcm=35:*.m4a=35:*.mid=35:*.midi=35:*.mod=35:*.mp3=35:*.mp4a=35:*.oga=35:*.ogg=35:*.opus=35:*.s3m=35:*.sid=35:*.wma=35:*.ape=35:*.aiff=35:*.cda=35:*.flac=35:*.alac=35:*.midi=35:*.pcm=35:*.wav=35:*.wv=35:*.wvc=35:';
-
-if [ -z "$TMUX" ]; then
-  PATH="$PATH:$HOME/.local/bin"
-  PATH="$PATH:${GOPATH:-$HOME/go}/bin"
-  if command -v ruby > /dev/null; then
-    PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
-  fi
-  if command -v yarn > /dev/null; then
-    PATH="$PATH:$(yarn global bin)"
-  else
-    PATH="$PATH:~/.yarn/bin"
-  fi
-  if command -v npm > /dev/null; then
-    PATH="$PATH:$(npm config get prefix)/bin"
-  fi
-  export PATH="$PATH"
-fi
-
-
