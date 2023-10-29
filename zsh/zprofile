@@ -20,4 +20,7 @@ if [ -z "$TMUX" ]; then
   export PATH="$PATH"
 fi
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if [ -e "/opt/homebrew/bin/brew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
