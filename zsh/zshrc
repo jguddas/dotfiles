@@ -84,9 +84,5 @@ preexec_functions+=(__before_title)
 # EDITOR and MANPAGER
 if command -v nvim > /dev/null; then
   export EDITOR='nvim'
-  export MANPAGER="nvim -c 'set ft=man' -"
-elif command -v vim > /dev/null; then
-  export EDITOR='vim'
-  export MANPAGER="vim -c 'set ft=man' -"
+  export MANPAGER='nvim +Man!'
 fi
-
