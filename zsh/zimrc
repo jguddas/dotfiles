@@ -1,3 +1,4 @@
+# vim: ft=zsh
 zmodule environment
 zmodule input
 zmodule utility
