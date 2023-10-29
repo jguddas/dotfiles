@@ -49,6 +49,7 @@ load-yarn() {
   PACKAGE_MANAGER="${PACKAGE_MANAGER:-yarn}"
 
   alias y="$PACKAGE_MANAGER"
+  alias yy="$PACKAGE_MANAGER run"
   alias ya="$PACKAGE_MANAGER add"
   alias yd="$PACKAGE_MANAGER add -D"
   alias yg="$PACKAGE_MANAGER global"
