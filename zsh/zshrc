@@ -26,6 +26,9 @@ source $HOME/.zsh/aliases.zsh
 # HistorySubstringSearch
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=fg=green,bold
 
+# Autosuggest completion
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
+
 # Autopairs
 AUTOPAIR_PAIRS=('`' '`' "'" "'" '"' '"' '{' '}' '[' ']' '(' ')')
 
