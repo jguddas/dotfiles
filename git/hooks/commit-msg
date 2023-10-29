@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-if command -v devmoji &> /dev/null; then
-  devmoji --lint < "$1" > /dev/null
-fi
