@@ -14,6 +14,11 @@ if [[ -f ~/.local/share/rtx/bin/rtx ]]; then
   eval "$(~/.local/share/rtx/bin/rtx activate zsh)"
 fi
 
+# Brew
+if [[ -f "/opt/homebrew/bin/brew" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 # Zim
 zstyle ':zim:input' double-dot-expand yes
 if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
