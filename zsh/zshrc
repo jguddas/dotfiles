@@ -38,6 +38,7 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=fg=green,bold
 
 # Autosuggest completion
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
+ZSH_AUTOSUGGEST_COMPLETION_IGNORE="* "
 
 # Autopairs
 AUTOPAIR_PAIRS=('`' '`' "'" "'" '"' '"' '{' '}' '[' ']' '(' ')')
