@@ -77,16 +77,6 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
   [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
 fi
 
-if [ -z "$1" ] || [ "$1" = "qutebrowser" ]; then
-  if [[ "$(uname)" = "Darwin" ]]; then
-    mkdir -p ~/.qutebrowser
-    ln_i "$base"/qutebrowser/* ~/.qutebrowser
-  else
-    mkdir -p "$config"/qutebrowser
-    ln_i "$base"/qutebrowser/* "$config"/qutebrowser
-  fi
-fi
-
 if [ -z "$1" ] || [ "$1" = "i3wm" ]; then
   mkdir -p "$config"/i3/i3ipc
   ln_i "$base"/i3wm/* "$config"/i3
