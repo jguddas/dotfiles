@@ -72,7 +72,7 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
   # install zim
   dl_e https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh ~/.zsh/.zim
   zsh ~/.zsh/.zim/zimfw.zsh install
-  zsh -i -c "fast-theme ~/.zsh/theme-dark"
+  zsh -i -c "fast-theme ~/.zsh/theme-light"
   # make zsh the default shell
   [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
 fi
@@ -103,7 +103,7 @@ fi
 
 if [ -z "$1" ] || [ "$1" = "urxvt" ]; then
   mkdir -p ~/.urxvt/ext ~/.local/share/fonts
-  ln_i "$base"/urxvt/Xresources ~/.Xresources
+  ln_i "$base"/urxvt/lightresources ~/.Xresources
   # install font-size extention
   dl_e $gh/majutsushi/urxvt-font-size/master/font-size ~/.urxvt/ext
   repo="$gh/ryanoasis/nerd-fonts/master/patched-fonts/Hack"
