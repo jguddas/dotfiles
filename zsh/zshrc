@@ -9,6 +9,11 @@ setopt HIST_IGNORE_ALL_DUPS
 fpath=($ZDOTDIR/functions $fpath)
 WORDCHARS=${WORDCHARS//[\/]}
 
+# RTX (asdf compatible runtime version manager)
+if [[ -f ~/.local/share/rtx/bin/rtx ]]; then
+  eval "$(~/.local/share/rtx/bin/rtx activate zsh)"
+fi
+
 # Zim
 zstyle ':zim:input' double-dot-expand yes
 if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
