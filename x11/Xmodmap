@@ -8,4 +8,4 @@ keycode  46 = s S s S minus Greek_sigma 6 KP_6 Greek_SIGMA
 keycode  58 = z Z z Z percent Greek_zeta 1 KP_1 U2124
 keycode  59 = comma endash comma endash quotedbl U03F1 2 KP_2 U21D2
 keycode  60 = period enfilledcircbullet period enfilledcircbullet apostrophe U03D1 3 KP_3 U21A6
-keycode  65 = space space space space space nobreakspace 0 KP_0 U202F
+keycode  65 = space space space space space nobreakspace 0 KP_0 U202F! disable middle mouse click paste
