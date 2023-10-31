@@ -11,6 +11,5 @@ zmodule hlissner/zsh-autopair
 zmodule z-shell/F-Sy-H
 zmodule zsh-users/zsh-autosuggestions
 
-zstyle ':completion:::::default' menu yes select
 zssh_ids=(id_rsa)
 zinput_mode='vi'

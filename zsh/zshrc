@@ -37,7 +37,9 @@ source $HOME/.zsh/aliases.zsh
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=fg=green,bold
 
 # Autosuggest completion
-ZSH_AUTOSUGGEST_STRATEGY=(completion)
+source $ZDOTDIR/functions/autosuggest.zsh
+zstyle ':completion:::::default' menu yes select
+ZSH_AUTOSUGGEST_STRATEGY=(custom)
 ZSH_AUTOSUGGEST_COMPLETION_IGNORE="* "
 
 # Autopairs
