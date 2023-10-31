@@ -10,7 +10,9 @@ fpath=($ZDOTDIR/functions $fpath)
 WORDCHARS=${WORDCHARS//[\/]}
 
 # RTX (asdf compatible runtime version manager)
-if [[ -f ~/.local/share/rtx/bin/rtx ]]; then
+if command -v rtx > /dev/null; then
+  eval "$(rtx activate zsh)"
+elif [[ -f ~/.local/share/rtx/bin/rtx ]]; then
   eval "$(~/.local/share/rtx/bin/rtx activate zsh)"
 fi
 
