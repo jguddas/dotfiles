@@ -115,7 +115,7 @@ Plug("airblade/vim-gitgutter") -- git diff column
 Plug("romainl/vim-qf") -- better quickfix mappings
 
 -- syntax
-Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
+-- Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
 
 -- completion
 Plug("tpope/vim-sleuth") -- adjusts shiftwidth and expandtab
@@ -143,8 +143,8 @@ Plug("zbirenbaum/copilot-cmp")
 -- Plug("github/copilot.vim", { ["branch"] = "release" })
 
 Plug("windwp/nvim-autopairs", { commit = "4fc96c8f3df89b6d23e5092d31c866c53a346347" })
-Plug("jguddas/nvim-ts-autotag", { ["branch"] = "main" })
-Plug("RRethy/nvim-treesitter-endwise")
+-- Plug("jguddas/nvim-ts-autotag", { ["branch"] = "main" })
+-- Plug("RRethy/nvim-treesitter-endwise")
 
 -- actions
 Plug("AndrewRadev/splitjoin.vim") -- join and split lines intelligently
@@ -210,35 +210,35 @@ sign define DiagnosticSignHint  text= • texthl=DiagnosticSignHint  linehl= n
 -- }}}
 
 -- Treesitter {{{
-require("nvim-treesitter.configs").setup({
-	ensure_installed = {
-		"bash",
-		"c",
-		"css",
-		"html",
-		"java",
-		"javascript",
-		"json",
-		"lua",
-		"markdown",
-		"markdown_inline",
-		"python",
-		"rust",
-		"tsx",
-		"typescript",
-		"yaml",
-	},
-	ignore_install = { "phpdoc" },
-	highlight = { enable = true },
-	autopairs = { enable = true },
-	autotag = { enable = true, enable_close = false },
-	endwise = { enable = true },
-	indent = { enable = true, disable = { "python", "css" } },
-})
+-- require("nvim-treesitter.configs").setup({
+-- 	ensure_installed = {
+-- 		"bash",
+-- 		"c",
+-- 		"css",
+-- 		"html",
+-- 		"java",
+-- 		"javascript",
+-- 		"json",
+-- 		"lua",
+-- 		"markdown",
+-- 		"markdown_inline",
+-- 		"python",
+-- 		"rust",
+-- 		"tsx",
+-- 		"typescript",
+-- 		"yaml",
+-- 	},
+-- 	ignore_install = { "phpdoc" },
+-- 	highlight = { enable = true },
+-- 	autopairs = { enable = true },
+-- 	autotag = { enable = true, enable_close = false },
+-- 	endwise = { enable = true },
+-- 	indent = { enable = true, disable = { "python", "css" } },
+-- })
 --- }}}
 
 -- Smartpairs {{{
-require("nvim-ts-autotag.internal").setup({ enable_close = false })
+-- require("nvim-ts-autotag.internal").setup({ enable_close = false })
 local npairs = require("nvim-autopairs")
 local Rule = require("nvim-autopairs.rule")
 local cond = require("nvim-autopairs.conds")
@@ -393,9 +393,9 @@ vim.keymap.set("i", "<space>", function()
 
 	local colnr = vim.fn.col(".")
 	local line = vim.fn.getline(".")
-	if line:sub(colnr - 1, colnr - 1) == ">" then
-		return '<C-c>:lua if not require"nvim-ts-autotag.internal".close_tag() then vim.cmd"normal! a " end <cr>a'
-	end
+	-- if line:sub(colnr - 1, colnr - 1) == ">" then
+	-- 	return '<C-c>:lua if not require"nvim-ts-autotag.internal".close_tag() then vim.cmd"normal! a " end <cr>a'
+	-- end
 
 	if vim.tbl_contains({ "()", "[]", "{}" }, line:sub(colnr - 1, colnr)) then
 		return "<space><space><left>"
