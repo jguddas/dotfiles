@@ -61,7 +61,7 @@ augroup END
 vim.opt.autoread = true
 vim.opt.background = "light"
 vim.opt.backspace = "indent,eol,start"
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "+1"
 vim.opt.diffopt = "foldcolumn:0,filler"
 vim.opt.equalalways = true
 vim.opt.expandtab = true
@@ -160,7 +160,7 @@ Plug("junegunn/vim-easy-align")
 
 -- integration
 Plug("sickill/vim-pasta") -- pasting with indentation
-Plug("editorconfig/editorconfig-vim") -- load .editorconfig
+Plug("gpanders/editorconfig.nvim") -- load .editorconfig
 Plug("justinmk/vim-dirvish") -- filebrowser
 Plug("tpope/vim-eunuch") -- UNIX shell commands
 Plug("tpope/vim-fugitive") -- git wrapper
