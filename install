@@ -145,6 +145,7 @@ fi
 
 if [ -z "$1" ] || [ "$1" = "git" ]; then
   ln_i "$base"/git/gitconfig ~/.gitconfig
+  ln_i "$base"/git/gitconfig-work ~/.gitconfig-work
 fi
 
 if [ -z "$1" ] || [ "$1" = "rtx" ]; then

@@ -1,8 +1,16 @@
 [user]
-	name = Jakob Guddas
+  name = Jakob Guddas
+  email = github@jguddas.de
 [commit]
-	gpgsign = true
+  gpgsign = true
 [core]
-	ignorecase = false
+  ignorecase = false
+[push]
+  autoSetupRemote = true
 [merge]
-	tool = meld
+  tool = meld
+
+[includeIf "hasconfig:remote.*.url:https://github.com/LEGO/**"]
+  path = ~/.gitconfig-work
+[includeIf "hasconfig:remote.*.url:git@github.com:LEGO/**"]
+  path = ~/.gitconfig-work
