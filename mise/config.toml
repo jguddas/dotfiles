@@ -3,3 +3,7 @@ node = "lts"
 bun = "latest"
 yarn = "1"
 pnpm = "latest"
+ruby = "2.7.6"
+
+[settings]
+experimental = true

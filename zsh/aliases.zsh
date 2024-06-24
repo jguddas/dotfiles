@@ -37,21 +37,25 @@ al() { alias | awk "/$@/" }
 load-yarn() {
   DIR="$PWD"
   while
-    if [[ -f "$DIR/yarn.lock" ]]; then
-      PACKAGE_MANAGER="yarn"
-    elif [[ -f "$DIR/pnpm-lock.yaml" ]]; then
+    if [[ -f "$DIR/pnpm-lock.yaml" ]]; then
       PACKAGE_MANAGER="pnpm"
+      break;
+    elif [[ -f "$DIR/yarn.lock" ]]; then
+      PACKAGE_MANAGER="yarn"
+      break;
     elif [[ -f "$DIR/package-lock.json" ]]; then
       PACKAGE_MANAGER="npm"
+      break;
     fi
     [[ -z $PACKAGE_MANAGER ]] && [[ "$DIR" != "/" ]]
   do DIR=$(dirname "$DIR"); done
-  PACKAGE_MANAGER="${PACKAGE_MANAGER:-yarn}"
+  PACKAGE_MANAGER="${PACKAGE_MANAGER:-pnpm}"
 
   alias y="$PACKAGE_MANAGER"
   alias yy="$PACKAGE_MANAGER run"
   alias ya="$PACKAGE_MANAGER add"
   alias yd="$PACKAGE_MANAGER add -D"
+  alias yr="$PACKAGE_MANAGER remove"
   alias yg="$PACKAGE_MANAGER global"
   alias yga="$PACKAGE_MANAGER global add"
   alias yi="$PACKAGE_MANAGER init"

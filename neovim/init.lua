@@ -113,6 +113,7 @@ Plug("mhinz/vim-sayonara") -- better buffer closing
 Plug("nelstrom/vim-markdown-folding") -- better markdown folding
 Plug("airblade/vim-gitgutter") -- git diff column
 Plug("romainl/vim-qf") -- better quickfix mappings
+Plug("norcalli/nvim-colorizer.lua") -- highlight color codes
 
 -- syntax
 -- Plug("nvim-treesitter/nvim-treesitter", { ["do"] = ":TSUpdate" })
@@ -166,6 +167,7 @@ Plug("tpope/vim-eunuch") -- UNIX shell commands
 Plug("tpope/vim-fugitive") -- git wrapper
 Plug("tpope/vim-rhubarb") -- fugitive github support
 Plug("bogado/file-line")
+Plug("mbbill/undotree")
 
 vim.call("plug#end")
 require("impatient")
@@ -173,6 +175,7 @@ require("impatient")
 
 ---- Plugin Settings ---- {{{
 vim.cmd("source" .. vim.fn.stdpath("config") .. "/plugins.config.vim")
+require("colorizer").setup()
 
 -- Colorscheme {{{
 vim.cmd("colorscheme PaperColorSlim")

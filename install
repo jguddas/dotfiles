@@ -148,7 +148,7 @@ if [ -z "$1" ] || [ "$1" = "git" ]; then
   ln_i "$base"/git/gitconfig-work ~/.gitconfig-work
 fi
 
-if [ -z "$1" ] || [ "$1" = "rtx" ]; then
-  mkdir -p ~/.config/rtx
-  ln_i "$base"/rtx/config.toml ~/.config/rtx/config.toml
+if [ -z "$1" ] || [ "$1" = "mise" ]; then
+  mkdir -p ~/.config/mise
+  ln_i "$base"/mise/config.toml ~/.config/mise/config.toml
 fi
