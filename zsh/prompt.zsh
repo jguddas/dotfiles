@@ -6,7 +6,7 @@ function __promptline {
 function __promptline_prompt {
   if hash git 2>/dev/null; then
     if branch=$( { git symbolic-ref --quiet HEAD || git rev-parse --short HEAD; } 2>/dev/null ); then
-      branch=${branch##*/}
+      branch=${branch##refs/heads/}
       if [[ $KEYMAP = vicmd || -n $finish ]]; then
         printf "%s" "%{${esc}1m%}%{${esc}7m%}%{${esc}108m%}%{${esc}92m%}"
       else
