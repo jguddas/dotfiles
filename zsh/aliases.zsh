@@ -21,8 +21,16 @@ alias status='vim $(git rev-parse --show-toplevel)/.git/index'
 gv() { vim -c "GV $@" }
 
 # simple helpers
-alias xin="xclip -selection c"
-alias xout="xclip -out -selection c"
+if command -v pbpaste > /dev/null; then
+  alias xin="pbpaste"
+else
+  alias xin="xclip -selection c"
+fi
+if command -v pbcopy > /dev/null; then
+  alias xout="pbcopy"
+else
+  alias xout="xclip -out -selection c"
+fi
 alias rmf="rm -rf"
 alias rmr="rm -r"
 alias cpr="cp -r"
