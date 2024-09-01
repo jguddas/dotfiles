@@ -17,8 +17,6 @@ alias vi="vim"
 if command -v nvim > /dev/null; then
   alias vim="nvim"
 fi
-alias status='vim $(git rev-parse --show-toplevel)/.git/index'
-gv() { vim -c "GV $@" }
 
 # simple helpers
 if command -v pbpaste > /dev/null; then
