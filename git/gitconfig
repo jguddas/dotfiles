@@ -9,6 +9,12 @@
   autoSetupRemote = true
 [merge]
   tool = meld
+[color "diff"]
+  meta = "#8700af"
+  frag = "#d70087"
+  new = "#008700 #afffaf"
+  old = "#af0000 #ffd7ff"
+  modified = "#444444 #ffd787"
 
 [includeIf "hasconfig:remote.*.url:https://github.com/LEGO/**"]
   path = ~/.gitconfig-work
