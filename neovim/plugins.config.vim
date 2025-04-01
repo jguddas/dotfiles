@@ -47,6 +47,8 @@ highlight link OperatorSandwichChange IncSearch
 " switch
 let s:apostrophe = "'"
 let g:switch_custom_definitions = [{
+\  'write': 'read',
+\  'read': 'write',
 \  '`\([^`]*\)`' : '"\1"',
 \  '"\([^"]*\)"' : s:apostrophe.'\1'.s:apostrophe,
 \  s:apostrophe.'\([^'.s:apostrophe.']*\)'.s:apostrophe : '`\1`',
