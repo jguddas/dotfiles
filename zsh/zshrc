@@ -1,6 +1,4 @@
 # Zsh options
-autoload -Uz compinit
-compinit
 set -o vi
 bindkey -v
 export KEYTIMEOUT=1
