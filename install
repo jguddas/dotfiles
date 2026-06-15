@@ -89,6 +89,7 @@ if [ -z "$1" ] || [ "$1" = "zsh" ]; then
   zsh -i -c "fast-theme ~/.zsh/theme-light"
   # make zsh the default shell
   [ "$SHELL" = "/bin/zsh" ] || chsh -s /bin/zsh
+  ensure_bin aspell
 fi
 
 if [ -z "$1" ] || [ "$1" = "i3wm" ]; then
