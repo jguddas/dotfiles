@@ -91,7 +91,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.suffixes = ".bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg,.orig"
+vim.opt.suffixes = ".bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg,.orig,.DS_Store"
 vim.opt.tabstop = 2
 vim.opt.termguicolors = true
 vim.opt.updatetime = 500
@@ -131,7 +131,7 @@ Plug("williamboman/mason-lspconfig.nvim", { ["branch"] = "main" })
 Plug("neovim/nvim-lspconfig")
 Plug("b0o/SchemaStore.nvim", { ["branch"] = "main" })
 
-Plug("jose-elias-alvarez/null-ls.nvim", { ["branch"] = "main" }) -- linting
+Plug("nvimtools/none-ls.nvim", { ["branch"] = "main" }) -- linting
 Plug("jay-babu/mason-null-ls.nvim", { ["branch"] = "main" })
 Plug("lukas-reineke/lsp-format.nvim")
 
