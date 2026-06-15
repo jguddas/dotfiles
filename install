@@ -169,7 +169,13 @@ if [ -z "$1" ] || [ "$1" = "git" ]; then
   ln_i "$base"/git/gitconfig-work ~/.gitconfig-work
 
   # Ensure gh CLI is installed for GitHub GPG key management
-  ensure_bin gh && gh auth login
+  if ensure_bin gh; then
+    if ! gh auth status &>/dev/null; then
+      gh auth login -s read:gpg_key,write:gpg_key
+    else
+      gh auth refresh -s read:gpg_key,write:gpg_key
+    fi
+  fi
 
   # Ensure GPG is installed and set up signing
   if ensure_bin gpg gnupg; then
