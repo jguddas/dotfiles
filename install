@@ -41,10 +41,24 @@ dl_e() {
     curl -fLo "$out" "$1"
   fi
 }
+ensure_bin() {
+  if ! command -v "$1" >/dev/null; then
+    if command -v brew >/dev/null; then
+      brew install "${2:-$1}"
+    else
+      echo "Warning: $1 not found." >&2
+      return 1
+    fi
+  fi
+  command -v "$1" >/dev/null
+}
 base="$(dirname "$0")"
 config="${XDG_CONFIG_HOME:-$HOME/.config}"
 data="${XDG_DATA_HOME:-$HOME/.local/share}"
 gh="https://raw.githubusercontent.com"
+
+ensure_bin git
+ensure_bin curl
 
 if [ -z "$1" ] || [ "$1" = "neovim" ]; then
   mkdir -p "$config"/nvim "$data"/nvim/site/autoload
@@ -52,7 +66,7 @@ if [ -z "$1" ] || [ "$1" = "neovim" ]; then
   # install vim-plug
   dl_e $gh/junegunn/vim-plug/master/plug.vim "$data"/nvim/site/autoload
   # install plugins
-  nvim -c "let g:plug_threads = 3|PlugInstall|qa!"
+  ensure_bin nvim neovim && nvim -c "let g:plug_threads = 3|PlugInstall|qa!"
 fi
 
 if [ -z "$1" ] || [ "$1" = "zsh" ]; then
@@ -148,26 +162,10 @@ if [ -z "$1" ] || [ "$1" = "git" ]; then
   ln_i "$base"/git/gitconfig-work ~/.gitconfig-work
 
   # Ensure gh CLI is installed for GitHub GPG key management
-  if ! command -v gh >/dev/null; then
-    if command -v brew >/dev/null; then
-      brew install gh
-      gh auth login
-    else
-      echo "Warning: gh CLI not found."
-    fi
-  fi
+  ensure_bin gh && gh auth login
 
-  # Ensure GPG is installed
-  if ! command -v gpg >/dev/null; then
-    if command -v brew >/dev/null; then
-      brew install gnupg
-    else
-      echo "Warning: GPG not found."
-    fi
-  fi
-
-  # Set up GPG signing
-  if command -v gpg >/dev/null; then
+  # Ensure GPG is installed and set up signing
+  if ensure_bin gpg gnupg; then
     NAME=$(git config user.name)
     EMAIL=$(git config user.email)
 
