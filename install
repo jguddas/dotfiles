@@ -138,6 +138,12 @@ if [ -z "$1" ] || [ "$1" = "urxvt" ]; then
   xrdb ~/.Xresources
 fi
 
+if [ -z "$1" ] || [ "$1" = "iterm" ]; then
+  mkdir -p "$HOME/Library/Application Support/iTerm2/DynamicProfiles"
+  ln_i "$base"/iterm/{dark,light}.json \
+   "$HOME/Library/Application Support/iTerm2/DynamicProfiles"
+fi
+
 if [ -z "$1" ] || [ "$1" = "mpv" ]; then
   mkdir -p "$config"/mpv/{scripts,lua-settings}
   ln_i "$base"/mpv/{mpv,input}.conf "$config"/mpv

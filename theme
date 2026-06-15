@@ -11,15 +11,19 @@ if [ "$1" = "light" ]; then
   next="light"
   ln -i ./urxvt/lightresources ~/.Xresources
   ln -i ./i3wm/lg.jpg ~/.config/i3/bg.jpg
+  # iterm2 switch
+  echo -ne "\033]1337;SetProfile=light\a"
 else
   prev="light"
   next="dark"
   ln -i ./urxvt/Xresources ~/.Xresources
   ln -i ./i3wm/bg.jpg ~/.config/i3/bg.jpg
+  # iterm2 switch
+  echo -ne "\033]1337;SetProfile=dark\a"
 fi
 
-xrdb ~/.Xresources
-i3-msg reload
-sed -i "s/background=$prev/background=$next/" ~/.vim/config.vim
-zsh -i -c "fast-theme ~/.zsh/theme-$next"
-feh --bg-tile ~/.config/i3/bg.jpg
+command -v xrdb >/dev/null && xrdb ~/.Xresources
+command -v i3-msg >/dev/null && i3-msg reload
+command -v sed >/dev/null && sed -i "s/background=$prev/background=$next/" ~/.vim/config.vim
+command -v zsh >/dev/null && zsh -i -c "fast-theme ~/.zsh/theme-$next"
+command -v feh >/dev/null && feh --bg-tile ~/.config/i3/bg.jpg

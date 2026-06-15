@@ -1,0 +1,30 @@
+{
+  "Profiles": [
+    {
+      "Name": "light",
+      "Guid": "5E1B2C3D-4E5F-6A7B-8C9D-0E1F2A3B4C5D",
+      "Custom Command" : "No",
+      "Background Color": { "Red Component": 0.93, "Green Component": 0.93, "Blue Component": 0.93 },
+      "Foreground Color": { "Red Component": 0.27, "Green Component": 0.27, "Blue Component": 0.27 },
+      "Cursor Color": { "Red Component": 0.53, "Green Component": 0.53, "Blue Component": 0.53 },
+      "Selection Color": { "Red Component": 0.70, "Green Component": 0.85, "Blue Component": 1.00 },
+      "Selected Text Color": { "Red Component": 0.27, "Green Component": 0.27, "Blue Component": 0.27 },
+      "Ansi 0 Color": { "Red Component": 0.93, "Green Component": 0.93, "Blue Component": 0.93 },
+      "Ansi 1 Color": { "Red Component": 0.69, "Green Component": 0.00, "Blue Component": 0.00 },
+      "Ansi 2 Color": { "Red Component": 0.00, "Green Component": 0.53, "Blue Component": 0.00 },
+      "Ansi 3 Color": { "Red Component": 0.37, "Green Component": 0.53, "Blue Component": 0.00 },
+      "Ansi 4 Color": { "Red Component": 0.00, "Green Component": 0.53, "Blue Component": 0.69 },
+      "Ansi 5 Color": { "Red Component": 0.53, "Green Component": 0.53, "Blue Component": 0.53 },
+      "Ansi 6 Color": { "Red Component": 0.00, "Green Component": 0.53, "Blue Component": 0.69 },
+      "Ansi 7 Color": { "Red Component": 0.27, "Green Component": 0.27, "Blue Component": 0.27 },
+      "Ansi 8 Color": { "Red Component": 0.74, "Green Component": 0.74, "Blue Component": 0.74 },
+      "Ansi 9 Color": { "Red Component": 0.84, "Green Component": 0.00, "Blue Component": 0.00 },
+      "Ansi 10 Color": { "Red Component": 0.84, "Green Component": 0.00, "Blue Component": 0.53 },
+      "Ansi 11 Color": { "Red Component": 0.53, "Green Component": 0.00, "Blue Component": 0.69 },
+      "Ansi 12 Color": { "Red Component": 0.00, "Green Component": 0.69, "Blue Component": 0.37 },
+      "Ansi 13 Color": { "Red Component": 0.84, "Green Component": 0.37, "Blue Component": 0.00 },
+      "Ansi 14 Color": { "Red Component": 0.00, "Green Component": 0.53, "Blue Component": 0.69 },
+      "Ansi 15 Color": { "Red Component": 1.00, "Green Component": 1.00, "Blue Component": 1.00 }
+    }
+  ]
+}
