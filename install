@@ -146,9 +146,70 @@ fi
 if [ -z "$1" ] || [ "$1" = "git" ]; then
   ln_i "$base"/git/gitconfig ~/.gitconfig
   ln_i "$base"/git/gitconfig-work ~/.gitconfig-work
+
+  # Ensure gh CLI is installed for GitHub GPG key management
+  if ! command -v gh >/dev/null; then
+    if command -v brew >/dev/null; then
+      brew install gh
+      gh auth login
+    else
+      echo "Warning: gh CLI not found."
+    fi
+  fi
+
+  # Ensure GPG is installed
+  if ! command -v gpg >/dev/null; then
+    if command -v brew >/dev/null; then
+      brew install gnupg
+    else
+      echo "Warning: GPG not found."
+    fi
+  fi
+
+  # Set up GPG signing
+  if command -v gpg >/dev/null; then
+    NAME=$(git config user.name)
+    EMAIL=$(git config user.email)
+
+    if [[ -n "$NAME" && -n "$EMAIL" ]]; then
+      # Find existing key for email
+      key_id=$(gpg --list-secret-keys --keyid-format LONG "$EMAIL" | grep -m 1 sec | awk '{print $2}' | cut -d'/' -f2)
+
+      if [[ -z "$key_id" ]]; then
+        # Create new key (strictly following gist logic)
+        gpg --batch --generate-key <<EOF
+Key-Type: RSA
+Key-Length: 4096
+Subkey-Type: RSA
+Subkey-Length: 4096
+Name-Real: $NAME
+Name-Email: $EMAIL
+Expire-Date: 0
+%no-protection
+%commit
+EOF
+        key_id=$(gpg --list-secret-keys --keyid-format LONG "$EMAIL" | grep -m 1 sec | awk '{print $2}' | cut -d'/' -f2)
+      fi
+
+      if [[ -n "$key_id" ]]; then
+        git config --global commit.gpgsign true
+        git config --global user.signingkey "$key_id"
+
+        # Add to GitHub if gh CLI is authenticated
+        if command -v gh >/dev/null && gh auth status >/dev/null 2>&1; then
+          if ! gh gpg-key list | grep -q "$key_id"; then
+            gpg --armor --export "$key_id" | gh gpg-key add -
+          fi
+        fi
+      fi
+    fi
+  fi
 fi
 
 if [ -z "$1" ] || [ "$1" = "mise" ]; then
+  if ! command -v mise &> /dev/null && [ ! -f ~/.local/bin/mise ]; then
+    curl https://mise.run | sh
+  fi
   mkdir -p ~/.config/mise
   ln_i "$base"/mise/config.toml ~/.config/mise/config.toml
 fi
