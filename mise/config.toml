@@ -1,9 +1,11 @@
 [tools]
 node = "lts"
-bun = "latest"
-yarn = "1"
+yarn = "2"
 pnpm = "latest"
-ruby = "2.7.6"
+go = "latest"
+dotnet = "8"
+rust = "latest"
+pipx = "latest"
 
 [settings]
 experimental = true
