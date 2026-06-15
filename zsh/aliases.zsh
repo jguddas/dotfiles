@@ -73,7 +73,7 @@ alias gamm='git commit --amend --message'
 alias gap='git add --patch'
 alias gau='git add --update'
 alias gb='git branch'
-alias gbc='git checkout --branch'
+alias gbc='git checkout -b'
 alias gbd='git branch --delete'
 alias gc='git commit --verbose'
 alias gca='git commit --verbose --all'
@@ -119,5 +119,5 @@ gbcm() {
   gbc "$(sed 's|[^[:alnum:]]\{1,\}|-|g;s|-|\/|' <<< "$1")"
 }
 gco() {
-  git checkout "$@" || git checkout "$(sed 's|[^[:alnum:]]\{1,\}|-|g;s|-|\/|' <<< "$1")"
+  git checkout "$@" || git checkout "$(sed 's|[^[:alnum:]]\{1,\}|-|g;s|-|\/|' <<< "$1")" || gh pr checkout "$1"
 }

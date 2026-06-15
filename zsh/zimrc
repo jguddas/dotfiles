@@ -3,7 +3,6 @@ zmodule environment
 zmodule input
 zmodule utility
 zmodule archive
-zmodule custom
 zmodule pacman
 zmodule completion
 zmodule zsh-users/zsh-history-substring-search

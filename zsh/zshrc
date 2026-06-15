@@ -38,7 +38,9 @@ HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=fg=green,bold
 
 # Autosuggest completion
 source $ZDOTDIR/functions/autosuggest.zsh
+_comp_options+=(globdots)
 zstyle ':completion:::::default' menu yes select
+zstyle ':completion:*:complete:cd:*' file-sort date
 ZSH_AUTOSUGGEST_STRATEGY=(custom)
 ZSH_AUTOSUGGEST_COMPLETION_IGNORE="* "
 
@@ -93,3 +95,13 @@ if command -v nvim > /dev/null; then
   export EDITOR='nvim'
   export MANPAGER='nvim +Man!'
 fi
+
+zmodload zsh/system
+color_stderr() {
+  emulate -LR zsh
+  local stderr_esc_code=$'\e[38;2;0;135;175m\e[48;2;175;215;255m'
+  while sysread; do
+    syswrite -o 2 "${stderr_esc_code}${REPLY}${terminfo[sgr0]}"
+  done
+}
+exec 2> >(color_stderr)
