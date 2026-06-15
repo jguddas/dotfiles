@@ -161,6 +161,7 @@ fi
 if [ -z "$1" ] || [ "$1" = "tmux" ]; then
   mkdir -p ~/
   ln_i "$base"/tmux/tmux.conf ~/.tmux.conf
+  ensure_bin tmux
 fi
 
 if [ -z "$1" ] || [ "$1" = "git" ]; then
