@@ -59,7 +59,6 @@ augroup END
 
 -- Options {{{
 vim.opt.autoread = true
-vim.opt.background = "light"
 vim.opt.backspace = "indent,eol,start"
 vim.opt.colorcolumn = "+1"
 vim.opt.diffopt = "foldcolumn:0,filler"
@@ -178,7 +177,7 @@ vim.cmd("source" .. vim.fn.stdpath("config") .. "/plugins.config.vim")
 require("colorizer").setup()
 
 -- Colorscheme {{{
-vim.cmd("colorscheme PaperColorSlim")
+vim.cmd("colorscheme PaperColorSlimLight")
 vim.cmd([[
 highlight Search                     guifg=#444444 guibg=#ffff5f gui=none
 highlight Folded                     guifg=#0087af guibg=#afd7ff gui=none
@@ -596,43 +595,45 @@ require("mason-lspconfig").setup({
 		"cssls",
 		"html",
 		"jsonls",
-		"tsserver",
+		"ts_ls",
 		"yamlls",
 	},
 	automatic_installation = true,
 })
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-require("mason-lspconfig").setup_handlers({
-	function(server_name)
-		require("lspconfig")[server_name].setup({
-			capabilities = capabilities,
-		})
-	end,
-	["yamlls"] = function()
-		require("lspconfig").yamlls.setup({
-			capabilities = capabilities,
-			settings = {
+
+local servers = {
+	"bashls",
+	"cssls",
+	"html",
+	"jsonls",
+	"ts_ls",
+	"yamlls",
+}
+
+for _, server_name in ipairs(servers) do
+	local config = vim.lsp.config[server_name]
+	if config then
+		config.capabilities = vim.tbl_deep_extend("force", config.capabilities or {}, capabilities)
+		if server_name == "yamlls" then
+			config.settings = {
 				yaml = {
 					schemas = require("schemastore").yaml.schemas({}),
 					validate = { enable = true },
 				},
-			},
-		})
-	end,
-	["jsonls"] = function()
-		require("lspconfig").jsonls.setup({
-			capabilities = capabilities,
-			settings = {
+			}
+		elseif server_name == "jsonls" then
+			config.settings = {
 				json = {
 					schemas = require("schemastore").json.schemas({}),
 					validate = { enable = true },
 				},
-			},
-		})
-	end,
-})
+			}
+		end
+		vim.lsp.enable(server_name)
+	end
+end
 vim.diagnostic.config({ virtual_text = false })
-require("cmp_nvim_lsp").default_capabilities()
 vim.diagnostic.config({
 	float = { border = "single" },
 })
